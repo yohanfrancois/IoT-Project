@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private bool isFacingRight = true;
     private bool canMove = true;
     private int wallDirection;
+    private Collider2D myCollider;
 
     void Awake()
     {
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour
         }
 
         rb = GetComponent<Rigidbody2D>();
+        myCollider = GetComponent<Collider2D>();
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -106,6 +108,14 @@ public class PlayerController : MonoBehaviour
         {
             isWallSliding = false;
         }
+
+        // Vérifier si le joueur descend
+        if (rb.velocity.y < 0)
+        {
+            // Activer les collisions avec les plateformes
+            myCollider.enabled = true;
+        }
+
     }
 
     void WallJump()
@@ -128,5 +138,18 @@ public class PlayerController : MonoBehaviour
         Vector3 scaler = transform.localScale;
         scaler.x *= -1;
         transform.localScale = scaler;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("OneWayPlatform"))
+        {
+            // Désactiver les collisions avec la plateforme si le joueur monte
+            if (rb.velocity.y >= 0)
+            {
+                print("Collision");
+                myCollider.enabled = false;
+            }
+        }
     }
 }

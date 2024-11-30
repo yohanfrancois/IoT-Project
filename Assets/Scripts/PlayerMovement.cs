@@ -16,9 +16,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float wallSlideSpeed = 2f;
     [SerializeField] private float wallJumpDuration = 0.2f; // Durée pendant laquelle le mouvement horizontal est désactivé
 
-    public bool unlockedJump;
-    public bool unlockedWall;
-
     private Rigidbody2D rb;
     private float moveInput;
     private bool isGrounded;

@@ -141,6 +141,7 @@ MonoBehaviour:
     m_Bits: 8
   groundCheck: {fileID: 8914705998979691781}
   wallCheck: {fileID: 3828012631309159631}
+  wallCheck2: {fileID: 487140882310284086}
   wallJumpForce: 10
   wallSlideSpeed: 2
   wallJumpDuration: 0.2

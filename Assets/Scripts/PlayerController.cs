@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float wallJumpForce = 10f;
     [SerializeField] private float wallSlideSpeed = 2f;
     [SerializeField] private float wallJumpDuration = 0.2f; // Durée pendant laquelle le mouvement horizontal est désactivé
+    [SerializeField] private GameObject platform; //plateforme qui bouche le trou au début du jeu
 
     private Rigidbody2D rb;
     private float moveInput;
@@ -97,6 +98,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.Instance.unlockedPlatform)
+        {
+            platform.SetActive(false);
+        }
+        if (GameManager.Instance.unlockedPlatform)
+        {
+            platform.SetActive(true);
+        }
         if (canMove)
         {
             if (!isTouchingWall || (isTouchingWall && moveInput != wallDirection))

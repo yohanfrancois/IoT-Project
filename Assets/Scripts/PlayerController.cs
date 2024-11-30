@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
             if (isGrounded)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.jumpSound);
             }
             if (GameManager.Instance.unlockedWallJump)
             {
@@ -154,6 +155,7 @@ public class PlayerController : MonoBehaviour
         canMove = false;
         rb.velocity = new Vector2(-wallDirection * wallJumpForce, jumpForce);
         Flip();
+        AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.jumpSound);
         StartCoroutine(EnableMovementAfterDelay());
     }
 

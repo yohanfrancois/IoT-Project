@@ -8,14 +8,20 @@ public class AudioManager : MonoBehaviour
 
     public AudioSource soundEffectSource;
     public AudioSource musicSource;
-    public AudioClip musicClip1;
-    public AudioClip musicClip2;
+    public AudioClip intro;
+    public AudioClip levelMusic;
 
     //Ajoutez votre clip audio ici
     //Pour le jouer, utilisez AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.nomDuClip);
-    public AudioClip soundEffect1;
-    public AudioClip soundEffect2;
-    public AudioClip soundEffect3;
+    public AudioClip codingSound1;
+    public AudioClip codingSound2;
+    public AudioClip electricSound;
+    public AudioClip jumpSound;
+    public AudioClip collectibleSound;
+    public AudioClip codeBreaking;
+    public AudioClip footstep1;
+    public AudioClip footstep2;
+    public AudioClip footste3;
 
     private void Awake()
     {
@@ -47,10 +53,10 @@ public class AudioManager : MonoBehaviour
         switch (musicIndex)
         {
             case 1:
-                selectedMusic = musicClip1;
+                selectedMusic = intro;
                 break;
             case 2:
-                selectedMusic = musicClip2;
+                selectedMusic = levelMusic;
                 break;
         }
 

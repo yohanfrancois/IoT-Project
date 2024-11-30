@@ -35,6 +35,7 @@ public class CollectiblePlaform : MonoBehaviour
         {
             collectible.ClickRegistered();
         }
+        AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.collectibleSound);
     }
 
     private void ClickRegistered()

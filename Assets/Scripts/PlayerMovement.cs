@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float wallSlideSpeed = 2f;
 
     private Rigidbody2D rb;
-    private Vector2 moveInput;
+    private float moveInput;
     private bool isGrounded;
     private bool isTouchingWall;
     private bool isWallSliding;
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        moveInput = context.ReadValue<Vector2>();
+        moveInput = context.ReadValue<float>();
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -55,13 +55,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        rb.velocity = new Vector2(moveInput.x * moveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
-        if (isFacingRight && moveInput.x < 0)
+        if (isFacingRight && moveInput < 0)
         {
             Flip();
         }
-        else if (!isFacingRight && moveInput.x > 0)
+        else if (!isFacingRight && moveInput > 0)
         {
             Flip();
         }
@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
 
     void WallJump()
     {
-        rb.velocity = new Vector2(-moveInput.x * wallJumpForce, jumpForce);
+        rb.velocity = new Vector2(-moveInput * wallJumpForce, jumpForce);
         Flip();
     }
 

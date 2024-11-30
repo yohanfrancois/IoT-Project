@@ -95,8 +95,7 @@ GameObject:
   - component: {fileID: 8516068282948448908}
   - component: {fileID: 797649871008758429}
   - component: {fileID: 8037518559932057444}
-  - component: {fileID: 3880660636066491517}
-  - component: {fileID: 5445979592681686051}
+  - component: {fileID: 1215618312524814669}
   m_Layer: 0
   m_Name: CollectiblePlatform
   m_TagString: Untagged
@@ -217,7 +216,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3880660636066491517
+--- !u!114 &1215618312524814669
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -226,28 +225,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4030890795868192628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 337d717860a5d4118983f0b144ec8fe7, type: 3}
+  m_Script: {fileID: 11500000, guid: 6972048cd30e5ea4caa3c999afd3cc46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   highlighterSpriteRenderer: {fileID: 5072647393931112022}
---- !u!95 &5445979592681686051
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4030890795868192628}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 53b766c2800394f8da75c41087e2db2a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0

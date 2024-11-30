@@ -21,6 +21,7 @@ public class PlatPlaceholder : MonoBehaviour
     {
         _placeholders.Add(this);
         _renderer = GetComponent<SpriteRenderer>();
+        GameManager.Instance.AffichePlateformes();
     }
     
     private void OnMouseOver()

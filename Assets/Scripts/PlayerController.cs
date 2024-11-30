@@ -48,21 +48,13 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-<<<<<<< HEAD:Assets/Scripts/PlayerMovement.cs
-        if(true/*GameManager.Instance.unlockedJump*/)
-=======
         if (GameManager.Instance.unlockedJump)
->>>>>>> refs/remotes/origin/main:Assets/Scripts/PlayerController.cs
         {
             if (isGrounded)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
-<<<<<<< HEAD:Assets/Scripts/PlayerMovement.cs
-            if(true/*GameManager.Instance.unlockedWallJump*/)
-=======
             if (GameManager.Instance.unlockedWallJump)
->>>>>>> refs/remotes/origin/main:Assets/Scripts/PlayerController.cs
             {
                 if (isTouchingWall && !isGrounded)
                 {

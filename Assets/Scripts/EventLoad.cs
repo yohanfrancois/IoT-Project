@@ -8,15 +8,18 @@ public class EventLoad : MonoBehaviour
 {
     private Button _startButton;
     private Button _settingsButton;
+    [SerializeField] private GameObject _platform;
     private Animator _animator;
     private bool _isAnimationPlaying = false;
     private bool _isBroken = false;
+    [SerializeField] private GameObject _pauseScreen;
 
     void Start()
     {
         _startButton = GameObject.Find("Button").GetComponent<Button>();
         _settingsButton = GameObject.Find("Settings").GetComponent<Button>();
-        _animator = _startButton.GetComponent<Animator>();
+        _animator = _platform.GetComponent<Animator>();
+        
 
         _startButton.onClick.AddListener(() => StartCoroutine(ButtonSelected()));
         _settingsButton.onClick.AddListener(() => StartCoroutine(SettingsSelected()));
@@ -49,6 +52,19 @@ public class EventLoad : MonoBehaviour
             yield return new WaitForSeconds(0.2f); // Délai optionnel avant de rallumer.
 
             lightController?.LightOn(); // Rallumer les lumières.
+            
+            yield return new WaitForSeconds(1f); // Délai optionnel avant d'éteindre.
+            lightController?.LightOff(); // Éteindre les lumières.
+            yield return new WaitForSeconds(0.3f); // Délai optionnel avant de rallumer
+            lightController?.LightOn(); // Rallumer les lumières.
+            yield return new WaitForSeconds(0.7f); // Délai optionnel avant d'éteindre.
+            lightController?.LightOff(); // Éteindre les lumières.
+            yield return new WaitForSeconds(0.2f); // Délai optionnel avant de rallumer.
+            lightController?.LightOn(); // Rallumer les lumières.
+            yield return new WaitForSeconds(0.5f); // Délai optionnel avant d'éteindre.
+            lightController?.LightOff(); // Éteindre les lumières.
+            yield return new WaitForSeconds(0.1f); // Délai optionnel avant de rallumer.
+            lightController?.LightOn(); // Rallumer les lumières.
         }
 
         Debug.Log("Vous avez trouvé le bouton " + _startButton.name);
@@ -62,13 +78,19 @@ public class EventLoad : MonoBehaviour
         if (_isBroken)
         {
             Debug.LogWarning("Le bouton est cassé !");
-            yield break;
+            // Activer la page des paramètres.
+            _pauseScreen.SetActive(true);
+            _isBroken = false;
+            yield return null;
+        } else if (!_isBroken)
+        {
+            _pauseScreen.SetActive(false);
+            _isBroken = true;
+            yield return null;
         }
 
         Debug.Log("Vous avez trouvé le bouton " + _settingsButton.name);
-
-        // Activer la page des paramètres.
-
-        yield return null; // Si tu veux attendre une action avant de revenir.
+        
+        yield break; // Si tu veux attendre une action avant de revenir.
     }
 }

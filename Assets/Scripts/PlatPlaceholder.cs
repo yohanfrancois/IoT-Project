@@ -68,5 +68,6 @@ public class PlatPlaceholder : MonoBehaviour
         {
             collectible.ClickRegistered();
         }
+        AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.codingSound1);
     }
 }

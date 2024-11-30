@@ -30,6 +30,7 @@ public class CollectiblePlaform : MonoBehaviour
 
     public static void MouseClicked()
     {
+        if (_collectibles == null) return;
         foreach (var collectible in _collectibles)
         {
             collectible.ClickRegistered();

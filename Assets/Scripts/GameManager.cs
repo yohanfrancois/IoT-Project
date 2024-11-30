@@ -95,6 +95,16 @@ public class GameManager : MonoBehaviour
     public void ResetGame()
     {
         canResetToMenu = false;
+        if(unlockedPlatform){
+            GameObject[] unityObjects = GameObject.FindGameObjectsWithTag("Plateforme");
+            // Loop through each object and perform an action
+            foreach (GameObject obj in unityObjects)
+            {
+                // Perform an action on each object, for example:
+                SpriteRenderer renderer = obj.GetComponent<SpriteRenderer>();
+                renderer.color = new Color(1f,1f,1f,1f);
+            }
+        }
     }
 
     private void Start()

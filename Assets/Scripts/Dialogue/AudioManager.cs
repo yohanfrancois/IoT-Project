@@ -30,6 +30,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        PlayMusic(1);
+    }
+
     public void PlaySoundEffect(AudioClip clip)
     {
         soundEffectSource.PlayOneShot(clip);

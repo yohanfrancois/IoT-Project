@@ -4,6 +4,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private GameObject itemsPrefab;
+    [SerializeField] private GameObject platFormPrefab;
     public static Inventory Instance;
     private List<GameObject> _items = new();
 
@@ -12,13 +13,17 @@ public class Inventory : MonoBehaviour
         Instance = this;
     }
 
-    public void AddItem(GameObject item, bool visible)
+    public int GetItemCount()
     {
-        item.transform.SetParent(itemsPrefab.transform);
-        _items.Add(item);
-        item.SetActive(visible);
+        return _items.Count;
     }
 
+    public void AddPlatToInventory(bool visible)
+    {
+        GameObject item = Instantiate(platFormPrefab, itemsPrefab.transform, true);
+        _items.Add(item);
+        item.SetActive(true);
+    }
     public void RemoveLastItem()
     {
         GameObject lastItem = _items[_items.Count - 1];

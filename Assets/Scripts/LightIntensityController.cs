@@ -1,18 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class LightIntensityController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private Light2D lightToControl; // La lumière à contrôler.
+    [SerializeField] private Slider intensitySlider; // Le slider lié à la lumière.
+
     void Start()
     {
-        
+        // Initialiser le slider avec la valeur actuelle de l'intensité de la lumière.
+        if (lightToControl != null && intensitySlider != null)
+        {
+            intensitySlider.value = lightToControl.intensity;
+            intensitySlider.onValueChanged.AddListener(ChangeLightIntensity);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void ChangeLightIntensity(float value)
     {
-        
+        if (lightToControl != null)
+        {
+            lightToControl.intensity = value;
+        }
     }
 }

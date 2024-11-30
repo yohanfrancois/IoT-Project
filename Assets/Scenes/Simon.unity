@@ -380,6 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa4940a5def2e14e83a839412500059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 92070d380da8b4720a91e0ea57a79c76, type: 3}
   unlockedJump: 0
   unlockedWallJump: 0
   unlockedPlatform: 0

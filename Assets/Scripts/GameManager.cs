@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public bool unlockedInventory ;
     public bool unlockedWallJump ;
     public bool canResetToMenu ;
+    public bool hasEyes;
 
 
 

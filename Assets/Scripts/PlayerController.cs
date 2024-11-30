@@ -19,12 +19,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject platform; //plateforme qui bouche le trou au début du jeu
 
     private Rigidbody2D rb;
-    private float moveInput;
+    public float moveInput;
     private bool isGrounded;
     private bool isTouchingWall;
     private bool isWallSliding;
-    private bool isFacingRight = true;
-    private bool canMove = true;
+    public bool isFacingRight = true;
+    public bool canMove = true;
     private int wallDirection;
     private Collider2D myCollider;
 
@@ -98,50 +98,53 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!GameManager.Instance.unlockedPlatform)
+        if (platform != null)
         {
-            platform.SetActive(false);
-        }
-        if (GameManager.Instance.unlockedPlatform)
-        {
-            platform.SetActive(true);
-        }
-        if (canMove)
-        {
-            if (!isTouchingWall || (isTouchingWall && moveInput != wallDirection))
+            if (!GameManager.Instance.unlockedPlatform)
             {
-                rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+                platform.SetActive(false);
+            }
+            else
+            {
+                platform.SetActive(true);
+            }
+            if (canMove)
+            {
+                if (!isTouchingWall || (isTouchingWall && moveInput != wallDirection))
+                {
+                    rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+                }
+
+                if (isFacingRight && moveInput < 0)
+                {
+                    Flip();
+                }
+                else if (!isFacingRight && moveInput > 0)
+                {
+                    Flip();
+                }
             }
 
-            if (isFacingRight && moveInput < 0)
+            isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
+            isTouchingWall = Physics2D.OverlapCircle(wallCheck.position, 0.1f, groundLayer);
+
+            if (isTouchingWall && !isGrounded && rb.velocity.y < 0)
             {
-                Flip();
+                isWallSliding = true;
+                rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
+                wallDirection = isFacingRight ? 1 : -1;
             }
-            else if (!isFacingRight && moveInput > 0)
+            else
             {
-                Flip();
+                isWallSliding = false;
             }
-        }
 
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
-        isTouchingWall = Physics2D.OverlapCircle(wallCheck.position, 0.1f, groundLayer);
-
-        if (isTouchingWall && !isGrounded && rb.velocity.y < 0)
-        {
-            isWallSliding = true;
-            rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
-            wallDirection = isFacingRight ? 1 : -1;
-        }
-        else
-        {
-            isWallSliding = false;
-        }
-
-        // Vérifier si le joueur descend
-        if (rb.velocity.y < 0)
-        {
-            // Activer les collisions avec les plateformes
-            myCollider.enabled = true;
+            // Vérifier si le joueur descend
+            if (rb.velocity.y < 0)
+            {
+                // Activer les collisions avec les plateformes
+                myCollider.enabled = true;
+            }
         }
 
     }
@@ -160,7 +163,7 @@ public class PlayerController : MonoBehaviour
         canMove = true;
     }
 
-    void Flip()
+    public void Flip()
     {
         isFacingRight = !isFacingRight;
         Vector3 scaler = transform.localScale;

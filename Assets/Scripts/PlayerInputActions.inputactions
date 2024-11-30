@@ -158,6 +158,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "AudioManager",
+            "id": "3af62030-59c2-4ce9-a96e-8a84bc3928cf",
+            "actions": [
+                {
+                    "name": "OnDialogue",
+                    "type": "Button",
+                    "id": "38a27b43-5ecf-440a-a819-bef649140de3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1f3e78da-0deb-4c8b-b0e9-a2d58c769557",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnDialogue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

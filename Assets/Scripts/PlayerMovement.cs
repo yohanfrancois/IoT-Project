@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform wallCheck;
     [SerializeField] private float wallJumpForce = 10f;
     [SerializeField] private float wallSlideSpeed = 2f;
+    [SerializeField] private float wallJumpDuration = 0.2f; // Durée pendant laquelle le mouvement horizontal est désactivé
 
     private Rigidbody2D rb;
     private float moveInput;
@@ -21,6 +22,8 @@ public class PlayerController : MonoBehaviour
     private bool isTouchingWall;
     private bool isWallSliding;
     private bool isFacingRight = true;
+    private bool canMove = true;
+    private int wallDirection;
 
     void Awake()
     {
@@ -55,15 +58,21 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        if (canMove)
+        {
+            if (!isTouchingWall || (isTouchingWall && moveInput != wallDirection))
+            {
+                rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+            }
 
-        if (isFacingRight && moveInput < 0)
-        {
-            Flip();
-        }
-        else if (!isFacingRight && moveInput > 0)
-        {
-            Flip();
+            if (isFacingRight && moveInput < 0)
+            {
+                Flip();
+            }
+            else if (!isFacingRight && moveInput > 0)
+            {
+                Flip();
+            }
         }
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
@@ -73,6 +82,7 @@ public class PlayerController : MonoBehaviour
         {
             isWallSliding = true;
             rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
+            wallDirection = isFacingRight ? 1 : -1;
         }
         else
         {
@@ -82,8 +92,16 @@ public class PlayerController : MonoBehaviour
 
     void WallJump()
     {
-        rb.velocity = new Vector2(-moveInput * wallJumpForce, jumpForce);
+        canMove = false;
+        rb.velocity = new Vector2(-wallDirection * wallJumpForce, jumpForce);
         Flip();
+        StartCoroutine(EnableMovementAfterDelay());
+    }
+
+    IEnumerator EnableMovementAfterDelay()
+    {
+        yield return new WaitForSeconds(wallJumpDuration);
+        canMove = true;
     }
 
     void Flip()

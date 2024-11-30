@@ -1250,6 +1250,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorTexture: {fileID: 0}
+  unlockedPlatform: 0
+  unlockedJump: 0
+  unlockedInventory: 0
+  unlockedWallJump: 0
+  canResetToMenu: 0
 --- !u!4 &814133237
 Transform:
   m_ObjectHideFlags: 0
@@ -1563,7 +1568,7 @@ PrefabInstance:
     - target: {fileID: 6419114067862252616, guid: 31c3211a4335444388635d55b65f0302, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9100000, guid: beaa6245c852446c39ebc0a18be82bff, type: 2}
     - target: {fileID: 7601723742075244563, guid: 31c3211a4335444388635d55b65f0302, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.0119176

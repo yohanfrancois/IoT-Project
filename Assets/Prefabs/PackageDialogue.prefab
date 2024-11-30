@@ -424,6 +424,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2762982304835550687}
   - component: {fileID: 6130503110569954777}
+  - component: {fileID: 8832848463626268796}
   m_Layer: 0
   m_Name: PackageDialogue
   m_TagString: Untagged
@@ -478,6 +479,76 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 371fc6c253d2c4043b9f6b7e0d9df26b, type: 3}
   - {fileID: 21300000, guid: e29d40b2566ab4931968468106c33e7a, type: 3}
   - {fileID: 21300000, guid: 92070d380da8b4720a91e0ea57a79c76, type: 3}
+--- !u!114 &8832848463626268796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5412720143931191691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: e92abeec8607a91418627ab65782dd85, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bc93e4da-68c5-4806-826c-cb05c8514e24
+    m_ActionName: Player/OnMove[/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 63e5a5d1-17cc-4055-a4b7-bdc73cd743cd
+    m_ActionName: Player/OnJump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e0f7d77b-b26e-4382-8232-41881fc33863
+    m_ActionName: Player/MouseClick[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ae4faec0-d0d0-40a7-bf58-e0e069104a5d
+    m_ActionName: Player/ReturnMenu[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 28a14d74-4490-4b54-967a-d0bd37f4bbf9
+    m_ActionName: Player/Shoot[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4da895a1-03fc-4098-86ef-c462034035d9
+    m_ActionName: GameManager/OnReset[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6130503110569954777}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: OnDialogue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 38a27b43-5ecf-440a-a819-bef649140de3
+    m_ActionName: AudioManager/OnDialogue[/Keyboard/e]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: AudioManager
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &7978552378873515608
 GameObject:
   m_ObjectHideFlags: 0

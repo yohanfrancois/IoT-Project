@@ -38,6 +38,7 @@ public class DialogueManager : MonoBehaviour
 
     public void OnDialogue(InputAction.CallbackContext context)
     {
+        print(context.action.name + " " + context.phase);
         if(isDialogueActive)
         {
             DisplayNextSentence();
@@ -58,10 +59,15 @@ public class DialogueManager : MonoBehaviour
 
     void DisplayNextSentence()
     {
+        if(audioSource.isPlaying)
+        {
+            return;
+        }
         if (dialoguesQueue.Count == 0)
         {
+            dialoguesQueue.Dequeue();
             EndDialogue();
-            return;
+            return; 
         }
 
         Dialogue dialogue = dialoguesQueue.Dequeue();

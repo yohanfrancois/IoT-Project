@@ -19,12 +19,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject platform; //plateforme qui bouche le trou au début du jeu
 
     private Rigidbody2D rb;
-    private float moveInput;
+    public float moveInput;
     private bool isGrounded;
     private bool isTouchingWall;
     private bool isWallSliding;
-    private bool isFacingRight = true;
-    private bool canMove = true;
+    public bool isFacingRight = true;
+    public bool canMove = true;
     private int wallDirection;
     private Collider2D myCollider;
 
@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour
         canMove = true;
     }
 
-    void Flip()
+    public void Flip()
     {
         isFacingRight = !isFacingRight;
         Vector3 scaler = transform.localScale;

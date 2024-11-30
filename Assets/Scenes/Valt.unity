@@ -888,6 +888,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4747861456884142192, guid: 01ac2df48f6f3c14d811e3cd9cc33c5b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5412720143931191691, guid: 01ac2df48f6f3c14d811e3cd9cc33c5b, type: 3}
       propertyPath: m_Name
       value: PackageDialogue

@@ -102,6 +102,18 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 4da895a1-03fc-4098-86ef-c462034035d9
     m_ActionName: GameManager/OnReset[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ae4faec0-d0d0-40a7-bf58-e0e069104a5d
+    m_ActionName: Player/ReturnMenu[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 28a14d74-4490-4b54-967a-d0bd37f4bbf9
+    m_ActionName: Player/Shoot[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 38a27b43-5ecf-440a-a819-bef649140de3
+    m_ActionName: AudioManager/OnDialogue[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: GameManager
@@ -121,8 +133,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffectSource: {fileID: 2759483137888821666}
   musicSource: {fileID: 1030595711897947916}
-  musicClip1: {fileID: 0}
-  musicClip2: {fileID: 0}
+  musicClip1: {fileID: 8300000, guid: cb9bd686fcb4fd44d8844c30cb1c7b74, type: 3}
+  musicClip2: {fileID: 8300000, guid: 32cb5c26fbb4ef947ae58af5f6d942f5, type: 3}
   soundEffect1: {fileID: 0}
   soundEffect2: {fileID: 0}
   soundEffect3: {fileID: 0}

@@ -13,6 +13,11 @@ public class Inventory : MonoBehaviour
         Instance = this;
     }
 
+    public int GetItemCount()
+    {
+        return _items.Count;
+    }
+
     public void AddPlatToInventory(bool visible)
     {
         GameObject item = Instantiate(platFormPrefab, itemsPrefab.transform, true);

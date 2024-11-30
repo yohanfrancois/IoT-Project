@@ -36,6 +36,7 @@ public class PlatPlaceholder : MonoBehaviour
 
     public void SpawnPlatform()
     {
+        Inventory.Instance.RemoveLastItem();
         _spawnedPlatform = true;
         plat.SetActive(true);
     }
@@ -48,6 +49,7 @@ public class PlatPlaceholder : MonoBehaviour
     
     public static void MouseClicked()
     {
+        if (Inventory.Instance.GetItemCount() < 1) return;
         foreach (var collectible in _placeholders)
         {
             collectible.ClickRegistered();

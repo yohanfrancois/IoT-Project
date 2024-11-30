@@ -4,7 +4,6 @@ using UnityEngine;
 public class Collectible : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer highlighterSpriteRenderer;
-    //[SerializeField] private GameObject inventorySprite;
     private static List<Collectible> _collectibles;
     private bool _mouseHovering;
 

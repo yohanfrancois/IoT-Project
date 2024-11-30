@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -49,13 +48,21 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
+<<<<<<< HEAD:Assets/Scripts/PlayerMovement.cs
         if(true/*GameManager.Instance.unlockedJump*/)
+=======
+        if (GameManager.Instance.unlockedJump)
+>>>>>>> refs/remotes/origin/main:Assets/Scripts/PlayerController.cs
         {
             if (isGrounded)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
+<<<<<<< HEAD:Assets/Scripts/PlayerMovement.cs
             if(true/*GameManager.Instance.unlockedWallJump*/)
+=======
+            if (GameManager.Instance.unlockedWallJump)
+>>>>>>> refs/remotes/origin/main:Assets/Scripts/PlayerController.cs
             {
                 if (isTouchingWall && !isGrounded)
                 {
@@ -71,7 +78,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.started)
         {
-            Debug.Log("OnClick");
+            //Debug.Log("OnClick");
             CollectiblePlaform.MouseClicked();
             PlatPlaceholder.MouseClicked();
         }

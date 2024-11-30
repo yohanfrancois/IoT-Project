@@ -25,7 +25,7 @@ public class PlatPlaceholder : MonoBehaviour
     
     private void OnMouseOver()
     {
-        _mouseHovering = true && !_spawnedPlatform && Inventory.Instance.GetItemCount() > 0;
+        _mouseHovering = !_spawnedPlatform && Inventory.Instance.GetItemCount() > 0 && GameManager.Instance.unlockedInventory;
     }
     
     private void OnMouseExit()
@@ -36,7 +36,7 @@ public class PlatPlaceholder : MonoBehaviour
     private void Update()
     {
         highlighterSpriteRenderer.enabled = _mouseHovering;
-        if (Inventory.Instance.GetItemCount() < 1)
+        if (Inventory.Instance.GetItemCount() < 1 || !GameManager.Instance.unlockedInventory)
         {
             _renderer.color = disabledColor;
         }
@@ -61,7 +61,7 @@ public class PlatPlaceholder : MonoBehaviour
     
     public static void MouseClicked()
     {
-        if (Inventory.Instance.GetItemCount() < 1) return;
+        if (Inventory.Instance.GetItemCount() < 1 || !GameManager.Instance.unlockedInventory) return;
         foreach (var collectible in _placeholders)
         {
             collectible.ClickRegistered();

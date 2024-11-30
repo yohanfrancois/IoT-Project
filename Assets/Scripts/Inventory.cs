@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Inventory : MonoBehaviour
 {
@@ -15,11 +13,9 @@ public class Inventory : MonoBehaviour
         Instance = this;
     }
 
-    public void AddItem(GameObject item, bool visible)
+    public int GetItemCount()
     {
-        item.transform.SetParent(itemsPrefab.transform);
-        _items.Add(item);
-        item.SetActive(visible);
+        return _items.Count;
     }
 
     public void AddPlatToInventory(bool visible)

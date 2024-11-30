@@ -1,16 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collectible : MonoBehaviour
+public class CollectiblePlaform : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer highlighterSpriteRenderer;
-    //[SerializeField] private GameObject inventorySprite;
-    private static List<Collectible> _collectibles;
+    private static List<CollectiblePlaform> _collectibles;
     private bool _mouseHovering;
 
     private void Awake()
     {
-        _collectibles ??= new List<Collectible>();
+        _collectibles ??= new List<CollectiblePlaform>();
     }
 
     private void Start()

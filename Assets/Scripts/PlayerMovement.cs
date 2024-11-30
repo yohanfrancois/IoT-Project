@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.started)
         {
-            Debug.Log("OnClick");
+            //Debug.Log("OnClick");
             CollectiblePlaform.MouseClicked();
             PlatPlaceholder.MouseClicked();
         }

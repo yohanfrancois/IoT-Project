@@ -24,6 +24,7 @@ public class Inventory : MonoBehaviour
         _items.Add(item);
         item.SetActive(true);
     }
+    
     public void RemoveLastItem()
     {
         GameObject lastItem = _items[_items.Count - 1];
@@ -53,9 +54,10 @@ public class Inventory : MonoBehaviour
 
     public void HideItems()
     {
+        //Debug.Log("hiding items");
         foreach (var item in _items)
         {
-            item.SetActive(true);
+            item.SetActive(false);
         }
     }
 }

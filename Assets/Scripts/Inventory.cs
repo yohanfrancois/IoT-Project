@@ -31,7 +31,27 @@ public class Inventory : MonoBehaviour
         Destroy(lastItem);
     }
 
+    private void Update()
+    {
+        if (GameManager.Instance.unlockedInventory)
+        {
+            DisplayItems();
+        }
+        else
+        {
+            HideItems();
+        }
+    }
+
     public void DisplayItems()
+    {
+        foreach (var item in _items)
+        {
+            item.SetActive(true);
+        }
+    }
+
+    public void HideItems()
     {
         foreach (var item in _items)
         {

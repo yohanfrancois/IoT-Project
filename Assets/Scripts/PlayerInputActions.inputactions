@@ -130,6 +130,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "GameManager",
+            "id": "94e46364-0cfd-46a8-9473-e8b540c31589",
+            "actions": [
+                {
+                    "name": "OnReset",
+                    "type": "Button",
+                    "id": "4da895a1-03fc-4098-86ef-c462034035d9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8489738d-dc4c-4834-b868-bb2e5bf4c06a",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnReset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

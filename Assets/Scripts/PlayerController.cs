@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
         scaler.x *= -1;
         transform.localScale = scaler;
     }
-
+    /*
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("OneWayPlatform"))
@@ -151,5 +151,5 @@ public class PlayerController : MonoBehaviour
                 myCollider.enabled = false;
             }
         }
-    }
+    }*/
 }

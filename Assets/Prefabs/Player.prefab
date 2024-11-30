@@ -203,7 +203,19 @@ MonoBehaviour:
     m_ActionId: 63e5a5d1-17cc-4055-a4b7-bdc73cd743cd
     m_ActionName: Player/OnJump[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6858997873445710689}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e0f7d77b-b26e-4382-8232-41881fc33863
     m_ActionName: Player/MouseClick[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0

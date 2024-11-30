@@ -10,7 +10,7 @@ public class FollowTarget : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero;        // Vitesse actuelle du SmoothDamp (nécessaire pour le calcul).
 
-    void LateUpdate()
+    void FixedUpdate()
     {
         // Position cible avec offset.
         Vector3 targetPosition = player.position + offset;

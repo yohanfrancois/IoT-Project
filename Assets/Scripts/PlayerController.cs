@@ -64,6 +64,16 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public void OnClick(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            //Debug.Log("OnClick");
+            CollectiblePlaform.MouseClicked();
+            PlatPlaceholder.MouseClicked();
+        }
+    }
+
     void Update()
     {
         if (canMove)

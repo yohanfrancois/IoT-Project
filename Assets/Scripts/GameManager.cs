@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private Texture2D cursorTexture;
     public static GameManager Instance { get; private set; }
 
     public bool unlockedPlatform { get; private set; }
@@ -53,6 +54,11 @@ public class GameManager : MonoBehaviour
     public void ResetGame()
     {
         canResetToMenu = false;
+    }
+
+    private void Start()
+    {
+        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
     }
 
 }

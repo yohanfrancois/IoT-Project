@@ -13,12 +13,18 @@ public class Inventory : MonoBehaviour
         Instance = this;
     }
 
+    public int GetItemCount()
+    {
+        return _items.Count;
+    }
+
     public void AddPlatToInventory(bool visible)
     {
         GameObject item = Instantiate(platFormPrefab, itemsPrefab.transform, true);
         _items.Add(item);
         item.SetActive(true);
     }
+    
     public void RemoveLastItem()
     {
         GameObject lastItem = _items[_items.Count - 1];
@@ -26,11 +32,32 @@ public class Inventory : MonoBehaviour
         Destroy(lastItem);
     }
 
+    private void Update()
+    {
+        if (GameManager.Instance.unlockedInventory)
+        {
+            DisplayItems();
+        }
+        else
+        {
+            HideItems();
+        }
+    }
+
     public void DisplayItems()
     {
         foreach (var item in _items)
         {
             item.SetActive(true);
+        }
+    }
+
+    public void HideItems()
+    {
+        //Debug.Log("hiding items");
+        foreach (var item in _items)
+        {
+            item.SetActive(false);
         }
     }
 }

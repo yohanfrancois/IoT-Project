@@ -9,7 +9,11 @@ public class EventLoad : MonoBehaviour
     private Button _startButton;
     private Button _settingsButton;
     [SerializeField] private GameObject _platform;
+    [SerializeField] private GameObject _light;
+    [SerializeField] private GameObject _light2;
     private Animator _animator;
+    private Animator _animatorLight;
+    private Animator _animatorLight2;
     private bool _isAnimationPlaying = false;
     private bool _isBroken = false;
     [SerializeField] private GameObject _pauseScreen;
@@ -19,6 +23,8 @@ public class EventLoad : MonoBehaviour
         _startButton = GameObject.Find("Button").GetComponent<Button>();
         _settingsButton = GameObject.Find("Settings").GetComponent<Button>();
         _animator = _platform.GetComponent<Animator>();
+        _animatorLight = _light.GetComponent<Animator>();
+        _animatorLight2 = _light2.GetComponent<Animator>();
         
 
         _startButton.onClick.AddListener(() => StartCoroutine(ButtonSelected()));
@@ -30,10 +36,12 @@ public class EventLoad : MonoBehaviour
         if (_animator != null)
         {
             _animator.SetBool("IsClicked", true); // Déclenche l'animation.
+            _animatorLight.SetBool("IsClicked", true); // Déclenche l'animation.
             _isAnimationPlaying = true;
 
             // Attendre que l'animation commence.
             yield return new WaitForSeconds(1f);
+            _animatorLight2.SetBool("IsClicked", true); // Déclenche l'animation.
 
             // Attendre que l'animation se termine.
             while (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)

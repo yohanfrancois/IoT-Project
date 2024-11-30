@@ -14,15 +14,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform wallCheck;
     [SerializeField] private Transform wallCheck2;
+    [SerializeField] private Transform wallCheck3WhatIsThisCode;
     [SerializeField] private float wallJumpForce = 10f;
     [SerializeField] private float wallSlideSpeed = 2f;
-    [SerializeField] private float wallJumpDuration = 0.2f; // Durée pendant laquelle le mouvement horizontal est désactivé
+
+    [SerializeField]
+    private float wallJumpDuration = 0.2f; // Durée pendant laquelle le mouvement horizontal est désactivé
+
     [SerializeField] private GameObject platform; //plateforme qui bouche le trou au début du jeu
 
     private Rigidbody2D rb;
     public float moveInput;
     private bool isGrounded;
     private bool isTouchingWall;
+    private bool isHalfTouchingWall;
+    private bool kindaTouchingWallAtThisPointIDontCareAboutVariableNames;
     private bool isWallSliding;
     public bool isFacingRight = true;
     public bool canMove = true;
@@ -31,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        if(Instance)
+        if (Instance)
         {
             Destroy(gameObject);
         }
@@ -58,6 +64,7 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.jumpSound);
             }
+
             if (GameManager.Instance.unlockedWallJump)
             {
                 if (isTouchingWall && !isGrounded)
@@ -65,9 +72,7 @@ public class PlayerController : MonoBehaviour
                     WallJump();
                 }
             }
-            
         }
-        
     }
 
     public void OnClick(InputAction.CallbackContext context)
@@ -111,44 +116,47 @@ public class PlayerController : MonoBehaviour
                 platform.SetActive(true);
             }
         }
-            if (canMove)
-            {
-                if (!isTouchingWall || (isTouchingWall && moveInput != wallDirection))
-                {
-                    rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
-                }
 
-                if (isFacingRight && moveInput < 0)
-                {
-                    Flip();
-                }
-                else if (!isFacingRight && moveInput > 0)
-                {
-                    Flip();
-                }
+        if (canMove)
+        {
+            if ((!isTouchingWall && !isHalfTouchingWall && !kindaTouchingWallAtThisPointIDontCareAboutVariableNames) ||
+                ((isTouchingWall || isHalfTouchingWall || kindaTouchingWallAtThisPointIDontCareAboutVariableNames) && moveInput != wallDirection))
+            {
+                rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
             }
 
-            isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
-            isTouchingWall = Physics2D.OverlapCircle(wallCheck.position, 0.1f, groundLayer);
-
-            if (isTouchingWall && !isGrounded && rb.velocity.y < 0)
+            if (isFacingRight && moveInput < 0)
             {
-                isWallSliding = true;
-                rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
-                wallDirection = isFacingRight ? 1 : -1;
+                Flip();
             }
-            else
+            else if (!isFacingRight && moveInput > 0)
             {
-                isWallSliding = false;
+                Flip();
             }
+        }
 
-            // Vérifier si le joueur descend
-            if (rb.velocity.y < 0)
-            {
-                // Activer les collisions avec les plateformes
-                myCollider.enabled = true;
-            }
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
+        isTouchingWall = Physics2D.OverlapCircle(wallCheck.position, 0.1f, groundLayer);
+        isHalfTouchingWall = Physics2D.OverlapCircle(wallCheck2.position, 0.1f, groundLayer);
+        kindaTouchingWallAtThisPointIDontCareAboutVariableNames = Physics2D.OverlapCircle(wallCheck3WhatIsThisCode.position, 0.1f, groundLayer);
 
+        if ((isTouchingWall || isHalfTouchingWall || kindaTouchingWallAtThisPointIDontCareAboutVariableNames) && !isGrounded && rb.velocity.y < 0)
+        {
+            isWallSliding = true;
+            rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
+            wallDirection = isFacingRight ? 1 : -1;
+        }
+        else
+        {
+            isWallSliding = false;
+        }
+
+        // Vérifier si le joueur descend
+        if (rb.velocity.y < 0)
+        {
+            // Activer les collisions avec les plateformes
+            myCollider.enabled = true;
+        }
     }
 
     void WallJump()

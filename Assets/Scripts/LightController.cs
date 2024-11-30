@@ -7,6 +7,8 @@ public class LightController : MonoBehaviour
 {
     [SerializeField] private Light2D[] lights2D;  // Pour les lumières 2D.
     [SerializeField] private GameObject hiddenWall; // Mur à révéler.
+    [SerializeField] private GameObject originalPlatform;
+    
 
     public void LightOff()
     {
@@ -18,6 +20,7 @@ public class LightController : MonoBehaviour
 
         // Révéler le mur.
         hiddenWall.SetActive(true);
+        originalPlatform.SetActive(false);
     }
     
     public void LightOn()
@@ -30,5 +33,6 @@ public class LightController : MonoBehaviour
 
         // Révéler le mur.
         hiddenWall.SetActive(true);
+        
     }
 }

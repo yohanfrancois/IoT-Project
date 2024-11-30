@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -76,6 +77,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void ReturnMenu(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            print("swapping");
+            SceneManager.LoadScene("Baptiste");
+            GameManager.Instance.ResetGame();
+        }
+    }
+
+    public void Shoot(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            print("pew! pew!");
+        }
+    }
+
     void Update()
     {
         if (canMove)
@@ -139,17 +158,4 @@ public class PlayerController : MonoBehaviour
         scaler.x *= -1;
         transform.localScale = scaler;
     }
-    /*
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("OneWayPlatform"))
-        {
-            // Désactiver les collisions avec la plateforme si le joueur monte
-            if (rb.velocity.y >= 0)
-            {
-                print("Collision");
-                myCollider.enabled = false;
-            }
-        }
-    }*/
 }

@@ -31,20 +31,27 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ReturnMenu",
+                    "type": "Button",
+                    "id": "ae4faec0-d0d0-40a7-bf58-e0e069104a5d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Shoot",
+                    "type": "Button",
+                    "id": "28a14d74-4490-4b54-967a-d0bd37f4bbf9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "d17c89c4-c295-40b9-9d14-65fddfdf5344",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "OnMove",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "1D Axis",
                     "id": "194d57b5-6d4b-4986-b9d0-bf45488fe770",
@@ -59,7 +66,7 @@
                 {
                     "name": "negative",
                     "id": "8a40ce00-0f8a-47d1-b003-afc2f11ef8ea",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -97,6 +104,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "MouseClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3ce90fb5-8bf7-408c-973e-a8defba40c17",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ReturnMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5ceb591d-4b3d-43a0-b236-ee7884db6c00",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

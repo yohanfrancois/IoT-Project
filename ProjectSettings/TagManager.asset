@@ -6,8 +6,8 @@ TagManager:
   tags:
   - Ground
   - Mob
-s  - Plateforme
-
+  - Plateforme
+  - s
   layers:
   - Default
   - TransparentFX
@@ -17,7 +17,7 @@ s  - Plateforme
   - UI
   - OneWayPlatform
   - Player
-  - 
+  - FixDumbGitStuff
   - 
   - 
   - 

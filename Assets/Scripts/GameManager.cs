@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private Texture2D cursorTexture;
     public static GameManager Instance ;
+    public bool buttonAnimationPlayed = false;
 
     public bool unlockedPlatform ;
     public bool unlockedJump ;

@@ -9,6 +9,7 @@ public class EventLoad : MonoBehaviour
     private Button _startButton;
     private Button _settingsButton;
     [SerializeField] private GameObject _platform;
+    [SerializeField] private GameObject _platformBroken;
     [SerializeField] private GameObject _light;
     [SerializeField] private GameObject _light2;
     private Animator _animator;
@@ -20,14 +21,22 @@ public class EventLoad : MonoBehaviour
 
     void Start()
     {
-        _startButton = GameObject.Find("Button").GetComponent<Button>();
-        _settingsButton = GameObject.Find("Settings").GetComponent<Button>();
-        _animator = _platform.GetComponent<Animator>();
-        _animatorLight = _light.GetComponent<Animator>();
-        _animatorLight2 = _light2.GetComponent<Animator>();
         
-
-        _startButton.onClick.AddListener(() => StartCoroutine(ButtonSelected()));
+        if (GameManager.Instance.buttonAnimationPlayed)
+        {
+            PlayerController.Instance.canMove = true; // Débloquer immédiatement le joueur
+            _platform.SetActive(false);
+            _platformBroken.SetActive(true);
+        }
+        else
+        {
+            _startButton = GameObject.Find("Button").GetComponent<Button>();
+            _animator = _platform.GetComponent<Animator>();
+            _animatorLight = _light.GetComponent<Animator>();
+            _animatorLight2 = _light2.GetComponent<Animator>();
+            _startButton.onClick.AddListener(() => StartCoroutine(ButtonSelected()));
+        }
+        _settingsButton = GameObject.Find("Settings").GetComponent<Button>();
         _settingsButton.onClick.AddListener(() => StartCoroutine(SettingsSelected()));
     }
 
@@ -56,6 +65,10 @@ public class EventLoad : MonoBehaviour
                 lightController.LightOff();
                 Debug.Log("Mur activé et lumières éteintes !");
             }
+            
+            // Débloquer le mouvement du joueur.
+            PlayerController.Instance.canMove = true;
+            GameManager.Instance.buttonAnimationPlayed = true;
         
             yield return new WaitForSeconds(0.2f); // Délai optionnel avant de rallumer.
 

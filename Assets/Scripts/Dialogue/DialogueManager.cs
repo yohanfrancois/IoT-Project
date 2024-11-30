@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
 
-
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
@@ -17,10 +16,11 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<Dialogue> dialoguesQueue;
     private bool isDialogueActive = false;
+    private bool isAudioPlaying = false;
+    private Queue<string> currentDialogueSegments;
 
     public List<AudioClip> dialoguesList;
     public List<Sprite> spritesList;
-
 
     void Awake()
     {
@@ -34,12 +34,17 @@ public class DialogueManager : MonoBehaviour
         }
 
         dialoguesQueue = new Queue<Dialogue>();
+        currentDialogueSegments = new Queue<string>();
     }
 
     public void OnDialogue(InputAction.CallbackContext context)
     {
-        print(context.action.name + " " + context.phase);
-        if(isDialogueActive)
+        if (currentDialogueSegments.Count > 0)
+        {
+            dialogueText.text = currentDialogueSegments.Dequeue();
+        }
+
+        if (context.phase == InputActionPhase.Performed && isDialogueActive && !isAudioPlaying)
         {
             DisplayNextSentence();
         }
@@ -59,30 +64,64 @@ public class DialogueManager : MonoBehaviour
 
     void DisplayNextSentence()
     {
-        if(audioSource.isPlaying)
+        if (audioSource.isPlaying)
         {
             return;
         }
-        if (dialoguesQueue.Count == 0)
+
+        if (currentDialogueSegments.Count == 0)
         {
-            dialoguesQueue.Dequeue();
-            EndDialogue();
-            return; 
+            if (dialoguesQueue.Count == 0)
+            {
+                EndDialogue();
+                return;
+            }
+
+            Dialogue dialogue = dialoguesQueue.Dequeue();
+            SplitDialogueText(dialogue.text);
+            characterImage.sprite = dialogue.characterSprite;
+            characterImage.transform.position = dialogue.characterPosition;
+            characterImage.transform.rotation = Quaternion.Euler(dialogue.characterRotation);
+
+            audioSource.clip = dialogue.audioClip;
+            audioSource.Play();
+            isAudioPlaying = true;
+            print("Playing audio"+ currentDialogueSegments.Count );
+            dialogueText.text = currentDialogueSegments.Dequeue();
+            StartCoroutine(WaitForAudioToEnd());
         }
 
-        Dialogue dialogue = dialoguesQueue.Dequeue();
-        dialogueText.text = dialogue.text;
-        characterImage.sprite = dialogue.characterSprite;
-        characterImage.transform.position = dialogue.characterPosition;
-        characterImage.transform.rotation = Quaternion.Euler(dialogue.characterRotation);
+        
+    }
 
-        audioSource.clip = dialogue.audioClip;
-        audioSource.Play();
+    void SplitDialogueText(string text)
+    {
+        currentDialogueSegments.Clear();
+        int maxLength = 70; // Maximum length of each segment
+        for (int i = 0; i < text.Length; i += maxLength)
+        {
+            if (i + maxLength < text.Length)
+            {
+                currentDialogueSegments.Enqueue(text.Substring(i, maxLength));
+            }
+            else
+            {
+                currentDialogueSegments.Enqueue(text.Substring(i));
+            }
+        }
+    }
+
+    IEnumerator WaitForAudioToEnd()
+    {
+        yield return new WaitWhile(() => audioSource.isPlaying);
+        isAudioPlaying = false;
     }
 
     void EndDialogue()
     {
         isDialogueActive = false;
         dialoguePanel.SetActive(false);
+        currentDialogueSegments.Clear(); // Clear the segments queue after ending the dialogue
+        dialoguesQueue.Clear();
     }
 }

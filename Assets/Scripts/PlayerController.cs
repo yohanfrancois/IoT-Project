@@ -108,6 +108,7 @@ public class PlayerController : MonoBehaviour
             {
                 platform.SetActive(true);
             }
+        }
             if (canMove)
             {
                 if (!isTouchingWall || (isTouchingWall && moveInput != wallDirection))
@@ -145,7 +146,6 @@ public class PlayerController : MonoBehaviour
                 // Activer les collisions avec les plateformes
                 myCollider.enabled = true;
             }
-        }
 
     }
 

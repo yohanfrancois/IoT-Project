@@ -13,13 +13,6 @@ public class Inventory : MonoBehaviour
         Instance = this;
     }
 
-    public void AddItem(GameObject item, bool visible)
-    {
-        item.transform.SetParent(itemsPrefab.transform);
-        _items.Add(item);
-        item.SetActive(visible);
-    }
-
     public void AddPlatToInventory(bool visible)
     {
         GameObject item = Instantiate(platFormPrefab, itemsPrefab.transform, true);

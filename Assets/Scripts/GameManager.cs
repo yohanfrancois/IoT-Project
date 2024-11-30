@@ -5,13 +5,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Texture2D cursorTexture;
-    public static GameManager Instance { get; private set; }
+    public static GameManager Instance ;
 
-    public bool unlockedPlatform { get; private set; }
-    public bool unlockedJump { get; private set; }
-    public bool unlockedInventory { get; private set; }
-    public bool unlockedWallJump { get; private set; }
-    public bool canResetToMenu { get; private set; }
+    public bool unlockedPlatform ;
+    public bool unlockedJump ;
+    public bool unlockedInventory ;
+    public bool unlockedWallJump ;
+    public bool canResetToMenu ;
 
 
 
@@ -110,6 +110,19 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
+    }
+
+    public void AffichePlateformes(){
+        if(unlockedPlatform){
+            GameObject[] unityObjects = GameObject.FindGameObjectsWithTag("Plateforme");
+            // Loop through each object and perform an action
+            foreach (GameObject obj in unityObjects)
+            {
+                // Perform an action on each object, for example:
+                SpriteRenderer renderer = obj.GetComponent<SpriteRenderer>();
+                renderer.color = new Color(1f,1f,1f,1f);
+            }
+        }
     }
 
 }

@@ -14,6 +14,7 @@ public class ChangeScene : MonoBehaviour
         if (player.position.x > 9)
         {
             SceneManager.LoadScene("Cedric");
+            
         } 
     }
 }

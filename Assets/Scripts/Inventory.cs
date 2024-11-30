@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private GameObject itemsPrefab;
+    [SerializeField] private GameObject platFormPrefab;
     public static Inventory Instance;
     private List<GameObject> _items = new();
 
@@ -19,6 +22,12 @@ public class Inventory : MonoBehaviour
         item.SetActive(visible);
     }
 
+    public void AddPlatToInventory(bool visible)
+    {
+        GameObject item = Instantiate(platFormPrefab, itemsPrefab.transform, true);
+        _items.Add(item);
+        item.SetActive(true);
+    }
     public void RemoveLastItem()
     {
         GameObject lastItem = _items[_items.Count - 1];

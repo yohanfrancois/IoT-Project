@@ -1,43 +1,21 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Mob : MonoBehaviour
 {
-    [SerializeField] private int lifePoint = 100;       // Points de vie du mob
-    [SerializeField] private float speed = 3f;          // Vitesse de déplacement du mob
-    [SerializeField] private float detectionRadius = 5f; // Rayon de détection du joueur
-    [SerializeField] private float moveRange = 5f;      // Plage de déplacement pour le va-et-vient (gauche / droite)
-    private Transform player;                           // Référence au joueur
-    private bool isChasing = false;                     // Indicateur pour savoir si le mob poursuit le joueur
-    private Rigidbody2D rb;                             // Référence au Rigidbody2D du mob
-    private float initialPositionX;                     // Position initiale en X
-    private bool movingRight = true;                    // Direction du mouvement automatique (gauche/droite)
-    private float patrolTargetX;                        // Cible du mouvement de patrouille en X
+    [SerializeField] private int lifePoint;               // Points de vie du mob
+    [SerializeField] private GameObject ballPrefab;       // Référence au prefab de la balle
+    [SerializeField] private float fireRate = 2f;         // Temps entre chaque tir (en secondes)
+    [SerializeField] private Vector2 offset;              // Décalage pour la position de spawn des balles
+    [SerializeField] private Collider2D headCollider;     // Collider pour la tête du mob
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();                // Récupère le Rigidbody2D du mob
-        initialPositionX = transform.position.x;        // Sauvegarde la position initiale
-        patrolTargetX = initialPositionX + moveRange;    // La première cible de patrouille est initialement `moveRange` à droite
+        StartCoroutine(FireBulletEveryXSeconds());         // Démarre le tir automatique
     }
 
     void Update()
     {
-        if (isChasing && player != null)
-        {
-            // Calcul de la direction sur l'axe X uniquement pour suivre le joueur
-            Vector2 directionToPlayer = new Vector2(player.position.x - transform.position.x, 0).normalized;
-
-            // Déplacement du mob uniquement sur l'axe X
-            rb.velocity = new Vector2(directionToPlayer.x * speed, rb.velocity.y); // La vitesse y reste inchangée pour éviter de sauter ou de tomber
-        }
-        else
-        {
-            // Mouvement automatique de gauche à droite lorsqu'il ne poursuit pas le joueur
-            PatrolMovement();
-        }
-
         // Si les points de vie du mob sont à zéro ou moins, il meurt
         if (lifePoint <= 0)
         {
@@ -57,28 +35,42 @@ public class Mob : MonoBehaviour
         }
     }
 
+    // Cette méthode gère le tir automatique toutes les `fireRate` secondes
+    IEnumerator FireBulletEveryXSeconds()
+    {
+        while (true) // Boucle infinie pour tirer des balles en continu
+        {
+            SpawnNewBall(); // Appelle la fonction pour créer une nouvelle balle
+            yield return new WaitForSeconds(fireRate); // Attend `fireRate` secondes avant de tirer à nouveau
+        }
+    }
+
+    // Méthode pour instancier une nouvelle balle avec une direction aléatoire
+    void SpawnNewBall()
+    {
+        // Instancie une nouvelle balle à la position et rotation de l'objet auquel le script est attaché
+        GameObject newBall = Instantiate(ballPrefab, transform.position + (Vector3)offset, transform.rotation);
+
+        // Récupère le script Bullet de la balle instanciée
+        Bullet bulletScript = newBall.GetComponent<Bullet>();
+        if (bulletScript != null)
+        {
+            // Génére un angle aléatoire entre -45 et 45 degrés (par exemple) pour la direction
+            float randomAngle = Random.Range(-45f, 45f);
+
+            // Convertit cet angle en une direction Vector2
+            Vector2 randomDirection = new Vector2(Mathf.Cos(randomAngle * Mathf.Deg2Rad), Mathf.Sin(randomAngle * Mathf.Deg2Rad));
+
+            // Applique la direction aléatoire à la balle
+            bulletScript.SetDirection(-randomDirection);
+        }
+    }
+
     // Cette méthode est appelée lorsque le mob meurt
-    private void Die()
+    public void Die()
     {
         Destroy(gameObject); // Détruit le mob
     }
 
-    // Cette méthode gère le mouvement automatique de gauche à droite (patrouille)
-    private void PatrolMovement()
-    {
-        // Déplace le mob vers la cible (patrolTargetX) à chaque frame
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2(patrolTargetX, transform.position.y), speed * Time.deltaTime);
-
-        // Si le mob a atteint sa cible, on inverse la direction
-        if (Mathf.Abs(transform.position.x - patrolTargetX) < 0.1f)
-        {
-            // Inverse la direction du mouvement
-            movingRight = !movingRight;
-            
-            // Met à jour la cible de patrouille
-            patrolTargetX = movingRight ? initialPositionX + moveRange : initialPositionX - moveRange;
-        }
-    }
-
-    // Cette méthode est appelée lorsqu'un objet entre dans la zone de détection
+    // Méthode pour gérer les collisions avec la tête
 }

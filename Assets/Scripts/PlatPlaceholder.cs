@@ -61,6 +61,7 @@ public class PlatPlaceholder : MonoBehaviour
     
     public static void MouseClicked()
     {
+        if(_placeholders == null) return;
         if (Inventory.Instance.GetItemCount() < 1 || !GameManager.Instance.unlockedInventory) return;
         foreach (var collectible in _placeholders)
         {

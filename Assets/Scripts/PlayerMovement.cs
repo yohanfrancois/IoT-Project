@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float wallSlideSpeed = 2f;
     [SerializeField] private float wallJumpDuration = 0.2f; // Durée pendant laquelle le mouvement horizontal est désactivé
 
+    public bool unlockedJump;
+    public bool unlockedWall;
+
     private Rigidbody2D rb;
     private float moveInput;
     private bool isGrounded;
@@ -46,14 +49,22 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (isGrounded)
+        if(unlockedJump)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            if (isGrounded)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            }
+            if(unlockedWall)
+            {
+                if (isTouchingWall && !isGrounded)
+                {
+                    WallJump();
+                }
+            }
+            
         }
-        else if (isTouchingWall)
-        {
-            WallJump();
-        }
+        
     }
 
     void Update()

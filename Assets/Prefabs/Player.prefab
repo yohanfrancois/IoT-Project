@@ -143,6 +143,8 @@ MonoBehaviour:
   wallJumpForce: 10
   wallSlideSpeed: 2
   wallJumpDuration: 0.2
+  unlockedJump: 1
+  unlockedWall: 1
 --- !u!114 &3904481151051314861
 MonoBehaviour:
   m_ObjectHideFlags: 0

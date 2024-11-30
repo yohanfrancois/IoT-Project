@@ -46,13 +46,13 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(unlockedJump)
+        if(GameManager.Instance.unlockedJump)
         {
             if (isGrounded)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
-            if(unlockedWall)
+            if(GameManager.Instance.unlockedWallJump)
             {
                 if (isTouchingWall && !isGrounded)
                 {

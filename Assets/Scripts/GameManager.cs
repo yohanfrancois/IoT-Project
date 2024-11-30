@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         unlockedPlatform = value;
         Dialogue dialogue = new Dialogue
         {
-            text = "Bonjour, ceci est un test de dialogue.",
+            text = "Bonjour, ceci est un test de dialogue.Bonjour, ceci est un test de dialogueBonjour, ceci est un test de dialogueBonjour, ceci est un test de dialogue",
             audioClip = DialogueManager.Instance.dialoguesList[0],
             characterSprite = DialogueManager.Instance.spritesList[0],
             characterPosition = new Vector3(0, 5, 0),
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         unlockedJump = value;
         Dialogue dialogue = new Dialogue
         {
-            text = "Oui",
+            text = "OuiBonjour, ceci est un test de dialogue.Bonjour, ceci est un test de dialogueBonjour, ceci esBonjour, ceci est un test de dialogue.Bonjour, ceci est un test de dialogueBonjour, ceci esBonjour, ceci est un test de dialogue.Bonjour, ceci est un test de dialogueBonjour, ceci es",
             audioClip = DialogueManager.Instance.dialoguesList[1],
             characterSprite = DialogueManager.Instance.spritesList[1],
             characterPosition = new Vector3(-10, 0, 0),

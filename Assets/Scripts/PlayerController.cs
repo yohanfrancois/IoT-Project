@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     public bool canMove = true;
     private int wallDirection;
     private Collider2D myCollider;
+    private bool isPlayingFootsteps;
 
     void Awake()
     {
@@ -53,6 +54,22 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<float>();
+        if (moveInput != 0 && isGrounded && !isPlayingFootsteps)
+        {
+            StartCoroutine(PlayFootsteps());
+        }
+    }
+    private IEnumerator PlayFootsteps()
+    {
+        isPlayingFootsteps = true;
+        while (moveInput != 0 && isGrounded)
+        {
+            int i = Random.Range(1, 4);
+            string footstep1 = "footstep" + i;
+            AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.footstep1);
+            yield return new WaitForSeconds(0.1f); // Ajustez l'intervalle selon vos besoins
+        }
+        isPlayingFootsteps = false;
     }
 
     public void OnJump(InputAction.CallbackContext context)

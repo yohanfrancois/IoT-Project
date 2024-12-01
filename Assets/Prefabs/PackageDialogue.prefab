@@ -376,15 +376,30 @@ MonoBehaviour:
   audioSource: {fileID: 1352866054624654001}
   dialoguePanel: {fileID: 4747861456884142192}
   dialoguesList:
-  - {fileID: 8300000, guid: 0b3f3df6b4d71b24e9c2bd469c00d720, type: 3}
-  - {fileID: 8300000, guid: af654a0b2c747ce48aa8e7e80654c10e, type: 3}
-  - {fileID: 8300000, guid: b5c9c65b7002a364bb2a88b9455bebb0, type: 3}
-  - {fileID: 8300000, guid: 9a3fff78a958321448ad6ce5b977dade, type: 3}
-  - {fileID: 8300000, guid: feead7da98d3cc541a229acdff231679, type: 3}
-  - {fileID: 8300000, guid: 219744d3ed72d89419c816a8d523ae98, type: 3}
-  - {fileID: 8300000, guid: 50414c1debeb9044ca9a7ff31c9f3999, type: 3}
-  - {fileID: 8300000, guid: abb0d0a6cbb6ec24eb5b0422151fd58d, type: 3}
-  - {fileID: 8300000, guid: 498978c6f5c49d94baff669f97c04a42, type: 3}
+  - {fileID: 8300000, guid: a1e6ee2fd0816154381424844211fb46, type: 3}
+  - {fileID: 8300000, guid: a71ad0b8ece467a4885fb3d44cedd0da, type: 3}
+  - {fileID: 8300000, guid: c3efca9ed7e02dd4e88bba01bf1075d3, type: 3}
+  - {fileID: 8300000, guid: f6f62ee213932754c8fe81e7a01f7672, type: 3}
+  - {fileID: 8300000, guid: 08f505ac995c2c049a904cc026d18192, type: 3}
+  - {fileID: 8300000, guid: e1f85c3851e4b3c468014ff357d2865f, type: 3}
+  - {fileID: 8300000, guid: e089170bfc8cab34694ab2db681b5c43, type: 3}
+  - {fileID: 8300000, guid: 2e6a75d9d0c3cf241aae6fcefc5ee225, type: 3}
+  - {fileID: 8300000, guid: 84c98473f6a485c4dacce7cd59bb5951, type: 3}
+  - {fileID: 8300000, guid: 80ad2158a4743974b853c07a84688e46, type: 3}
+  - {fileID: 8300000, guid: a0260719b329a3b409eccefd4b9a7e23, type: 3}
+  - {fileID: 8300000, guid: e21a1b924a4ec9c438d73cfa24aeb18c, type: 3}
+  - {fileID: 8300000, guid: 08c86107adffc8f418ba2e455f54eeea, type: 3}
+  - {fileID: 8300000, guid: fbc0210df4b52e846b8338e7d76b1fb6, type: 3}
+  - {fileID: 8300000, guid: 497d7f06ea50b364e9daa0bd302cd680, type: 3}
+  - {fileID: 8300000, guid: 717126310c63204459ae80303c898715, type: 3}
+  - {fileID: 8300000, guid: 2856c33412eff3a499273f27054b3760, type: 3}
+  - {fileID: 8300000, guid: b7084ec408e554c48973e9441d395223, type: 3}
+  - {fileID: 8300000, guid: fa16591020bbf124c85475c3e889aea0, type: 3}
+  - {fileID: 8300000, guid: fc85a7db92805054eb955c520f204101, type: 3}
+  - {fileID: 8300000, guid: ba65d00ffaf3ef840bcb7348d9d996c2, type: 3}
+  - {fileID: 8300000, guid: c606fd1bcddffcf4eae490387a3e94be, type: 3}
+  - {fileID: 8300000, guid: 2293987d86b9b124588f8aaba401ac44, type: 3}
+  - {fileID: 8300000, guid: cb32e557a732c4a48bcfeb349a71e23f, type: 3}
   spritesList:
   - {fileID: 21300000, guid: 371fc6c253d2c4043b9f6b7e0d9df26b, type: 3}
   - {fileID: 21300000, guid: e29d40b2566ab4931968468106c33e7a, type: 3}

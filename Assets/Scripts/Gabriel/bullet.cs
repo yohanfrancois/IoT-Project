@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] float forceRecul = 100.0f;
     public Vector2 direction = new Vector2(1,0); // Direction de la balle, par défaut vers la droite
     public float speed = 5f;                  // Vitesse de la balle
     public int damage = 10;                   // Dégâts infligés par la balle
@@ -23,6 +24,14 @@ public class Bullet : MonoBehaviour
         // Vérifie si la balle touche un joueur
         if (collision.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
         {
+            // Accéder au Rigidbody2D du joueur
+        Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            // Appliquer une force en 2D
+            Vector2 force = new Vector2(-forceRecul, 0); // Force vers la gauche
+            rb.AddForce(force/*, ForceMode2D.Impulse*/);
+        }
             // Applique des dégâts au joueur (à implémenter dans PlayerController)
             Destroy(gameObject); // Détruit la balle après collision
         }

@@ -463,7 +463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mob: {fileID: 0}
-  bul: {fileID: 506418838}
+  bulletmanager: {fileID: 506418838}
 --- !u!1 &506418838
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,7 +571,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 9121157950670236306, guid: 3036efd3315cc584d8cb5f5ecb8ab616, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 385019180880712762, guid: 3036efd3315cc584d8cb5f5ecb8ab616, type: 3}
       insertIndex: -1

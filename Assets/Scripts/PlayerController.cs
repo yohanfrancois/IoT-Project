@@ -166,7 +166,7 @@ public class PlayerController : MonoBehaviour
         canMove = false;
         rb.velocity = new Vector2(-wallDirection * wallJumpForce, jumpForce);
         Flip();
-        AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.jumpSound);
+        AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.wallJumpSound);
         StartCoroutine(EnableMovementAfterDelay());
     }
 

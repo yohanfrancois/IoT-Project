@@ -821,10 +821,6 @@ PrefabInstance:
       value: Mob
       objectReference: {fileID: 0}
     - target: {fileID: 6392311760948233877, guid: f57a48e75c3814b8d950ab6af218a11e, type: 3}
-      propertyPath: offset.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6392311760948233877, guid: f57a48e75c3814b8d950ab6af218a11e, type: 3}
       propertyPath: headCollider
       value: 
       objectReference: {fileID: 114261422}

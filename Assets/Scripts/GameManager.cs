@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public bool unlockedWallJump ;
     public bool canResetToMenu ;
     public bool hasEyes;
+    public bool hasGun=false;
 
 
 
@@ -91,6 +92,8 @@ public class GameManager : MonoBehaviour
         };
 
         DialogueManager.Instance.StartDialogue(dialogue2);
+        
+        PlayerController.Instance.GlitchAnim();
     }
 
     public void SetUnlockedInventory(bool value)

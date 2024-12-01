@@ -210,5 +210,5 @@ MonoBehaviour:
   lifePoint: 100
   ballPrefab: {fileID: 1427242471450962352, guid: c3e1433d367274740b9795eb953a0507, type: 3}
   fireRate: 2
-  offset: {x: 0, y: 0}
-  headCollider: {fileID: 4427523709722415782}
+  offset: {x: -2.5, y: 2}
+  headCollider: {fileID: 0}

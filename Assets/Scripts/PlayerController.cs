@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float wallJumpDuration = 0.2f; // Durée pendant laquelle le mouvement horizontal est désactivé
-
     [SerializeField] private GameObject platform; //plateforme qui bouche le trou au début du jeu
 
     private Rigidbody2D rb;
@@ -58,12 +57,13 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
+
         if (GameManager.Instance.unlockedJump)
         {
             if (isGrounded)
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.jumpSound);
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
 
             if (GameManager.Instance.unlockedWallJump)

@@ -5,7 +5,7 @@ public class Mob : MonoBehaviour
 {
     [SerializeField] private int lifePoint;               // Points de vie du mob
     [SerializeField] private GameObject ballPrefab;       // Référence au prefab de la balle
-    [SerializeField] private float fireRate = 2f;         // Temps entre chaque tir (en secondes)
+    [SerializeField] private float fireRate;         // Temps entre chaque tir (en secondes)
     [SerializeField] private Vector2 offset;              // Décalage pour la position de spawn des balles
     [SerializeField] private Collider2D headCollider;     // Collider pour la tête du mob
 

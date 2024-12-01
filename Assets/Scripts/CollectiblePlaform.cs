@@ -24,6 +24,7 @@ public class CollectiblePlaform : MonoBehaviour
 
     private void Collect()
     {
+        AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.collectibleSound);
         Inventory.Instance.AddPlatToInventory(false);
         Destroy(gameObject);
     }
@@ -35,7 +36,6 @@ public class CollectiblePlaform : MonoBehaviour
         {
             collectible.ClickRegistered();
         }
-        AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.collectibleSound);
     }
 
     private void ClickRegistered()

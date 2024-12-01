@@ -167,7 +167,7 @@ public class DialogueManager : MonoBehaviour
         }
         else if (scene.name == "ComingSoon")
         {
-            IfEnScene();
+            IfEndScene();
         }
         // Ajoutez d'autres conditions pour d'autres scènes si nécessaire
     }

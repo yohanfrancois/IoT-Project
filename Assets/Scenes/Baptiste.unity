@@ -7576,6 +7576,8 @@ MonoBehaviour:
   _platformBroken: {fileID: 920180522}
   _light: {fileID: 129639364}
   _light2: {fileID: 1091244756}
+  backgroundFine: {fileID: 729190860}
+  backgroundGlitched: {fileID: 1543390953}
   _pauseScreen: {fileID: 145459169}
 --- !u!1 &1274036678
 GameObject:

@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public bool unlockedWallJump ;
     public bool canResetToMenu ;
     public bool hasEyes;
+    public bool hasGun=false;
 
 
 

@@ -102,7 +102,7 @@ public class EventLoad : MonoBehaviour
             SpriteRenderer renderer = backgroundFine.GetComponent<SpriteRenderer>();
             renderer.color = new Color(1f,1f,1f,0f);
             SpriteRenderer renderer2 = backgroundGlitched.GetComponent<SpriteRenderer>();
-            renderer.color = new Color(1f,1f,1f,1f);
+            renderer.color2 = new Color(1f,1f,1f,1f);
 
             lightController?.LightOn(); // Rallumer les lumières.
             _particleSystemfront.Play();

@@ -39,15 +39,19 @@ public class DialogueManager : MonoBehaviour
 
     public void OnDialogue(InputAction.CallbackContext context)
     {
-        if (currentDialogueSegments.Count > 0)
+        if(context.phase == InputActionPhase.Started)
         {
-            dialogueText.text = currentDialogueSegments.Dequeue();
-        }
+            if (currentDialogueSegments.Count > 0)
+            {
+                dialogueText.text = currentDialogueSegments.Dequeue();
+            }
 
-        if (context.phase == InputActionPhase.Performed && isDialogueActive && !isAudioPlaying)
-        {
-            DisplayNextSentence();
+            if (isDialogueActive && !isAudioPlaying)
+            {
+                DisplayNextSentence();
+            }
         }
+        
     }
 
     public void StartDialogue(Dialogue dialogue)
@@ -97,7 +101,7 @@ public class DialogueManager : MonoBehaviour
     void SplitDialogueText(string text)
     {
         currentDialogueSegments.Clear();
-        int maxLength = 70; // Maximum length of each segment
+        int maxLength = 60; // Maximum length of each segment
         for (int i = 0; i < text.Length; i += maxLength)
         {
             if (i + maxLength < text.Length)

@@ -50,6 +50,7 @@ public class Mob : MonoBehaviour
     {
         // Instancie une nouvelle balle à la position et rotation de l'objet auquel le script est attaché
         GameObject newBall = Instantiate(ballPrefab, transform.position + (Vector3)offset, transform.rotation);
+        AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.gunSound);
 
         // Récupère le script Bullet de la balle instanciée
         Bullet bulletScript = newBall.GetComponent<Bullet>();

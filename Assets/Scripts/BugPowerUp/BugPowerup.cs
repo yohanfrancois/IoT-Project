@@ -83,6 +83,7 @@ public class BugPowerup : MonoBehaviour
                     GameManager.Instance.SetUnlockedWallJump(true);
                     break;
             }
+            gameObject.SetActive(false);
         }
     }
 }

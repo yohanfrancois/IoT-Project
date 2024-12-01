@@ -805,6 +805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 283964751}
   - component: {fileID: 283964752}
+  - component: {fileID: 283964753}
   m_Layer: 0
   m_Name: BGFine
   m_TagString: Untagged
@@ -879,6 +880,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &283964753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283964750}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fineSpriteRenderer: {fileID: 0}
+  glitchedSpriteRenderer: {fileID: 0}
 --- !u!1001 &353317432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1433,6 +1448,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 489118305}
+  - component: {fileID: 489118306}
   m_Layer: 0
   m_Name: Backgrounds
   m_TagString: Untagged
@@ -1457,6 +1473,20 @@ Transform:
   - {fileID: 1731504789}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &489118306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489118304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fineSpriteRenderer: {fileID: 283964752}
+  glitchedSpriteRenderer: {fileID: 1731504790}
 --- !u!1001 &535707570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2083,6 +2113,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 24264249724131825, guid: 8333e6fbdce4aeb4693fabecc1ae86a9, type: 3}
+      propertyPath: unlockedPlatform
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 901638389026515290, guid: 8333e6fbdce4aeb4693fabecc1ae86a9, type: 3}
       propertyPath: intro
       value: 
@@ -4005,7 +4039,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -12
   m_Sprite: {fileID: 21300000, guid: 0d539ee5776bc4902b0d0a30789dd9ae, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

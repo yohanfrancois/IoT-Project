@@ -21,6 +21,10 @@ public class BulletManager : MonoBehaviour
         if (GameManager.Instance.hasGun){
             gameObject.SetActive(true);
         }
+        else
+        {
+            gameObject.SetActive(false);
+        }
         // Vérifie si le joueur appuie sur LeftShift pour tirer
         if (Input.GetKeyDown(KeyCode.Q))
         {

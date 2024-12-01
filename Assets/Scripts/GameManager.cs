@@ -174,4 +174,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void LaunchEndScene()
+    {
+        StartCoroutine(LaunchEndCoroutine());
+    }
+
+    public IEnumerator LaunchEndCoroutine()
+    {
+        /*Dialogue dialogue = new Dialogue
+        {
+            text = "Incroyable, je crois que le jeu refonctionne bien",
+            audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+            characterSprite = DialogueManager.Instance.spritesList[4],
+            characterPosition = new Vector3(50, 150, 0),
+            characterRotation = new Vector3(0, 0, -70)
+        };
+
+        DialogueManager.Instance.StartDialogue(dialogue);*/
+        yield return new WaitForSeconds(10);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("ComingSoon");
+    }
+
 }

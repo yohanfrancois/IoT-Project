@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cedric.unity
     guid: e946be4fee10c4d4a9fa0697e6ce8c6e
+  - enabled: 1
+    path: Assets/Scenes/ComingSoon.unity
+    guid: df0151474617a4640b6f43d8bd860fbc
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: e92abeec8607a91418627ab65782dd85, type: 3}

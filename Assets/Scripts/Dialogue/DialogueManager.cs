@@ -165,6 +165,10 @@ public class DialogueManager : MonoBehaviour
         {
             IfMenuScene();
         }
+        else if (scene.name == "ComingSoon")
+        {
+            IfEndScene();
+        }
         // Ajoutez d'autres conditions pour d'autres scènes si nécessaire
     }
 
@@ -212,5 +216,30 @@ public class DialogueManager : MonoBehaviour
     public void IfMenuScene()
     {
 
+    }
+
+    public void IfEndScene()
+    {
+        Dialogue dialogue = new Dialogue
+        {
+            text = "AH non ! j’avais oublié ! Les devs ont toujours pas codé la suite",
+            audioClip = Instance.dialoguesList[GetDialogueIndex()],
+            characterSprite = Instance.spritesList[4],
+            characterPosition = new Vector3(0, -350, 0),
+            characterRotation = new Vector3(0, 0, -90)
+        };
+
+        Instance.StartDialogue(dialogue);
+
+        Dialogue dialogue2 = new Dialogue
+        {
+            text = " Mais, c’est à venir... Faudra juste payer le DLC à 45€ !",
+            audioClip = Instance.dialoguesList[GetDialogueIndex()],
+            characterSprite = Instance.spritesList[0],
+            characterPosition = new Vector3(350, -350, 0),
+            characterRotation = new Vector3(0, 0, -120)
+        };
+
+        Instance.StartDialogue(dialogue2);
     }
 }

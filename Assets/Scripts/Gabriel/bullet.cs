@@ -23,6 +23,14 @@ public class Bullet : MonoBehaviour
         // Vérifie si la balle touche un joueur
         if (collision.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
         {
+            // Accéder au Rigidbody2D du joueur
+        Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            // Appliquer une force en 2D
+            Vector2 force = new Vector2(-15, 0); // Force vers la gauche
+            rb.AddForce(force, ForceMode2D.Impulse);
+        }
             // Applique des dégâts au joueur (à implémenter dans PlayerController)
             Destroy(gameObject); // Détruit la balle après collision
         }

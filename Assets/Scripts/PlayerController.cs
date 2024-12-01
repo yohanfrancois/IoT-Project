@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
             int i = Random.Range(1, 4);
             string footstep1 = "footstep" + i;
             AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.footstep1);
-            yield return new WaitForSeconds(1f); // Ajustez l'intervalle selon vos besoins
+            yield return new WaitForSeconds(0.7f); // Ajustez l'intervalle selon vos besoins
         }
         isPlayingFootsteps = false;
     }

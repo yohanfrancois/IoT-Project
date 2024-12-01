@@ -123,6 +123,7 @@ public class PlayerController : MonoBehaviour
         {
             print("swapping");
             SceneManager.LoadScene("Baptiste");
+            GameManager.Instance.returnedOnce = true;
             GameManager.Instance.ResetGame();
         }
     }
@@ -159,7 +160,9 @@ public class PlayerController : MonoBehaviour
                 platform.SetActive(true);
             }
         }
-
+        
+        if(!GameManager.Instance.returnedOnce && GameManager.Instance.leftOnce) canMove = false;
+        
         if (canMove)
         {
             if ((!isTouchingWall && !isHalfTouchingWall && !kindaTouchingWallAtThisPointIDontCareAboutVariableNames) ||

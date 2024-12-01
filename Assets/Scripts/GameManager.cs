@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public bool hasEyes;
     public bool hasGun=false;
     public bool hasPressedStart;
+    public bool returnedOnce;
+    public bool leftOnce;
 
 
 

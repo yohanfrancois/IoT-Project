@@ -33,16 +33,38 @@ public class GameManager : MonoBehaviour
     public void SetUnlockedPlatform(bool value)
     {
         unlockedPlatform = value;
+        Dialogue dialoguex = new Dialogue
+        {
+            text = "Ok... Super… Maintenant on peut voir que même les textures des sols ne chargent pas… trop cool !",
+            audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+            characterSprite = DialogueManager.Instance.spritesList[2],
+            characterPosition = new Vector3(-22, 17, 0),
+            characterRotation = new Vector3(0, 0, -292)
+        };
+
+        DialogueManager.Instance.StartDialogue(dialoguex);
+
         Dialogue dialogue = new Dialogue
         {
-            text = "Bonjour, ceci est un test de dialogue.Bonjour, ceci est un test de dialogueBonjour, ceci est un test de dialogueBonjour, ceci est un test de dialogue",
-            audioClip = DialogueManager.Instance.dialoguesList[0],
-            characterSprite = DialogueManager.Instance.spritesList[0],
-            characterPosition = new Vector3(0, 5, 0),
-            characterRotation = new Vector3(0, 0, 0)
+            text = "Bon. On a réparé les textures, mais tu peux toujours pas sauter…",
+            audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+            characterSprite = DialogueManager.Instance.spritesList[3],
+            characterPosition = new Vector3(750, -390, 0),
+            characterRotation = new Vector3(0, 0, -110)
         };
 
         DialogueManager.Instance.StartDialogue(dialogue);
+
+        Dialogue dialogue2 = new Dialogue
+        {
+            text = "Essaye de voir si la touche R fonctionne toujours pour réinitialiser le jeu",
+            audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+            characterSprite = DialogueManager.Instance.spritesList[0],
+            characterPosition = new Vector3(0, 0, 0),
+            characterRotation = new Vector3(0, 0, -90)
+        };
+
+        DialogueManager.Instance.StartDialogue(dialogue2);
     }   
 
     public void SetUnlockedJump(bool value)
@@ -50,14 +72,25 @@ public class GameManager : MonoBehaviour
         unlockedJump = value;
         Dialogue dialogue = new Dialogue
         {
-            text = "OuiBonjour, ceci est un test de dialogue.Bonjour, ceci est un test de dialogueBonjour, ceci esBonjour, ceci est un test de dialogue.Bonjour, ceci est un test de dialogueBonjour, ceci esBonjour, ceci est un test de dialogue.Bonjour, ceci est un test de dialogueBonjour, ceci es",
-            audioClip = DialogueManager.Instance.dialoguesList[1],
-            characterSprite = DialogueManager.Instance.spritesList[1],
-            characterPosition = new Vector3(-10, 0, 0),
-            characterRotation = new Vector3(0, 0, 0)
+            text = "Mais noooon ? T’as réparé le saut !!!",
+            audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+            characterSprite = DialogueManager.Instance.spritesList[5],
+            characterPosition = new Vector3(-630, 175, 0),
+            characterRotation = new Vector3(0, 0, -65)
         };
 
         DialogueManager.Instance.StartDialogue(dialogue);
+
+        Dialogue dialogue2 = new Dialogue
+        {
+            text = "Vas y mon petit lapin, bondis maintenant !",
+            audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+            characterSprite = DialogueManager.Instance.spritesList[4],
+            characterPosition = new Vector3(535, 175, 0),
+            characterRotation = new Vector3(0, 0, -105)
+        };
+
+        DialogueManager.Instance.StartDialogue(dialogue2);
     }
 
     public void SetUnlockedInventory(bool value)
@@ -65,11 +98,11 @@ public class GameManager : MonoBehaviour
         unlockedInventory = value;
         Dialogue dialogue = new Dialogue
         {
-            text = "NOOOOOOON",
-            audioClip = DialogueManager.Instance.dialoguesList[2],
-            characterSprite = DialogueManager.Instance.spritesList[2],
-            characterPosition = new Vector3(5, 0, 0),
-            characterRotation = new Vector3(0, 0, -90)
+            text = "Ah par contre ça c’est cool ! Tu devrais pouvoir placer des blocs en cliquant :D",
+            audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+            characterSprite = DialogueManager.Instance.spritesList[0],
+            characterPosition = new Vector3(765, -210, 0),
+            characterRotation = new Vector3(0, 0, -105)
         };
 
         DialogueManager.Instance.StartDialogue(dialogue);
@@ -79,11 +112,11 @@ public class GameManager : MonoBehaviour
         unlockedWallJump = value;
         Dialogue dialogue = new Dialogue
         {
-            text = "Bonjour,klndllkdnd",
-            audioClip = DialogueManager.Instance.dialoguesList[3],
-            characterSprite = DialogueManager.Instance.spritesList[0],
-            characterPosition = new Vector3(10, 0, 0),
-            characterRotation = new Vector3(0, 0, 90)
+            text = "Au début, je croyais pas en toi… Mais le jeu commence à bien remarcher là",
+            audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+            characterSprite = DialogueManager.Instance.spritesList[4],
+            characterPosition = new Vector3(50, 150, 0),
+            characterRotation = new Vector3(0, 0, -70)
         };
 
         DialogueManager.Instance.StartDialogue(dialogue);

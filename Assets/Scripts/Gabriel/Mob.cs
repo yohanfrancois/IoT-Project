@@ -3,15 +3,21 @@ using UnityEngine;
 
 public class Mob : MonoBehaviour
 {
-    [SerializeField] private int lifePoint;               // Points de vie du mob
-    [SerializeField] private GameObject ballPrefab;       // Référence au prefab de la balle
-    [SerializeField] private float fireRate;         // Temps entre chaque tir (en secondes)
-    [SerializeField] private Vector2 offset;              // Décalage pour la position de spawn des balles
-    [SerializeField] private Collider2D headCollider;     // Collider pour la tête du mob
+    [SerializeField] private int lifePoint; // Points de vie du mob
+    [SerializeField] private GameObject ballPrefab; // Référence au prefab de la balle
+    [SerializeField] private float fireRate; // Temps entre chaque tir (en secondes)
+    [SerializeField] private Vector2 offset; // Décalage pour la position de spawn des balles
+    [SerializeField] private Collider2D headCollider; // Collider pour la tête du mob
+    private Animator _animator;
+    private int _playerInRangeTriggerHash;
+    private int _enemyDeathTriggerHash;
 
     void Start()
     {
-        StartCoroutine(FireBulletEveryXSeconds());         // Démarre le tir automatique
+        //StartCoroutine(FireBulletEveryXSeconds());         // Démarre le tir automatique
+        _animator = GetComponent<Animator>();
+        _playerInRangeTriggerHash = Animator.StringToHash("PlayerInRange");
+        _enemyDeathTriggerHash = Animator.StringToHash("EnemyDeathTrigger");
     }
 
     void Update()
@@ -54,23 +60,45 @@ public class Mob : MonoBehaviour
 
         // Récupère le script Bullet de la balle instanciée
         Bullet bulletScript = newBall.GetComponent<Bullet>();
-        if (bulletScript != null)
+        if (bulletScript)
         {
             // Génére un angle aléatoire entre -45 et 45 degrés (par exemple) pour la direction
             float randomAngle = Random.Range(-45f, 45f);
 
             // Convertit cet angle en une direction Vector2
-            Vector2 randomDirection = new Vector2(Mathf.Cos(randomAngle * Mathf.Deg2Rad), Mathf.Sin(randomAngle * Mathf.Deg2Rad));
+            Vector2 randomDirection = new Vector2(Mathf.Cos(randomAngle * Mathf.Deg2Rad),
+                Mathf.Sin(randomAngle * Mathf.Deg2Rad));
 
             // Applique la direction aléatoire à la balle
             bulletScript.SetDirection(-randomDirection);
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 7) //Player layer
+        {
+            _animator.SetTrigger(_playerInRangeTriggerHash);
+            StartCoroutine(FireBulletEveryXSeconds());
+        }
+    }
+
     // Cette méthode est appelée lorsque le mob meurt
     public void Die()
     {
-        Destroy(gameObject); // Détruit le mob
+        Dialogue dialogue = new Dialogue
+        {
+            text = "Wow tu lui as pris son pistolet ! Y’a peut être moyen de libérer ton prince avec :D",
+            audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+            characterSprite = DialogueManager.Instance.spritesList[0],
+            characterPosition = new Vector3(-720, 135, 0),
+            characterRotation = new Vector3(0, 0, -90)
+        };
+
+        DialogueManager.Instance.StartDialogue(dialogue);
+
+        _animator.SetTrigger(_enemyDeathTriggerHash);
+        Destroy(gameObject, 0.7f); // Détruit le mob
     }
 
     // Méthode pour gérer les collisions avec la tête

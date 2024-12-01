@@ -6,10 +6,12 @@ public class headcollider : MonoBehaviour
 {
     public Mob mob;
     public GameObject bulletmanager;
+    public GameObject gun;
     
     void Start()
     {
        bulletmanager.SetActive(false);
+       gun.SetActive(false);
        // Recherche du PlayerController dans la scène
         if (mob == null)
         {
@@ -28,7 +30,7 @@ public class headcollider : MonoBehaviour
         {
             // Si le joueur touche la tête, tue le mob
             mob.Die();
-            bulletmanager.SetActive(true);
+            gun.SetActive(true);
 
         }
     }

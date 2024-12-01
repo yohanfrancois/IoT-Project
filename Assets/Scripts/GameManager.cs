@@ -6,12 +6,14 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private Texture2D cursorTexture;
     public static GameManager Instance ;
+    public bool buttonAnimationPlayed = false;
 
     public bool unlockedPlatform ;
     public bool unlockedJump ;
     public bool unlockedInventory ;
     public bool unlockedWallJump ;
     public bool canResetToMenu ;
+    public bool hasEyes;
 
 
 
@@ -121,6 +123,17 @@ public class GameManager : MonoBehaviour
                 // Perform an action on each object, for example:
                 SpriteRenderer renderer = obj.GetComponent<SpriteRenderer>();
                 renderer.color = new Color(1f,1f,1f,1f);
+            }
+        }
+        else
+        {
+            GameObject[] unityObjects = GameObject.FindGameObjectsWithTag("Plateforme");
+            // Loop through each object and perform an action
+            foreach (GameObject obj in unityObjects)
+            {
+                // Perform an action on each object, for example:
+                SpriteRenderer renderer = obj.GetComponent<SpriteRenderer>();
+                renderer.color = new Color(1f, 1f, 1f, 0f);
             }
         }
     }

@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform wallCheck3WhatIsThisCode;
     [SerializeField] private float wallJumpForce = 10f;
     [SerializeField] private float wallSlideSpeed = 2f;
+    [SerializeField] private SpriteRenderer eyesRenderer;
 
     [SerializeField]
     private float wallJumpDuration = 0.2f; // Durée pendant laquelle le mouvement horizontal est désactivé
@@ -105,6 +106,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        eyesRenderer.enabled = GameManager.Instance.hasEyes;
         if (platform != null)
         {
             if (!GameManager.Instance.unlockedPlatform)

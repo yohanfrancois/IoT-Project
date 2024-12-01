@@ -13,6 +13,7 @@ public class ChangeScene : MonoBehaviour
     {
         if (player.position.x > 9)
         {
+            AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.codingSound2);
             SceneManager.LoadScene("Cedric");
             
         } 

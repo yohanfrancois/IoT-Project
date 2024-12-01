@@ -13,24 +13,32 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform wallCheck;
+    [SerializeField] private Transform wallCheck2;
+    [SerializeField] private Transform wallCheck3WhatIsThisCode;
     [SerializeField] private float wallJumpForce = 10f;
     [SerializeField] private float wallSlideSpeed = 2f;
-    [SerializeField] private float wallJumpDuration = 0.2f; // Durée pendant laquelle le mouvement horizontal est désactivé
+    [SerializeField] private SpriteRenderer eyesRenderer;
+
+    [SerializeField]
+    private float wallJumpDuration = 0.2f; // Durée pendant laquelle le mouvement horizontal est désactivé
+
     [SerializeField] private GameObject platform; //plateforme qui bouche le trou au début du jeu
 
     private Rigidbody2D rb;
-    private float moveInput;
+    public float moveInput;
     private bool isGrounded;
     private bool isTouchingWall;
+    private bool isHalfTouchingWall;
+    private bool kindaTouchingWallAtThisPointIDontCareAboutVariableNames;
     private bool isWallSliding;
-    private bool isFacingRight = true;
-    private bool canMove = true;
+    public bool isFacingRight = true;
+    public bool canMove = true;
     private int wallDirection;
     private Collider2D myCollider;
 
     void Awake()
     {
-        if(Instance)
+        if (Instance)
         {
             Destroy(gameObject);
         }
@@ -55,7 +63,9 @@ public class PlayerController : MonoBehaviour
             if (isGrounded)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.jumpSound);
             }
+
             if (GameManager.Instance.unlockedWallJump)
             {
                 if (isTouchingWall && !isGrounded)
@@ -63,9 +73,7 @@ public class PlayerController : MonoBehaviour
                     WallJump();
                 }
             }
-            
         }
-        
     }
 
     public void OnClick(InputAction.CallbackContext context)
@@ -98,17 +106,23 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!GameManager.Instance.unlockedPlatform)
+        eyesRenderer.enabled = GameManager.Instance.hasEyes;
+        if (platform != null)
         {
-            platform.SetActive(false);
+            if (!GameManager.Instance.unlockedPlatform)
+            {
+                platform.SetActive(false);
+            }
+            else
+            {
+                platform.SetActive(true);
+            }
         }
-        if (GameManager.Instance.unlockedPlatform)
-        {
-            platform.SetActive(true);
-        }
+
         if (canMove)
         {
-            if (!isTouchingWall || (isTouchingWall && moveInput != wallDirection))
+            if ((!isTouchingWall && !isHalfTouchingWall && !kindaTouchingWallAtThisPointIDontCareAboutVariableNames) ||
+                ((isTouchingWall || isHalfTouchingWall || kindaTouchingWallAtThisPointIDontCareAboutVariableNames) && moveInput != wallDirection))
             {
                 rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
             }
@@ -125,8 +139,10 @@ public class PlayerController : MonoBehaviour
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
         isTouchingWall = Physics2D.OverlapCircle(wallCheck.position, 0.1f, groundLayer);
+        isHalfTouchingWall = Physics2D.OverlapCircle(wallCheck2.position, 0.1f, groundLayer);
+        kindaTouchingWallAtThisPointIDontCareAboutVariableNames = Physics2D.OverlapCircle(wallCheck3WhatIsThisCode.position, 0.1f, groundLayer);
 
-        if (isTouchingWall && !isGrounded && rb.velocity.y < 0)
+        if ((isTouchingWall || isHalfTouchingWall || kindaTouchingWallAtThisPointIDontCareAboutVariableNames) && !isGrounded && rb.velocity.y < 0)
         {
             isWallSliding = true;
             rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
@@ -143,7 +159,6 @@ public class PlayerController : MonoBehaviour
             // Activer les collisions avec les plateformes
             myCollider.enabled = true;
         }
-
     }
 
     void WallJump()
@@ -151,6 +166,7 @@ public class PlayerController : MonoBehaviour
         canMove = false;
         rb.velocity = new Vector2(-wallDirection * wallJumpForce, jumpForce);
         Flip();
+        AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.jumpSound);
         StartCoroutine(EnableMovementAfterDelay());
     }
 
@@ -160,7 +176,7 @@ public class PlayerController : MonoBehaviour
         canMove = true;
     }
 
-    void Flip()
+    public void Flip()
     {
         isFacingRight = !isFacingRight;
         Vector3 scaler = transform.localScale;

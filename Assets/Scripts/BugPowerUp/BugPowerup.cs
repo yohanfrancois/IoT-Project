@@ -4,7 +4,7 @@ using UnityEngine;
 public class BugPowerup : MonoBehaviour
 {
     [SerializeField] private PowerupType unlocked;
-    [SerializeField] private Camera cam;
+    private Camera cam;
     private bool is_unlocked = false;
     private float originalFOV;
     private float smoothTime = 0.25f;
@@ -22,6 +22,7 @@ public class BugPowerup : MonoBehaviour
 
     private void Start()
     {
+        cam = Camera.main;
         originalFOV = cam.fieldOfView;
     }
 

@@ -6,10 +6,13 @@ public class TriggerDialogue : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        print("e(nter" + (collision.name));
         if(collision.TryGetComponent<PlayerController>(out _))
         {
-            if (DialogueManager.TryDialogueIndex() == 8)
+            if (DialogueManager.TryDialogueIndex() == 7)
             {
+                print("e(nter" + (collision.name));
+
                 Dialogue dialogue = new Dialogue
                 {
                     text = "Ha regarde ce truc, ça à l’air d’être un bug.",
@@ -47,16 +50,19 @@ public class TriggerDialogue : MonoBehaviour
                 DialogueManager.Instance.StartDialogue(dialogue);
             }
 
-            /*Dialogue dialogue = new Dialogue
+            else if (DialogueManager.TryDialogueIndex() == 17)
             {
-                text = "Ho daaamn… C’est le boss !",
-                audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
-                characterSprite = DialogueManager.Instance.spritesList[5],
-                characterPosition = new Vector3(750, -350, 0),
-                characterRotation = new Vector3(0, 0, -110)
-            };
+                Dialogue dialogue = new Dialogue
+                {
+                    text = "Ho daaamn… C’est le boss !",
+                    audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+                    characterSprite = DialogueManager.Instance.spritesList[5],
+                    characterPosition = new Vector3(750, -350, 0),
+                    characterRotation = new Vector3(0, 0, -110)
+                };
+                DialogueManager.Instance.StartDialogue(dialogue);
+            }
 
-            DialogueManager.Instance.StartDialogue(dialogue);*/
 
             /*Dialogue dialogue = new Dialogue
             {

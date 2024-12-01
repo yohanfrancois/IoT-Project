@@ -289,7 +289,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Movement
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a29a0b310ece2bc4a9853bbc35656c6c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 217c7222c5498274eb0cf9a038a4c98d, type: 2}
   m_sharedMaterial: {fileID: -1016442602271490665, guid: a29a0b310ece2bc4a9853bbc35656c6c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

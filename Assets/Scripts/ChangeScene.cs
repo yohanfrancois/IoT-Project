@@ -15,7 +15,7 @@ public class ChangeScene : MonoBehaviour
         {
             AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.codingSound2);
             SceneManager.LoadScene("Cedric");
-            
+            GameManager.Instance.leftOnce = true;
         } 
     }
 }

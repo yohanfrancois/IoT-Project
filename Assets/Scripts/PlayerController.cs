@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer eyesRenderer;
     [SerializeField] private Sprite glitchedSprite;
     [SerializeField] private Sprite normalSprite;
+    [SerializeField] private Sprite spriteWithGun;
     private SpriteRenderer spriteRenderer;
     private Animator _animator;
     private int _movingBoolHash;
@@ -80,7 +81,7 @@ public class PlayerController : MonoBehaviour
             int i = Random.Range(1, 4);
             string footstep1 = "footstep" + i;
             AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.footstep1);
-            yield return new WaitForSeconds(1f); // Ajustez l'intervalle selon vos besoins
+            yield return new WaitForSeconds(0.7f); // Ajustez l'intervalle selon vos besoins
         }
         isPlayingFootsteps = false;
     }
@@ -122,6 +123,7 @@ public class PlayerController : MonoBehaviour
         {
             print("swapping");
             SceneManager.LoadScene("Baptiste");
+            GameManager.Instance.returnedOnce = true;
             GameManager.Instance.ResetGame();
         }
     }
@@ -136,7 +138,16 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        _animator.enabled = GameManager.Instance.unlockedJump && !_inGlitchAnimation;
+        _animator.enabled = (GameManager.Instance.unlockedJump || !GameManager.Instance.hasPressedStart) && !_inGlitchAnimation && !GameManager.Instance.hasGun;
+        if (!_animator.enabled  && !_inGlitchAnimation)
+        {
+            spriteRenderer.sprite = glitchedSprite;
+        }
+        
+        if (GameManager.Instance.hasGun)
+        {
+            spriteRenderer.sprite = spriteWithGun;
+        }
         eyesRenderer.enabled = GameManager.Instance.hasEyes;
         if (platform != null)
         {
@@ -149,7 +160,9 @@ public class PlayerController : MonoBehaviour
                 platform.SetActive(true);
             }
         }
-
+        
+        if(!GameManager.Instance.returnedOnce && GameManager.Instance.leftOnce) canMove = false;
+        
         if (canMove)
         {
             if ((!isTouchingWall && !isHalfTouchingWall && !kindaTouchingWallAtThisPointIDontCareAboutVariableNames) ||
@@ -198,6 +211,11 @@ public class PlayerController : MonoBehaviour
     public void GlitchAnim()
     {
         StartGlitchAnimation(spriteRenderer, glitchedSprite, normalSprite, 1f, 0.2f);
+    }
+
+    public void StartAnim()
+    {
+        StartGlitchAnimation(spriteRenderer, normalSprite, glitchedSprite, 1f, 0.2f);
     }
 
     void WallJump()

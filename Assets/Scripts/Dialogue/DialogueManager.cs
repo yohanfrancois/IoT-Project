@@ -28,6 +28,7 @@ public class DialogueManager : MonoBehaviour
 
     public static int GetDialogueIndex()
     {
+        print(currentDialogueIndex);
         currentDialogueIndex++;
         return currentDialogueIndex-1;
     }
@@ -42,6 +43,7 @@ public class DialogueManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -164,6 +166,10 @@ public class DialogueManager : MonoBehaviour
         {
             IfMenuScene();
         }
+        else if (scene.name == "ComingSoon")
+        {
+            IfEndScene();
+        }
         // Ajoutez d'autres conditions pour d'autres scènes si nécessaire
     }
 
@@ -211,5 +217,10 @@ public class DialogueManager : MonoBehaviour
     public void IfMenuScene()
     {
 
+    }
+
+    public void IfEndScene()
+    {
+        
     }
 }

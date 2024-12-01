@@ -56,6 +56,10 @@ MonoBehaviour:
   unlockedWallJump: 0
   canResetToMenu: 0
   hasEyes: 0
+  hasGun: 0
+  hasPressedStart: 0
+  returnedOnce: 0
+  leftOnce: 0
 --- !u!114 &7176863147679925770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,18 +144,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffectSource: {fileID: 2759483137888821666}
   musicSource: {fileID: 1030595711897947916}
-  intro: {fileID: 8300000, guid: 32cb5c26fbb4ef947ae58af5f6d942f5, type: 3}
-  levelMusic: {fileID: 8300000, guid: cb9bd686fcb4fd44d8844c30cb1c7b74, type: 3}
-  codingSound1: {fileID: 8300000, guid: af654a0b2c747ce48aa8e7e80654c10e, type: 3}
+  intro: {fileID: 8300000, guid: 559c440b6d6c640339210a0db0d6a6be, type: 3}
+  levelMusic: {fileID: 8300000, guid: c58aa0b725c054c25a98e604bcbc324e, type: 3}
   codingSound2: {fileID: 8300000, guid: b5c9c65b7002a364bb2a88b9455bebb0, type: 3}
+  codingSound1: {fileID: 8300000, guid: af654a0b2c747ce48aa8e7e80654c10e, type: 3}
   electricSound: {fileID: 8300000, guid: 498978c6f5c49d94baff669f97c04a42, type: 3}
   jumpSound: {fileID: 8300000, guid: feead7da98d3cc541a229acdff231679, type: 3}
-  wallJumpSound: {fileID: 0}
+  wallJumpSound: {fileID: 8300000, guid: 155743177ac594f2b828ce9f09f02d99, type: 3}
+  gunSound: {fileID: 8300000, guid: f76d25598ecf647f380b26f0fa0b580b, type: 3}
   collectibleSound: {fileID: 8300000, guid: 9a3fff78a958321448ad6ce5b977dade, type: 3}
   codeBreaking: {fileID: 8300000, guid: 0b3f3df6b4d71b24e9c2bd469c00d720, type: 3}
   footstep1: {fileID: 8300000, guid: 219744d3ed72d89419c816a8d523ae98, type: 3}
   footstep2: {fileID: 8300000, guid: 50414c1debeb9044ca9a7ff31c9f3999, type: 3}
   footste3: {fileID: 8300000, guid: abb0d0a6cbb6ec24eb5b0422151fd58d, type: 3}
+  firstExplosion: {fileID: 8300000, guid: f2513865b70e14041af9fe3386daf311, type: 3}
+  secondExplosion: {fileID: 8300000, guid: 7d16dc2b013134ef5a4d3e1b7d5d8e5f, type: 3}
 --- !u!82 &2759483137888821666
 AudioSource:
   m_ObjectHideFlags: 0
@@ -260,7 +267,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.689
   m_Pitch: 1
   Loop: 1
   Mute: 0

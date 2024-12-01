@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     public bool canResetToMenu ;
     public bool hasEyes;
     public bool hasGun=false;
+    public bool hasPressedStart;
+    public bool returnedOnce;
+    public bool leftOnce;
 
 
 
@@ -66,6 +69,8 @@ public class GameManager : MonoBehaviour
         };
 
         DialogueManager.Instance.StartDialogue(dialogue2);
+
+        AudioManager.Instance.PlayMusic(2);
     }   
 
     public void SetUnlockedJump(bool value)
@@ -92,7 +97,9 @@ public class GameManager : MonoBehaviour
         };
 
         DialogueManager.Instance.StartDialogue(dialogue2);
-        
+        GameManager.Instance.hasEyes = false;
+
+
         PlayerController.Instance.GlitchAnim();
     }
 
@@ -172,6 +179,62 @@ public class GameManager : MonoBehaviour
                 renderer.color = new Color(1f, 1f, 1f, 0f);
             }
         }
+    }
+
+    public void LaunchEndScene()
+    {
+        StartCoroutine(LaunchEndCoroutine());
+    }
+
+    public IEnumerator LaunchEndCoroutine()
+    {
+        Dialogue dialogue = new Dialogue
+        {
+            text = "Incroyable, je crois que le jeu refonctionne bien",
+            audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+            characterSprite = DialogueManager.Instance.spritesList[4],
+            characterPosition = new Vector3(-680, 210, 0),
+            characterRotation = new Vector3(0, 0, -90)
+        };
+
+        DialogueManager.Instance.StartDialogue(dialogue);
+
+        Dialogue dialogue2 = new Dialogue
+        {
+            text = "Bon bah tu peux passer au niveau suivant maintenant",
+            audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+            characterSprite = DialogueManager.Instance.spritesList[0],
+            characterPosition = new Vector3(630, 140, 0),
+            characterRotation = new Vector3(0, 0, -90)
+        };
+
+        DialogueManager.Instance.StartDialogue(dialogue2);
+
+        yield return new WaitForSeconds(5);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("ComingSoon");
+
+        Dialogue dialogue7 = new Dialogue
+        {
+            text = "AH non ! j’avais oublié ! Les devs ont toujours pas codé la suite",
+            audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+            characterSprite = DialogueManager.Instance.spritesList[4],
+            characterPosition = new Vector3(0, -350, 0),
+            characterRotation = new Vector3(0, 0, -90)
+        };
+
+        DialogueManager.Instance.StartDialogue(dialogue7);
+
+        Dialogue dialogue20 = new Dialogue
+        {
+            text = " Mais, c’est à venir... Faudra juste payer le DLC à 45€ !",
+            audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+            characterSprite = DialogueManager.Instance.spritesList[0],
+            characterPosition = new Vector3(350, -350, 0),
+            characterRotation = new Vector3(0, 0, -120)
+        };
+
+        DialogueManager.Instance.StartDialogue(dialogue20);
+
     }
 
 }

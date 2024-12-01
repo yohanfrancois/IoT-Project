@@ -1254,8 +1254,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01ac2df48f6f3c14d811e3cd9cc33c5b, type: 3}
-<<<<<<< Updated upstream
-=======
 --- !u!1001 &932414945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1357,7 +1355,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8333e6fbdce4aeb4693fabecc1ae86a9, type: 3}
->>>>>>> Stashed changes
 --- !u!1001 &945773119
 PrefabInstance:
   m_ObjectHideFlags: 0

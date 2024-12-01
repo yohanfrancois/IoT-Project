@@ -161,6 +161,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 596573080156358571, guid: 01ac2df48f6f3c14d811e3cd9cc33c5b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3107466651957324532, guid: a6f765e99bf6abd4987d2a016b3539aa, type: 2}
     - target: {fileID: 1423015146829539327, guid: 01ac2df48f6f3c14d811e3cd9cc33c5b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.50528085

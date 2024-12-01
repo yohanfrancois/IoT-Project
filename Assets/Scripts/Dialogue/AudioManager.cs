@@ -18,6 +18,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip electricSound;
     public AudioClip jumpSound;
     public AudioClip wallJumpSound;
+    public AudioClip gunSound;
     public AudioClip collectibleSound;
     public AudioClip codeBreaking;
     public AudioClip footstep1;

@@ -12,6 +12,7 @@ MonoImporter:
   - codingSound2: {fileID: 8300000, guid: b5c9c65b7002a364bb2a88b9455bebb0, type: 3}
   - electricSound: {fileID: 8300000, guid: 498978c6f5c49d94baff669f97c04a42, type: 3}
   - jumpSound: {fileID: 8300000, guid: feead7da98d3cc541a229acdff231679, type: 3}
+  - wallJumpSound: {fileID: 8300000, guid: 155743177ac594f2b828ce9f09f02d99, type: 3}
   - collectibleSound: {fileID: 8300000, guid: 9a3fff78a958321448ad6ce5b977dade, type: 3}
   - codeBreaking: {fileID: 8300000, guid: 0b3f3df6b4d71b24e9c2bd469c00d720, type: 3}
   - footstep1: {fileID: 8300000, guid: 219744d3ed72d89419c816a8d523ae98, type: 3}

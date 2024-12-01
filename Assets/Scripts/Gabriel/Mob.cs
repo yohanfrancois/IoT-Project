@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class Mob : MonoBehaviour
 {
-    [SerializeField] private int lifePoint;               // Points de vie du mob
-    [SerializeField] private GameObject ballPrefab;       // Référence au prefab de la balle
-    [SerializeField] private float fireRate;         // Temps entre chaque tir (en secondes)
-    [SerializeField] private Vector2 offset;              // Décalage pour la position de spawn des balles
-    [SerializeField] private Collider2D headCollider;     // Collider pour la tête du mob
+    [SerializeField] private int lifePoint; // Points de vie du mob
+    [SerializeField] private GameObject ballPrefab; // Référence au prefab de la balle
+    [SerializeField] private float fireRate; // Temps entre chaque tir (en secondes)
+    [SerializeField] private Vector2 offset; // Décalage pour la position de spawn des balles
+    [SerializeField] private Collider2D headCollider; // Collider pour la tête du mob
     private Animator _animator;
     private int _playerInRangeTriggerHash;
     private int _enemyDeathTriggerHash;
@@ -66,7 +66,8 @@ public class Mob : MonoBehaviour
             float randomAngle = Random.Range(-45f, 45f);
 
             // Convertit cet angle en une direction Vector2
-            Vector2 randomDirection = new Vector2(Mathf.Cos(randomAngle * Mathf.Deg2Rad), Mathf.Sin(randomAngle * Mathf.Deg2Rad));
+            Vector2 randomDirection = new Vector2(Mathf.Cos(randomAngle * Mathf.Deg2Rad),
+                Mathf.Sin(randomAngle * Mathf.Deg2Rad));
 
             // Applique la direction aléatoire à la balle
             bulletScript.SetDirection(-randomDirection);
@@ -97,7 +98,7 @@ public class Mob : MonoBehaviour
         DialogueManager.Instance.StartDialogue(dialogue);
 
         _animator.SetTrigger(_enemyDeathTriggerHash);
-        Destroy(gameObject, 1.4f); // Détruit le mob
+        Destroy(gameObject, 0.7f); // Détruit le mob
     }
 
     // Méthode pour gérer les collisions avec la tête

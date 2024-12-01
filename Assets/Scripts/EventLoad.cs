@@ -14,6 +14,11 @@ public class EventLoad : MonoBehaviour
     [SerializeField] private GameObject _light2;
     [SerializeField] private GameObject backgroundFine;
     [SerializeField] private GameObject backgroundGlitched;
+    [SerializeField] private ParticleSystem _particleSystemleft;
+    [SerializeField] private ParticleSystem _particleSystemright;
+    [SerializeField] private ParticleSystem _particleSystembehind;
+
+    
     private Animator _animator;
     private Animator _animatorLight;
     private Animator _animatorLight2;
@@ -46,6 +51,9 @@ public class EventLoad : MonoBehaviour
     {
         if (_animator != null)
         {
+            _particleSystemleft.Play();
+            _particleSystemright.Play();
+            AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.firstExplosion);
             _animator.SetBool("IsClicked", true); // Déclenche l'animation.
             _animatorLight.SetBool("IsClicked", true); // Déclenche l'animation.
             _isAnimationPlaying = true;
@@ -81,7 +89,8 @@ public class EventLoad : MonoBehaviour
             renderer.color = new Color(1f,1f,1f,1f);
 
             lightController?.LightOn(); // Rallumer les lumières.
-            
+            _particleSystembehind.Play();
+            AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.secondExplosion);
             yield return new WaitForSeconds(1f); // Délai optionnel avant d'éteindre.
             lightController?.LightOff(); // Éteindre les lumières.
             yield return new WaitForSeconds(0.3f); // Délai optionnel avant de rallumer

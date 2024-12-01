@@ -24,6 +24,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip footstep1;
     public AudioClip footstep2;
     public AudioClip footste3;
+    public AudioClip firstExplosion;
+    public AudioClip secondExplosion;
 
     private void Awake()
     {

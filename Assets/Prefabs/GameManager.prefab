@@ -49,6 +49,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorTexture: {fileID: 0}
+  buttonAnimationPlayed: 0
+  unlockedPlatform: 0
+  unlockedJump: 0
+  unlockedInventory: 0
+  unlockedWallJump: 0
+  canResetToMenu: 0
+  hasEyes: 0
 --- !u!114 &7176863147679925770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,11 +140,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffectSource: {fileID: 2759483137888821666}
   musicSource: {fileID: 1030595711897947916}
-  musicClip1: {fileID: 8300000, guid: cb9bd686fcb4fd44d8844c30cb1c7b74, type: 3}
-  musicClip2: {fileID: 8300000, guid: 32cb5c26fbb4ef947ae58af5f6d942f5, type: 3}
-  soundEffect1: {fileID: 0}
-  soundEffect2: {fileID: 0}
-  soundEffect3: {fileID: 0}
+  intro: {fileID: 0}
+  levelMusic: {fileID: 0}
+  codingSound1: {fileID: 0}
+  codingSound2: {fileID: 0}
+  electricSound: {fileID: 0}
+  jumpSound: {fileID: 0}
+  collectibleSound: {fileID: 0}
+  codeBreaking: {fileID: 0}
+  footstep1: {fileID: 0}
+  footstep2: {fileID: 0}
+  footste3: {fileID: 0}
 --- !u!82 &2759483137888821666
 AudioSource:
   m_ObjectHideFlags: 0

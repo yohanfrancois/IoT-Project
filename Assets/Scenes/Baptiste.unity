@@ -8429,6 +8429,34 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 24264249724131825, guid: 8333e6fbdce4aeb4693fabecc1ae86a9, type: 3}
+      propertyPath: hasGun
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 24264249724131825, guid: 8333e6fbdce4aeb4693fabecc1ae86a9, type: 3}
+      propertyPath: hasEyes
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 24264249724131825, guid: 8333e6fbdce4aeb4693fabecc1ae86a9, type: 3}
+      propertyPath: unlockedJump
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 24264249724131825, guid: 8333e6fbdce4aeb4693fabecc1ae86a9, type: 3}
+      propertyPath: canResetToMenu
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 24264249724131825, guid: 8333e6fbdce4aeb4693fabecc1ae86a9, type: 3}
+      propertyPath: unlockedPlatform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 24264249724131825, guid: 8333e6fbdce4aeb4693fabecc1ae86a9, type: 3}
+      propertyPath: unlockedWallJump
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 24264249724131825, guid: 8333e6fbdce4aeb4693fabecc1ae86a9, type: 3}
+      propertyPath: unlockedInventory
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 24264249724131825, guid: 8333e6fbdce4aeb4693fabecc1ae86a9, type: 3}
       propertyPath: buttonAnimationPlayed
       value: 0
       objectReference: {fileID: 0}

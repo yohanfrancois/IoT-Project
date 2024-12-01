@@ -49,6 +49,10 @@ public class EventLoad : MonoBehaviour
                 if (GameManager.Instance.unlockedInventory)
                 {
                     _animatorLogo.SetBool("Phase2", true);
+                    if (GameManager.Instance.hasGun)
+                    {
+                        _animatorLogo.SetBool("Phase3", true);
+                    }
                 }
             }
         }

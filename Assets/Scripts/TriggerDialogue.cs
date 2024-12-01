@@ -10,6 +10,7 @@ public class TriggerDialogue : MonoBehaviour
         if(collision.TryGetComponent<PlayerController>(out _))
         {
             if (DialogueManager.TryDialogueIndex() == 7)
+            if (DialogueManager.TryDialogueIndex() == 7)
             {
                 print("e(nter" + (collision.name));
 

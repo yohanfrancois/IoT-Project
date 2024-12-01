@@ -11,6 +11,7 @@ public class EventLoad : MonoBehaviour
     private Button _settingsButton;
     [SerializeField] private GameObject _platform;
     [SerializeField] private GameObject _platformBroken;
+    [SerializeField] private GameObject _logo;
     [SerializeField] private GameObject _light;
     [SerializeField] private GameObject _light2;
     [SerializeField] private GameObject backgroundFine;
@@ -21,6 +22,7 @@ public class EventLoad : MonoBehaviour
 
     
     private Animator _animator;
+    private Animator _animatorLogo;
     private Animator _animatorLight;
     private Animator _animatorLight2;
     private bool _isAnimationPlaying = false;
@@ -36,6 +38,12 @@ public class EventLoad : MonoBehaviour
             PlayerController.Instance.canMove = true; // Débloquer immédiatement le joueur
             _platform.SetActive(false);
             _platformBroken.SetActive(true);
+            _logo.SetActive(true);
+            if (GameManager.Instance.unlockedPlatform)
+            {
+                _animatorLogo = _logo.GetComponent<Animator>();
+                _animatorLogo.SetBool("Phase1", true);
+            }
         }
         else
         {
@@ -43,6 +51,7 @@ public class EventLoad : MonoBehaviour
             _animator = _platform.GetComponent<Animator>();
             _animatorLight = _light.GetComponent<Animator>();
             _animatorLight2 = _light2.GetComponent<Animator>();
+            _animatorLogo = _logo.GetComponent<Animator>();
             _startButton.onClick.AddListener(() => StartCoroutine(ButtonSelected()));
         }
         _settingsButton = GameObject.Find("Settings").GetComponent<Button>();
@@ -95,6 +104,7 @@ public class EventLoad : MonoBehaviour
             // Débloquer le mouvement du joueur.
             PlayerController.Instance.canMove = true;
             GameManager.Instance.buttonAnimationPlayed = true;
+            _logo.SetActive(true);
         
             yield return new WaitForSeconds(0.2f); // Délai optionnel avant de rallumer.
 
@@ -102,7 +112,7 @@ public class EventLoad : MonoBehaviour
             SpriteRenderer renderer = backgroundFine.GetComponent<SpriteRenderer>();
             renderer.color = new Color(1f,1f,1f,0f);
             SpriteRenderer renderer2 = backgroundGlitched.GetComponent<SpriteRenderer>();
-            renderer.color = new Color(1f,1f,1f,1f);
+            renderer2.color = new Color(1f,1f,1f,1f);
 
             lightController?.LightOn(); // Rallumer les lumières.
             _particleSystemfront.Play();

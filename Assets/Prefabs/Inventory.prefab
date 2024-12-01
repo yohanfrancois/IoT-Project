@@ -348,6 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsPrefab: {fileID: 8928397072713438510}
   platFormPrefab: {fileID: 6844208930269087605}
+  bg: {fileID: 1929308125986169820}
 --- !u!212 &3211459143424520386
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -422,7 +423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 571534050575921551, guid: 5ca47d9490b6342ae85b1c22a5dc16c4, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 571534050575921551, guid: 5ca47d9490b6342ae85b1c22a5dc16c4, type: 3}
       propertyPath: m_AnchorMin.x
@@ -430,7 +431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 571534050575921551, guid: 5ca47d9490b6342ae85b1c22a5dc16c4, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 571534050575921551, guid: 5ca47d9490b6342ae85b1c22a5dc16c4, type: 3}
       propertyPath: m_SizeDelta.x
@@ -482,11 +483,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 571534050575921551, guid: 5ca47d9490b6342ae85b1c22a5dc16c4, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 571534050575921551, guid: 5ca47d9490b6342ae85b1c22a5dc16c4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 49
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 571534050575921551, guid: 5ca47d9490b6342ae85b1c22a5dc16c4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

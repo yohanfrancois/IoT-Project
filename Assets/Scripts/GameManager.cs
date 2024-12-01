@@ -95,7 +95,9 @@ public class GameManager : MonoBehaviour
         };
 
         DialogueManager.Instance.StartDialogue(dialogue2);
-        
+        GameManager.Instance.hasEyes = false;
+
+
         PlayerController.Instance.GlitchAnim();
     }
 
@@ -206,8 +208,30 @@ public class GameManager : MonoBehaviour
 
         DialogueManager.Instance.StartDialogue(dialogue2);
 
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
         UnityEngine.SceneManagement.SceneManager.LoadScene("ComingSoon");
+
+        Dialogue dialogue7 = new Dialogue
+        {
+            text = "AH non ! j’avais oublié ! Les devs ont toujours pas codé la suite",
+            audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+            characterSprite = DialogueManager.Instance.spritesList[4],
+            characterPosition = new Vector3(0, -350, 0),
+            characterRotation = new Vector3(0, 0, -90)
+        };
+
+        DialogueManager.Instance.StartDialogue(dialogue7);
+
+        Dialogue dialogue20 = new Dialogue
+        {
+            text = " Mais, c’est à venir... Faudra juste payer le DLC à 45€ !",
+            audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+            characterSprite = DialogueManager.Instance.spritesList[0],
+            characterPosition = new Vector3(350, -350, 0),
+            characterRotation = new Vector3(0, 0, -120)
+        };
+
+        DialogueManager.Instance.StartDialogue(dialogue20);
 
     }
 

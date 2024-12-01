@@ -112,7 +112,7 @@ public class EventLoad : MonoBehaviour
             if (lightController != null)
             {
                 lightController.LightOff();
-                Debug.Log("Mur activé et lumières éteintes !");
+                //Debug.Log("Mur activé et lumières éteintes !");
             }
             
             // Débloquer le mouvement du joueur.
@@ -190,7 +190,7 @@ public class EventLoad : MonoBehaviour
 
         }
 
-        Debug.Log("Vous avez trouvé le bouton " + _startButton.name);
+        //Debug.Log("Vous avez trouvé le bouton " + _startButton.name);
         _isAnimationPlaying = false;
         _isBroken = true;
     }
@@ -200,7 +200,7 @@ public class EventLoad : MonoBehaviour
     {
         if (_isBroken)
         {
-            Debug.LogWarning("Le bouton est cassé !");
+            //Debug.LogWarning("Le bouton est cassé !");
             // Activer la page des paramètres.
             _pauseScreen.SetActive(true);
             _isBroken = false;
@@ -212,7 +212,7 @@ public class EventLoad : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log("Vous avez trouvé le bouton " + _settingsButton.name);
+        //Debug.Log("Vous avez trouvé le bouton " + _settingsButton.name);
         
         yield break; // Si tu veux attendre une action avant de revenir.
     }

@@ -67,6 +67,8 @@ public class GameManager : MonoBehaviour
         };
 
         DialogueManager.Instance.StartDialogue(dialogue2);
+
+        AudioManager.Instance.PlayMusic(2);
     }   
 
     public void SetUnlockedJump(bool value)

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public Vector2 direction = Vector2.right; // Direction de la balle, par défaut vers la droite
+    public Vector2 direction = new Vector2(1,0); // Direction de la balle, par défaut vers la droite
     public float speed = 5f;                  // Vitesse de la balle
     public int damage = 10;                   // Dégâts infligés par la balle
 

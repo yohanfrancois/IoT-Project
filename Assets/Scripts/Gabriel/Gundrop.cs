@@ -8,6 +8,9 @@ public class Gundrop : MonoBehaviour
     void Start()
     {
         bulletManager.SetActive(false);
+        if (GameManager.Instance.hasGun){
+            bulletManager.SetActive(true);
+        }
     }
 
      private void OnTriggerEnter2D(Collider2D collision)
@@ -15,6 +18,7 @@ public class Gundrop : MonoBehaviour
         
         if (collision.TryGetComponent<PlayerController>(out PlayerController player))
         {
+            GameManager.Instance.hasGun=true;
             bulletManager.SetActive(true);
             Destroy(gameObject);
         }

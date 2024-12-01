@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 3904481151051314861}
   - component: {fileID: 6305497155531319027}
   - component: {fileID: 958385144167119727}
+  - component: {fileID: 3613254209503254420}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -116,7 +117,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -149,6 +150,8 @@ MonoBehaviour:
   wallJumpForce: 10
   wallSlideSpeed: 2
   eyesRenderer: {fileID: 3776182770924719815}
+  glitchedSprite: {fileID: 7482667652216324306, guid: f573a87cbea0e4c74b6c1beffe39ff1d, type: 3}
+  normalSprite: {fileID: 646596821, guid: 61222c15f3981d1469a0228f49d0949f, type: 3}
   wallJumpDuration: 0.2
   platform: {fileID: 0}
   moveInput: 0
@@ -344,6 +347,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &3613254209503254420
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3738651030970187039}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4e0bf54ce927c4d8a9da5314dc1efe29, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6577475339778392150
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +554,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6712414388876269398}
-  - component: {fileID: 2543399275781048176}
+  - component: {fileID: 321598356226357073}
+  - component: {fileID: 8920909996385061336}
   m_Layer: 0
   m_Name: bulletmanager
   m_TagString: Untagged
@@ -547,13 +572,27 @@ Transform:
   m_GameObject: {fileID: 9121157950670236306}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.27, y: -0.27, z: 603.85583}
+  m_LocalPosition: {x: 0.7, y: -0.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 385019180880712762}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2543399275781048176
+--- !u!114 &321598356226357073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9121157950670236306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b255b3e60b89c448fa62f6a896c48164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballPrefab: {fileID: 1427242471450962352, guid: c3e1433d367274740b9795eb953a0507, type: 3}
+  player: {fileID: 0}
+--- !u!114 &8920909996385061336
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

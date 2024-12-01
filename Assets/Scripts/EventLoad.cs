@@ -16,7 +16,7 @@ public class EventLoad : MonoBehaviour
     [SerializeField] private GameObject backgroundGlitched;
     [SerializeField] private ParticleSystem _particleSystemleft;
     [SerializeField] private ParticleSystem _particleSystemright;
-    [SerializeField] private ParticleSystem _particleSystembehind;
+    [SerializeField] private ParticleSystem _particleSystemfront;
 
     
     private Animator _animator;
@@ -89,7 +89,7 @@ public class EventLoad : MonoBehaviour
             renderer.color = new Color(1f,1f,1f,1f);
 
             lightController?.LightOn(); // Rallumer les lumières.
-            _particleSystembehind.Play();
+            _particleSystemfront.Play();
             AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.secondExplosion);
             yield return new WaitForSeconds(1f); // Délai optionnel avant d'éteindre.
             lightController?.LightOff(); // Éteindre les lumières.

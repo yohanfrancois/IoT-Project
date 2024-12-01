@@ -43,6 +43,10 @@ public class EventLoad : MonoBehaviour
             {
                 _animatorLogo = _logo.GetComponent<Animator>();
                 _animatorLogo.SetBool("Phase1", true);
+                if (GameManager.Instance.unlockedInventory)
+                {
+                    _animatorLogo.SetBool("Phase2", true);
+                }
             }
         }
         else

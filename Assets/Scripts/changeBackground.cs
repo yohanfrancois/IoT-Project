@@ -5,11 +5,11 @@ using UnityEngine;
 public class changeBackground : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] GameObject BGFine;
-    [SerializeField] GameObject BGGlitched;
+    [SerializeField] private SpriteRenderer fineSpriteRenderer;
+    [SerializeField] private SpriteRenderer glitchedSpriteRenderer;
     void Start()
     {
-        
+        AfficheBackground();
     }
 
     // Update is called once per frame
@@ -19,17 +19,17 @@ public class changeBackground : MonoBehaviour
     }
 
     void AfficheBackground(){
-        SpriteRenderer fine = BGFine.GetComponent<SpriteRenderer>();
-        SpriteRenderer glitched = BGGlitched.GetComponent<SpriteRenderer>();
         if(GameManager.Instance.unlockedPlatform){
             //Changement de background
-            fine.color = new Color(1f,1f,1f,1f);
-            glitched.color = new Color(1f,1f,1f,0f);
+            //print("unlocked");
+            fineSpriteRenderer.color = new Color(1f,1f,1f,1f);
+            glitchedSpriteRenderer.color = new Color(1f,1f,1f,0f);
         }
         else{
+            //print("locked");
             //Changement de background
-            fine.color = new Color(1f,1f,1f,0f);
-            glitched.color = new Color(1f,1f,1f,1f);
+            fineSpriteRenderer.color = new Color(1f,1f,1f,0f);
+            glitchedSpriteRenderer.color = new Color(1f,1f,1f,1f);
         }
     }
 }

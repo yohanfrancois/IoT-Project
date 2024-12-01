@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float wallJumpDuration = 0.2f; // Durée pendant laquelle le mouvement horizontal est désactivé
-
     [SerializeField] private GameObject platform; //plateforme qui bouche le trou au début du jeu
 
     private Rigidbody2D rb;
@@ -35,6 +34,7 @@ public class PlayerController : MonoBehaviour
     public bool canMove = true;
     private int wallDirection;
     private Collider2D myCollider;
+    private bool isPlayingFootsteps;
 
     void Awake()
     {
@@ -54,16 +54,33 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<float>();
+        if (moveInput != 0 && isGrounded && !isPlayingFootsteps)
+        {
+            StartCoroutine(PlayFootsteps());
+        }
+    }
+    private IEnumerator PlayFootsteps()
+    {
+        isPlayingFootsteps = true;
+        while (moveInput != 0 && isGrounded)
+        {
+            int i = Random.Range(1, 4);
+            string footstep1 = "footstep" + i;
+            AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.footstep1);
+            yield return new WaitForSeconds(1f); // Ajustez l'intervalle selon vos besoins
+        }
+        isPlayingFootsteps = false;
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
+
         if (GameManager.Instance.unlockedJump)
         {
             if (isGrounded)
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.jumpSound);
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
 
             if (GameManager.Instance.unlockedWallJump)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,10 +13,18 @@ public class EventLoad : MonoBehaviour
     [SerializeField] private GameObject _platformBroken;
     [SerializeField] private GameObject _light;
     [SerializeField] private GameObject _light2;
+    [SerializeField] private GameObject backgroundFine;
+    [SerializeField] private GameObject backgroundGlitched;
+    [SerializeField] private ParticleSystem _particleSystemleft;
+    [SerializeField] private ParticleSystem _particleSystemright;
+    [SerializeField] private ParticleSystem _particleSystemfront;
+
+    
     private Animator _animator;
     private Animator _animatorLight;
     private Animator _animatorLight2;
     private bool _isAnimationPlaying = false;
+    private bool _isElectric = false;
     private bool _isBroken = false;
     [SerializeField] private GameObject _pauseScreen;
 
@@ -44,6 +53,9 @@ public class EventLoad : MonoBehaviour
     {
         if (_animator != null)
         {
+            _particleSystemleft.Play();
+            _particleSystemright.Play();
+            AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.firstExplosion);
             _animator.SetBool("IsClicked", true); // Déclenche l'animation.
             _animatorLight.SetBool("IsClicked", true); // Déclenche l'animation.
             _isAnimationPlaying = true;
@@ -86,8 +98,15 @@ public class EventLoad : MonoBehaviour
         
             yield return new WaitForSeconds(0.2f); // Délai optionnel avant de rallumer.
 
+            //Changement de background
+            SpriteRenderer renderer = backgroundFine.GetComponent<SpriteRenderer>();
+            renderer.color = new Color(1f,1f,1f,0f);
+            SpriteRenderer renderer2 = backgroundGlitched.GetComponent<SpriteRenderer>();
+            renderer.color = new Color(1f,1f,1f,1f);
+
             lightController?.LightOn(); // Rallumer les lumières.
-            
+            _particleSystemfront.Play();
+            AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.secondExplosion);
             yield return new WaitForSeconds(1f); // Délai optionnel avant d'éteindre.
 
             Dialogue dialogue2 = new Dialogue

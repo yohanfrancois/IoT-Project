@@ -29,8 +29,6 @@ public class Bullet : MonoBehaviour
         // Vérifie si la balle touche un mob
         else if (collision.gameObject.TryGetComponent<Mob>(out Mob mob))
         {
-            // Inflige des dégâts au mob
-            mob.takeDamage(damage);
             Destroy(gameObject); // Détruit la balle après collision
         }
         // Vérifie si la balle touche un mur (Layer "Wall")

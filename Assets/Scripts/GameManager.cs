@@ -181,18 +181,31 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator LaunchEndCoroutine()
     {
-        /*Dialogue dialogue = new Dialogue
+        Dialogue dialogue = new Dialogue
         {
             text = "Incroyable, je crois que le jeu refonctionne bien",
             audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
             characterSprite = DialogueManager.Instance.spritesList[4],
-            characterPosition = new Vector3(50, 150, 0),
-            characterRotation = new Vector3(0, 0, -70)
+            characterPosition = new Vector3(-680, 210, 0),
+            characterRotation = new Vector3(0, 0, -90)
         };
 
-        DialogueManager.Instance.StartDialogue(dialogue);*/
+        DialogueManager.Instance.StartDialogue(dialogue);
+
+        Dialogue dialogue2 = new Dialogue
+        {
+            text = "Bon bah tu peux passer au niveau suivant maintenant",
+            audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+            characterSprite = DialogueManager.Instance.spritesList[0],
+            characterPosition = new Vector3(630, 140, 0),
+            characterRotation = new Vector3(0, 0, -90)
+        };
+
+        DialogueManager.Instance.StartDialogue(dialogue2);
+
         yield return new WaitForSeconds(10);
         UnityEngine.SceneManagement.SceneManager.LoadScene("ComingSoon");
+
     }
 
 }

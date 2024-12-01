@@ -91,6 +91,8 @@ public class GameManager : MonoBehaviour
         };
 
         DialogueManager.Instance.StartDialogue(dialogue2);
+        
+        PlayerController.Instance.GlitchAnim();
     }
 
     public void SetUnlockedInventory(bool value)

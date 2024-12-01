@@ -96,7 +96,7 @@ public class EventLoad : MonoBehaviour
                 characterRotation = new Vector3(0, 0, -90)
             };
             
-            PlayerController.Instance.pressedStart = true;
+            GameManager.Instance.hasPressedStart = true;
             PlayerController.Instance.StartAnim();
             
             DialogueManager.Instance.StartDialogue(dialogue);

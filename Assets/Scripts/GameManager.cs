@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public bool canResetToMenu ;
     public bool hasEyes;
     public bool hasGun=false;
+    public bool hasPressedStart;
 
 
 

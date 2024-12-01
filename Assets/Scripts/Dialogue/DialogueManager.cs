@@ -28,6 +28,7 @@ public class DialogueManager : MonoBehaviour
 
     public static int GetDialogueIndex()
     {
+        print(currentDialogueIndex);
         currentDialogueIndex++;
         return currentDialogueIndex-1;
     }

@@ -6,10 +6,13 @@ public class TriggerDialogue : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        print("e(nter" + (collision.name));
         if(collision.TryGetComponent<PlayerController>(out _))
         {
-            if (DialogueManager.TryDialogueIndex() == 8)
+            if (DialogueManager.TryDialogueIndex() == 7)
             {
+                print("e(nter" + (collision.name));
+
                 Dialogue dialogue = new Dialogue
                 {
                     text = "Ha regarde ce truc, ça à l’air d’être un bug.",

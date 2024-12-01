@@ -8,10 +8,16 @@ public class Mob : MonoBehaviour
     [SerializeField] private float fireRate;         // Temps entre chaque tir (en secondes)
     [SerializeField] private Vector2 offset;              // Décalage pour la position de spawn des balles
     [SerializeField] private Collider2D headCollider;     // Collider pour la tête du mob
+    private Animator _animator;
+    private int _playerInRangeTriggerHash;
+    private int _enemyDeathTriggerHash;
 
     void Start()
     {
-        StartCoroutine(FireBulletEveryXSeconds());         // Démarre le tir automatique
+        //StartCoroutine(FireBulletEveryXSeconds());         // Démarre le tir automatique
+        _animator = GetComponent<Animator>();
+        _playerInRangeTriggerHash = Animator.StringToHash("PlayerInRange");
+        _enemyDeathTriggerHash = Animator.StringToHash("EnemyDeathTrigger");
     }
 
     void Update()
@@ -54,7 +60,7 @@ public class Mob : MonoBehaviour
 
         // Récupère le script Bullet de la balle instanciée
         Bullet bulletScript = newBall.GetComponent<Bullet>();
-        if (bulletScript != null)
+        if (bulletScript)
         {
             // Génére un angle aléatoire entre -45 et 45 degrés (par exemple) pour la direction
             float randomAngle = Random.Range(-45f, 45f);
@@ -67,10 +73,19 @@ public class Mob : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 7) //Player layer
+        {
+            StartCoroutine(FireBulletEveryXSeconds());
+        }
+    }
+
     // Cette méthode est appelée lorsque le mob meurt
     public void Die()
     {
-        Destroy(gameObject); // Détruit le mob
+        _animator.SetTrigger(_enemyDeathTriggerHash);
+        Destroy(gameObject, 1.4f); // Détruit le mob
     }
 
     // Méthode pour gérer les collisions avec la tête

@@ -7576,6 +7576,8 @@ MonoBehaviour:
   _platformBroken: {fileID: 920180522}
   _light: {fileID: 129639364}
   _light2: {fileID: 1091244756}
+  backgroundFine: {fileID: 729190860}
+  backgroundGlitched: {fileID: 1543390953}
   _pauseScreen: {fileID: 145459169}
 --- !u!1 &1274036678
 GameObject:
@@ -8780,7 +8782,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0d539ee5776bc4902b0d0a30789dd9ae, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

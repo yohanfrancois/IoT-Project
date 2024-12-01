@@ -12,6 +12,8 @@ public class EventLoad : MonoBehaviour
     [SerializeField] private GameObject _platformBroken;
     [SerializeField] private GameObject _light;
     [SerializeField] private GameObject _light2;
+    [SerializeField] private GameObject backgroundFine;
+    [SerializeField] private GameObject backgroundGlitched;
     private Animator _animator;
     private Animator _animatorLight;
     private Animator _animatorLight2;
@@ -71,6 +73,12 @@ public class EventLoad : MonoBehaviour
             GameManager.Instance.buttonAnimationPlayed = true;
         
             yield return new WaitForSeconds(0.2f); // Délai optionnel avant de rallumer.
+
+            //Changement de background
+            SpriteRenderer renderer = backgroundFine.GetComponent<SpriteRenderer>();
+            renderer.color = new Color(1f,1f,1f,0f);
+            SpriteRenderer renderer2 = backgroundGlitched.GetComponent<SpriteRenderer>();
+            renderer.color = new Color(1f,1f,1f,1f);
 
             lightController?.LightOn(); // Rallumer les lumières.
             

@@ -14,11 +14,11 @@ public class EventLoad : MonoBehaviour
     [SerializeField] private GameObject _logo;
     [SerializeField] private GameObject _light;
     [SerializeField] private GameObject _light2;
-    [SerializeField] private GameObject backgroundFine;
     [SerializeField] private GameObject backgroundGlitched;
     [SerializeField] private ParticleSystem _particleSystemleft;
     [SerializeField] private ParticleSystem _particleSystemright;
     [SerializeField] private ParticleSystem _particleSystemfront;
+    [SerializeField] private float transparency;
 
     
     private Animator _animator;
@@ -39,6 +39,9 @@ public class EventLoad : MonoBehaviour
             _platform.SetActive(false);
             _platformBroken.SetActive(true);
             _logo.SetActive(true);
+            
+            backgroundGlitched.SetActive(true);
+
             if (GameManager.Instance.unlockedPlatform)
             {
                 _animatorLogo = _logo.GetComponent<Animator>();
@@ -112,11 +115,7 @@ public class EventLoad : MonoBehaviour
         
             yield return new WaitForSeconds(0.2f); // Délai optionnel avant de rallumer.
 
-            //Changement de background
-            SpriteRenderer renderer = backgroundFine.GetComponent<SpriteRenderer>();
-            renderer.color = new Color(1f,1f,1f,0f);
-            SpriteRenderer renderer2 = backgroundGlitched.GetComponent<SpriteRenderer>();
-            renderer2.color = new Color(1f,1f,1f,1f);
+            backgroundGlitched.SetActive(true);
 
             lightController?.LightOn(); // Rallumer les lumières.
             _particleSystemfront.Play();

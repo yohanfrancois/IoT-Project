@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
         {
             // Appliquer une force en 2D
             Vector2 force = new Vector2(-forceRecul, 0); // Force vers la gauche
-            rb.AddForce(force, ForceMode2D.Impulse);
+            rb.AddForce(force/*, ForceMode2D.Impulse*/);
         }
             // Applique des dégâts au joueur (à implémenter dans PlayerController)
             Destroy(gameObject); // Détruit la balle après collision

@@ -69,11 +69,6 @@ public class PlayerController : MonoBehaviour
         if (moveInput != 0 && isGrounded && !isPlayingFootsteps)
         {
             StartCoroutine(PlayFootsteps());
-            _animator.SetBool(_movingBoolHash, true);
-        }
-        else
-        {
-            _animator.SetBool(_movingBoolHash, false);
         }
     }
     private IEnumerator PlayFootsteps()
@@ -187,6 +182,9 @@ public class PlayerController : MonoBehaviour
         {
             isWallSliding = false;
         }
+        
+        if(rb.velocity.x > 0.5 || rb.velocity.x < 0.5) _animator.SetBool(_movingBoolHash, true);
+        else _animator.SetBool(_movingBoolHash, false);
 
         // Vérifier si le joueur descend
         if (rb.velocity.y < 0)

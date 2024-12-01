@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     private bool isWallSliding;
     public bool isFacingRight = true;
     public bool canMove = true;
+    public bool pressedStart;
     private int wallDirection;
     private Collider2D myCollider;
     private bool isPlayingFootsteps;
@@ -137,7 +138,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        _animator.enabled = GameManager.Instance.unlockedJump && !_inGlitchAnimation && !GameManager.Instance.hasGun;
+        _animator.enabled = (GameManager.Instance.unlockedJump || !pressedStart) && !_inGlitchAnimation && !GameManager.Instance.hasGun;
+        if (!_animator.enabled  && !_inGlitchAnimation)
+        {
+            spriteRenderer.sprite = glitchedSprite;
+        }
+        
         if (GameManager.Instance.hasGun)
         {
             spriteRenderer.sprite = spriteWithGun;
@@ -203,6 +209,11 @@ public class PlayerController : MonoBehaviour
     public void GlitchAnim()
     {
         StartGlitchAnimation(spriteRenderer, glitchedSprite, normalSprite, 1f, 0.2f);
+    }
+
+    public void StartAnim()
+    {
+        StartGlitchAnimation(spriteRenderer, normalSprite, glitchedSprite, 1f, 0.2f);
     }
 
     void WallJump()

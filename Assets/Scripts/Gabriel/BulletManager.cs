@@ -22,7 +22,7 @@ public class BulletManager : MonoBehaviour
             gameObject.SetActive(true);
         }
         // Vérifie si le joueur appuie sur LeftShift pour tirer
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             SpawnNewBall(); // Crée une nouvelle balle
         }

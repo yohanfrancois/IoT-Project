@@ -95,7 +95,10 @@ public class EventLoad : MonoBehaviour
                 characterPosition = new Vector3(-881, 475, 0),
                 characterRotation = new Vector3(0, 0, -90)
             };
-
+            
+            PlayerController.Instance.pressedStart = true;
+            PlayerController.Instance.StartAnim();
+            
             DialogueManager.Instance.StartDialogue(dialogue);
 
             // Attendre que l'animation se termine.

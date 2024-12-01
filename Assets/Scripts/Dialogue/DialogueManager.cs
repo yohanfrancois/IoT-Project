@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
 
     public TextMeshProUGUI dialogueText;
+    public RectTransform imageTransform;
     public Image characterImage;
     public AudioSource audioSource;
     public GameObject dialoguePanel;
@@ -21,6 +23,19 @@ public class DialogueManager : MonoBehaviour
 
     public List<AudioClip> dialoguesList;
     public List<Sprite> spritesList;
+
+    private static int currentDialogueIndex = 0;
+
+    public static int GetDialogueIndex()
+    {
+        currentDialogueIndex++;
+        return currentDialogueIndex-1;
+    }
+
+    public static int TryDialogueIndex()
+    {
+        return currentDialogueIndex;
+    }
 
     void Awake()
     {
@@ -46,7 +61,7 @@ public class DialogueManager : MonoBehaviour
                 dialogueText.text = currentDialogueSegments.Dequeue();
             }
 
-            if (isDialogueActive && !isAudioPlaying)
+            else if (isDialogueActive && !isAudioPlaying)
             {
                 DisplayNextSentence();
             }
@@ -84,8 +99,8 @@ public class DialogueManager : MonoBehaviour
             Dialogue dialogue = dialoguesQueue.Dequeue();
             SplitDialogueText(dialogue.text);
             characterImage.sprite = dialogue.characterSprite;
-            characterImage.transform.position = dialogue.characterPosition;
-            characterImage.transform.rotation = Quaternion.Euler(dialogue.characterRotation);
+            imageTransform.localPosition = dialogue.characterPosition;
+            imageTransform.rotation = Quaternion.Euler(dialogue.characterRotation);
 
             audioSource.clip = dialogue.audioClip;
             audioSource.Play();
@@ -127,5 +142,74 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         currentDialogueSegments.Clear(); // Clear the segments queue after ending the dialogue
         dialoguesQueue.Clear();
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Cedric")
+        {
+            IfLevelScene();
+        }
+        else if (scene.name == "Baptiste")
+        {
+            IfMenuScene();
+        }
+        // Ajoutez d'autres conditions pour d'autres scènes si nécessaire
+    }
+
+    public void IfLevelScene()
+    {
+        if(TryDialogueIndex() == 5)
+        {
+            Dialogue dialogue = new Dialogue
+            {
+                text = "Voilà, ça c’est censé être le niveau 1 ! enfin ce qu’il en reste...",
+                audioClip = Instance.dialoguesList[GetDialogueIndex()],
+                characterSprite = Instance.spritesList[3],
+                characterPosition = new Vector3(-750, 300, 0),
+                characterRotation = new Vector3(0, 0, -90)
+            };
+
+            Instance.StartDialogue(dialogue);
+
+            Dialogue dialogue2 = new Dialogue
+            {
+                text = "Y’a rien qui marche, même la luminosité fonctionne plus !",
+                audioClip = Instance.dialoguesList[GetDialogueIndex()],
+                characterSprite = Instance.spritesList[1],
+                characterPosition = new Vector3(480, 150, 0),
+                characterRotation = new Vector3(0, 0, -100)
+            };
+
+            Instance.StartDialogue(dialogue2);
+        }
+        else if(TryDialogueIndex() == 7)
+        {
+            Dialogue dialogue = new Dialogue
+            {
+                text = "Ok super… Maintenant on peut voir que même les textures des sols ne chargent pas… trop cool !",
+                audioClip = Instance.dialoguesList[GetDialogueIndex()],
+                characterSprite = Instance.spritesList[1],
+                characterPosition = new Vector3(480, 150, 0),
+                characterRotation = new Vector3(0, 0, -100)
+            };
+
+            Instance.StartDialogue(dialogue);
+        }
+    }
+
+    public void IfMenuScene()
+    {
+
     }
 }

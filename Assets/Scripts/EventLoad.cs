@@ -60,9 +60,23 @@ public class EventLoad : MonoBehaviour
             _animatorLight.SetBool("IsClicked", true); // Déclenche l'animation.
             _isAnimationPlaying = true;
 
+            AudioManager.Instance.StopMusic();
+
+            
             // Attendre que l'animation commence.
             yield return new WaitForSeconds(1f);
             _animatorLight2.SetBool("IsClicked", true); // Déclenche l'animation.
+
+            Dialogue dialogue = new Dialogue
+            {
+                text = "MAIS !!? Qu’est ce qui se passe ?",
+                audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+                characterSprite = DialogueManager.Instance.spritesList[5],
+                characterPosition = new Vector3(-881, 475, 0),
+                characterRotation = new Vector3(0, 0, -90)
+            };
+
+            DialogueManager.Instance.StartDialogue(dialogue);
 
             // Attendre que l'animation se termine.
             while (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
@@ -94,6 +108,19 @@ public class EventLoad : MonoBehaviour
             _particleSystemfront.Play();
             AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.secondExplosion);
             yield return new WaitForSeconds(1f); // Délai optionnel avant d'éteindre.
+
+            Dialogue dialogue2 = new Dialogue
+            {
+                text = "Mais Arrête d’appuyer ! Tu vas casser mon jeu !",
+                audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+                characterSprite = DialogueManager.Instance.spritesList[1],
+                characterPosition = new Vector3(760, 55, 0),
+                characterRotation = new Vector3(0, 0, -75)
+            };
+
+            DialogueManager.Instance.StartDialogue(dialogue2);
+            AudioManager.Instance.PlayMusic(1);
+
             lightController?.LightOff(); // Éteindre les lumières.
             yield return new WaitForSeconds(0.3f); // Délai optionnel avant de rallumer
             lightController?.LightOn(); // Rallumer les lumières.
@@ -105,6 +132,42 @@ public class EventLoad : MonoBehaviour
             lightController?.LightOff(); // Éteindre les lumières.
             yield return new WaitForSeconds(0.1f); // Délai optionnel avant de rallumer.
             lightController?.LightOn(); // Rallumer les lumières.
+            yield return new WaitForSeconds(0.8f); // Délai optionnel avant de rallumer.
+
+
+            Dialogue dialogue3 = new Dialogue
+            {
+                text = "AH bah bravo... ça devait être un bête jeu de plateforme, avec un prince qui part sauver sa dulcinée...",
+                audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+                characterSprite = DialogueManager.Instance.spritesList[3],
+                characterPosition = new Vector3(-750, -400, 0),
+                characterRotation = new Vector3(0, 0, -90)
+            };
+
+            DialogueManager.Instance.StartDialogue(dialogue3);
+
+            Dialogue dialogue4 = new Dialogue
+            {
+                text = "Mais regarde ce que t’as fais ! Le prince est bloqué...",
+                audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+                characterSprite = DialogueManager.Instance.spritesList[2],
+                characterPosition = new Vector3(57, -360, 0),
+                characterRotation = new Vector3(0, 0, -105)
+            };
+
+            DialogueManager.Instance.StartDialogue(dialogue4);
+
+            Dialogue dialogue5 = new Dialogue
+            {
+                text = "Bon. J’imagine que c’est à elle de le sauver. Au moins ça rend l’histoire un peu moins cliché...",
+                audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+                characterSprite = DialogueManager.Instance.spritesList[0],
+                characterPosition = new Vector3(500, 165, 0),
+                characterRotation = new Vector3(0, 0, -253)
+            };
+
+            DialogueManager.Instance.StartDialogue(dialogue5);
+
         }
 
         Debug.Log("Vous avez trouvé le bouton " + _startButton.name);

@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Animator _animator;
     private int _movingBoolHash;
+    private bool _inGlitchAnimation;
 
     [SerializeField]
     private float wallJumpDuration = 0.2f; // Durée pendant laquelle le mouvement horizontal est désactivé
@@ -135,7 +136,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        _animator.enabled = GameManager.Instance.unlockedJump;
+        _animator.enabled = GameManager.Instance.unlockedJump && !_inGlitchAnimation;
         eyesRenderer.enabled = GameManager.Instance.hasEyes;
         if (platform != null)
         {
@@ -231,6 +232,7 @@ public class PlayerController : MonoBehaviour
     {
         float elapsedTime = 0f;
         bool useSpriteA = true;
+        _inGlitchAnimation = true;
 
         while (elapsedTime < glitchDuration)
         {
@@ -239,7 +241,7 @@ public class PlayerController : MonoBehaviour
             elapsedTime += glitchInterval;
             yield return new WaitForSeconds(glitchInterval);
         }
-
+        _inGlitchAnimation = false;
         // À la fin de l'animation, définissez le sprite final
         spriteRenderer.sprite = spriteB;
     }

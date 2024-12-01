@@ -39,7 +39,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        PlayMusic(1);
+        PlayMusic(2);
     }
 
     public void PlaySoundEffect(AudioClip clip)

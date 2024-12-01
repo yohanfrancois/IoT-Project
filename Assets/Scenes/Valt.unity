@@ -130,6 +130,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1423015146829539327, guid: 01ac2df48f6f3c14d811e3cd9cc33c5b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8191521
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423015146829539327, guid: 01ac2df48f6f3c14d811e3cd9cc33c5b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423015146829539327, guid: 01ac2df48f6f3c14d811e3cd9cc33c5b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423015146829539327, guid: 01ac2df48f6f3c14d811e3cd9cc33c5b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5735764
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423015146829539327, guid: 01ac2df48f6f3c14d811e3cd9cc33c5b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 482
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423015146829539327, guid: 01ac2df48f6f3c14d811e3cd9cc33c5b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423015146829539327, guid: 01ac2df48f6f3c14d811e3cd9cc33c5b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423015146829539327, guid: 01ac2df48f6f3c14d811e3cd9cc33c5b, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2762982304835550687, guid: 01ac2df48f6f3c14d811e3cd9cc33c5b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 371.7283
@@ -172,12 +204,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4747861456884142192, guid: 01ac2df48f6f3c14d811e3cd9cc33c5b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5412720143931191691, guid: 01ac2df48f6f3c14d811e3cd9cc33c5b, type: 3}
       propertyPath: m_Name
       value: PackageDialogue
       objectReference: {fileID: 0}
+    - target: {fileID: 8104503001460409061, guid: 01ac2df48f6f3c14d811e3cd9cc33c5b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6a13a9d008c6ee24ea858cceae88566e, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

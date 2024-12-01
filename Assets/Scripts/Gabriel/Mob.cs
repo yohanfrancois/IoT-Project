@@ -69,6 +69,17 @@ public class Mob : MonoBehaviour
     // Cette méthode est appelée lorsque le mob meurt
     public void Die()
     {
+        Dialogue dialogue = new Dialogue
+        {
+            text = "Wow tu lui as pris son pistolet ! Y’a peut être moyen de libérer ton prince avec :D",
+            audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+            characterSprite = DialogueManager.Instance.spritesList[0],
+            characterPosition = new Vector3(-720, 135, 0),
+            characterRotation = new Vector3(0, 0, -90)
+        };
+
+        DialogueManager.Instance.StartDialogue(dialogue);
+
         Destroy(gameObject); // Détruit le mob
     }
 

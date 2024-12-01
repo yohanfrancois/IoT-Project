@@ -5,6 +5,7 @@ public class Inventory : MonoBehaviour
 {
     [SerializeField] private GameObject itemsPrefab;
     [SerializeField] private GameObject platFormPrefab;
+    [SerializeField] private GameObject bg;
     public static Inventory Instance;
     private List<GameObject> _items = new();
 
@@ -50,6 +51,8 @@ public class Inventory : MonoBehaviour
         {
             item.SetActive(true);
         }
+
+        bg.SetActive(true);
     }
 
     public void HideItems()
@@ -59,5 +62,7 @@ public class Inventory : MonoBehaviour
         {
             item.SetActive(false);
         }
+
+        bg.SetActive(false);
     }
 }

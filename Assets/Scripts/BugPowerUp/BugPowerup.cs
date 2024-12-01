@@ -25,7 +25,7 @@ public class BugPowerup : MonoBehaviour
     {
         cam = Camera.main;
         originalFOV = cam.fieldOfView;
-    switch (unlocked)
+        switch (unlocked)
             {
                 case PowerupType.Platform:
                     if (GameManager.Instance.unlockedPlatform){
@@ -65,26 +65,6 @@ public class BugPowerup : MonoBehaviour
                 StartCoroutine(ReturnToOriginalFOV());
             }
         }
-
-        /*if (unlocked == PowerupType.Platform && GameManager.Instance.unlockedPlatform == true)
-        {
-            gameObject.SetActive(false);
-        }
-
-        if (unlocked == PowerupType.Jump && GameManager.Instance.unlockedJump == true)
-        {
-            gameObject.SetActive(false);
-        }
-
-        if (unlocked == PowerupType.Inventory && GameManager.Instance.unlockedInventory == true)
-        {
-            gameObject.SetActive(false);
-        }
-
-        if (unlocked == PowerupType.WallJump && GameManager.Instance.unlockedWallJump == true)
-        {
-            gameObject.SetActive(false);
-        }*/
     }
 
     private IEnumerator ReturnToOriginalFOV()

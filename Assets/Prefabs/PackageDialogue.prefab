@@ -230,8 +230,6 @@ GameObject:
   - component: {fileID: 6208450211711715511}
   - component: {fileID: 6256725018873365547}
   - component: {fileID: 6864516169149579641}
-  - component: {fileID: 9071468218891962755}
-  - component: {fileID: 613636087371323237}
   m_Layer: 5
   m_Name: DialogueCanvas
   m_TagString: Untagged
@@ -324,13 +322,149 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!82 &9071468218891962755
+--- !u!1 &5412720143931191691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2762982304835550687}
+  - component: {fileID: 6130503110569954777}
+  - component: {fileID: 8832848463626268796}
+  - component: {fileID: 1352866054624654001}
+  m_Layer: 0
+  m_Name: PackageDialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2762982304835550687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5412720143931191691}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 371.7283, y: 633.6, z: -9.701524}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3918229283394426390}
+  - {fileID: 8118956762102420850}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6130503110569954777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5412720143931191691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b64c1eb9976c1499b086389b46604d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueText: {fileID: 596573080156358571}
+  characterImage: {fileID: 8104503001460409061}
+  audioSource: {fileID: 1352866054624654001}
+  dialoguePanel: {fileID: 4747861456884142192}
+  dialoguesList:
+  - {fileID: 8300000, guid: 0b3f3df6b4d71b24e9c2bd469c00d720, type: 3}
+  - {fileID: 8300000, guid: af654a0b2c747ce48aa8e7e80654c10e, type: 3}
+  - {fileID: 8300000, guid: b5c9c65b7002a364bb2a88b9455bebb0, type: 3}
+  - {fileID: 8300000, guid: 9a3fff78a958321448ad6ce5b977dade, type: 3}
+  - {fileID: 8300000, guid: feead7da98d3cc541a229acdff231679, type: 3}
+  - {fileID: 8300000, guid: 219744d3ed72d89419c816a8d523ae98, type: 3}
+  - {fileID: 8300000, guid: 50414c1debeb9044ca9a7ff31c9f3999, type: 3}
+  - {fileID: 8300000, guid: abb0d0a6cbb6ec24eb5b0422151fd58d, type: 3}
+  - {fileID: 8300000, guid: 498978c6f5c49d94baff669f97c04a42, type: 3}
+  spritesList:
+  - {fileID: 21300000, guid: 371fc6c253d2c4043b9f6b7e0d9df26b, type: 3}
+  - {fileID: 21300000, guid: e29d40b2566ab4931968468106c33e7a, type: 3}
+  - {fileID: 21300000, guid: 92070d380da8b4720a91e0ea57a79c76, type: 3}
+--- !u!114 &8832848463626268796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5412720143931191691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: e92abeec8607a91418627ab65782dd85, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bc93e4da-68c5-4806-826c-cb05c8514e24
+    m_ActionName: Player/OnMove[/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 63e5a5d1-17cc-4055-a4b7-bdc73cd743cd
+    m_ActionName: Player/OnJump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e0f7d77b-b26e-4382-8232-41881fc33863
+    m_ActionName: Player/MouseClick[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ae4faec0-d0d0-40a7-bf58-e0e069104a5d
+    m_ActionName: Player/ReturnMenu[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 28a14d74-4490-4b54-967a-d0bd37f4bbf9
+    m_ActionName: Player/Shoot[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4da895a1-03fc-4098-86ef-c462034035d9
+    m_ActionName: GameManager/OnReset[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6130503110569954777}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: OnDialogue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 38a27b43-5ecf-440a-a819-bef649140de3
+    m_ActionName: AudioManager/OnDialogue[/Keyboard/e]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: AudioManager
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!82 &1352866054624654001
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4747861456884142192}
+  m_GameObject: {fileID: 5412720143931191691}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -420,211 +554,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &613636087371323237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4747861456884142192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: e92abeec8607a91418627ab65782dd85, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: bc93e4da-68c5-4806-826c-cb05c8514e24
-    m_ActionName: Player/OnMove[/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 63e5a5d1-17cc-4055-a4b7-bdc73cd743cd
-    m_ActionName: Player/OnJump[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e0f7d77b-b26e-4382-8232-41881fc33863
-    m_ActionName: Player/MouseClick[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ae4faec0-d0d0-40a7-bf58-e0e069104a5d
-    m_ActionName: Player/ReturnMenu[/Keyboard/r]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 28a14d74-4490-4b54-967a-d0bd37f4bbf9
-    m_ActionName: Player/Shoot[/Keyboard/shift]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 4da895a1-03fc-4098-86ef-c462034035d9
-    m_ActionName: GameManager/OnReset[/Keyboard/r]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-        m_MethodName: OnDialogue
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 38a27b43-5ecf-440a-a819-bef649140de3
-    m_ActionName: AudioManager/OnDialogue[/Keyboard/e]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: AudioManager
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!1 &5412720143931191691
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2762982304835550687}
-  - component: {fileID: 6130503110569954777}
-  - component: {fileID: 8832848463626268796}
-  m_Layer: 0
-  m_Name: PackageDialogue
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2762982304835550687
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5412720143931191691}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 371.7283, y: 633.6, z: -9.701524}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3918229283394426390}
-  - {fileID: 8118956762102420850}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6130503110569954777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5412720143931191691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02b64c1eb9976c1499b086389b46604d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueText: {fileID: 596573080156358571}
-  characterImage: {fileID: 8104503001460409061}
-  audioSource: {fileID: 9071468218891962755}
-  dialoguePanel: {fileID: 4747861456884142192}
-  dialoguesList:
-  - {fileID: 8300000, guid: 0b3f3df6b4d71b24e9c2bd469c00d720, type: 3}
-  - {fileID: 8300000, guid: af654a0b2c747ce48aa8e7e80654c10e, type: 3}
-  - {fileID: 8300000, guid: b5c9c65b7002a364bb2a88b9455bebb0, type: 3}
-  - {fileID: 8300000, guid: 9a3fff78a958321448ad6ce5b977dade, type: 3}
-  - {fileID: 8300000, guid: feead7da98d3cc541a229acdff231679, type: 3}
-  - {fileID: 8300000, guid: 219744d3ed72d89419c816a8d523ae98, type: 3}
-  - {fileID: 8300000, guid: 50414c1debeb9044ca9a7ff31c9f3999, type: 3}
-  - {fileID: 8300000, guid: abb0d0a6cbb6ec24eb5b0422151fd58d, type: 3}
-  - {fileID: 8300000, guid: 498978c6f5c49d94baff669f97c04a42, type: 3}
-  spritesList:
-  - {fileID: 21300000, guid: 371fc6c253d2c4043b9f6b7e0d9df26b, type: 3}
-  - {fileID: 21300000, guid: e29d40b2566ab4931968468106c33e7a, type: 3}
-  - {fileID: 21300000, guid: 92070d380da8b4720a91e0ea57a79c76, type: 3}
---- !u!114 &8832848463626268796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5412720143931191691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: e92abeec8607a91418627ab65782dd85, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: bc93e4da-68c5-4806-826c-cb05c8514e24
-    m_ActionName: Player/OnMove[/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 63e5a5d1-17cc-4055-a4b7-bdc73cd743cd
-    m_ActionName: Player/OnJump[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e0f7d77b-b26e-4382-8232-41881fc33863
-    m_ActionName: Player/MouseClick[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ae4faec0-d0d0-40a7-bf58-e0e069104a5d
-    m_ActionName: Player/ReturnMenu[/Keyboard/r]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 28a14d74-4490-4b54-967a-d0bd37f4bbf9
-    m_ActionName: Player/Shoot[/Keyboard/shift]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 4da895a1-03fc-4098-86ef-c462034035d9
-    m_ActionName: GameManager/OnReset[/Keyboard/r]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6130503110569954777}
-        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-        m_MethodName: OnDialogue
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 38a27b43-5ecf-440a-a819-bef649140de3
-    m_ActionName: AudioManager/OnDialogue[/Keyboard/e]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: AudioManager
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &7978552378873515608
 GameObject:
   m_ObjectHideFlags: 0

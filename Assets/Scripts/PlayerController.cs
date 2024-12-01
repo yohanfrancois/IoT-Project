@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer eyesRenderer;
     [SerializeField] private Sprite glitchedSprite;
     [SerializeField] private Sprite normalSprite;
+    [SerializeField] private Sprite spriteWithGun;
     private SpriteRenderer spriteRenderer;
     private Animator _animator;
     private int _movingBoolHash;
@@ -136,7 +137,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        _animator.enabled = GameManager.Instance.unlockedJump && !_inGlitchAnimation;
+        _animator.enabled = GameManager.Instance.unlockedJump && !_inGlitchAnimation && !GameManager.Instance.hasGun;
+        if (GameManager.Instance.hasGun)
+        {
+            spriteRenderer.sprite = spriteWithGun;
+        }
         eyesRenderer.enabled = GameManager.Instance.hasEyes;
         if (platform != null)
         {

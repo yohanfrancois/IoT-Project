@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BugPowerup : MonoBehaviour
@@ -24,6 +25,29 @@ public class BugPowerup : MonoBehaviour
     {
         cam = Camera.main;
         originalFOV = cam.fieldOfView;
+    switch (unlocked)
+            {
+                case PowerupType.Platform:
+                    if (GameManager.Instance.unlockedPlatform){
+                        this.gameObject.SetActive(false);
+                    }
+                    break;
+                case PowerupType.Jump:
+                    if (GameManager.Instance.unlockedJump){
+                        this.gameObject.SetActive(false);
+                    }
+                    break;
+                case PowerupType.Inventory:
+                    if (GameManager.Instance.unlockedInventory){
+                        this.gameObject.SetActive(false);
+                    }
+                    break;
+                case PowerupType.WallJump:
+                    if (GameManager.Instance.unlockedWallJump){
+                        this.gameObject.SetActive(false);
+                    }
+                    break;
+            }
     }
 
     private void Update()
@@ -103,7 +127,7 @@ public class BugPowerup : MonoBehaviour
                     GameManager.Instance.SetUnlockedWallJump(true);
                     break;
             }
-            gameObject.SetActive(false);
+            
         }
     }
 }

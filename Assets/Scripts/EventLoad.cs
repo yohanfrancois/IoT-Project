@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,7 @@ public class EventLoad : MonoBehaviour
     private Animator _animatorLight;
     private Animator _animatorLight2;
     private bool _isAnimationPlaying = false;
+    private bool _isElectric = false;
     private bool _isBroken = false;
     [SerializeField] private GameObject _pauseScreen;
 

@@ -183,7 +183,7 @@ public class PlayerController : MonoBehaviour
             isWallSliding = false;
         }
         
-        if(rb.velocity.x > 0.5 || rb.velocity.x < 0.5) _animator.SetBool(_movingBoolHash, true);
+        if(rb.velocity.x > 0.5 || rb.velocity.x < -0.5) _animator.SetBool(_movingBoolHash, true);
         else _animator.SetBool(_movingBoolHash, false);
 
         // Vérifier si le joueur descend

@@ -166,7 +166,7 @@ public class PlayerController : MonoBehaviour
         canMove = false;
         rb.velocity = new Vector2(-wallDirection * wallJumpForce, jumpForce);
         Flip();
-        AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.jumpSound);
+        AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.wallJumpSound);
         StartCoroutine(EnableMovementAfterDelay());
     }
 
@@ -182,5 +182,27 @@ public class PlayerController : MonoBehaviour
         Vector3 scaler = transform.localScale;
         scaler.x *= -1;
         transform.localScale = scaler;
+    }
+
+    public void StartGlitchAnimation(SpriteRenderer spriteRenderer, Sprite spriteA, Sprite spriteB, float glitchDuration = 1f, float glitchInterval = 0.1f)
+    {
+        StartCoroutine(GlitchAnimation(spriteRenderer, spriteA, spriteB, glitchDuration, glitchInterval));
+    }
+
+    private IEnumerator GlitchAnimation(SpriteRenderer spriteRenderer, Sprite spriteA, Sprite spriteB, float glitchDuration, float glitchInterval)
+    {
+        float elapsedTime = 0f;
+        bool useSpriteA = true;
+
+        while (elapsedTime < glitchDuration)
+        {
+            spriteRenderer.sprite = useSpriteA ? spriteA : spriteB;
+            useSpriteA = !useSpriteA;
+            elapsedTime += glitchInterval;
+            yield return new WaitForSeconds(glitchInterval);
+        }
+
+        // À la fin de l'animation, définissez le sprite final
+        spriteRenderer.sprite = spriteB;
     }
 }

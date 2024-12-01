@@ -38,6 +38,11 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject); // Détruit la balle si elle touche un mur
         }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("StartingBlock"))
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject); // Détruit la balle si elle touche un mur
+        }
     }
 }
 

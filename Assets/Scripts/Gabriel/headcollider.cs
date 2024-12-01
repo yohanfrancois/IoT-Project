@@ -5,11 +5,11 @@ using UnityEngine;
 public class headcollider : MonoBehaviour
 {
     public Mob mob;
-    public GameObject bul;
+    public GameObject bulletmanager;
     
     void Start()
     {
-       bul.SetActive(false);
+       bulletmanager.SetActive(false);
        // Recherche du PlayerController dans la scène
         if (mob == null)
         {
@@ -28,7 +28,7 @@ public class headcollider : MonoBehaviour
         {
             // Si le joueur touche la tête, tue le mob
             mob.Die();
-            bul.SetActive(true);
+            bulletmanager.SetActive(true);
 
         }
     }

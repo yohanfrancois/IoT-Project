@@ -117,7 +117,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -150,6 +150,8 @@ MonoBehaviour:
   wallJumpForce: 10
   wallSlideSpeed: 2
   eyesRenderer: {fileID: 3776182770924719815}
+  glitchedSprite: {fileID: 0}
+  normalSprite: {fileID: 0}
   wallJumpDuration: 0.2
   platform: {fileID: 0}
   moveInput: 0

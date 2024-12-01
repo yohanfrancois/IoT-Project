@@ -18,6 +18,9 @@ public class BulletManager : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.hasGun){
+            gameObject.SetActive(true);
+        }
         // Vérifie si le joueur appuie sur LeftShift pour tirer
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -35,7 +38,7 @@ public class BulletManager : MonoBehaviour
         if (bulletScript != null && player != null)
         {
             // Si le joueur fait face à droite, la direction est `Vector2.right`, sinon `Vector2.left`
-            Vector2 direction = player.isFacingRight ? Vector2.right : Vector2.left;
+            Vector2 direction = player.isFacingRight ? new Vector2(1,0) : new Vector2(-1,0);
             bulletScript.SetDirection(direction); // Définit la direction de la balle
         }
     }

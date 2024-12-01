@@ -18,6 +18,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float wallJumpForce = 10f;
     [SerializeField] private float wallSlideSpeed = 2f;
     [SerializeField] private SpriteRenderer eyesRenderer;
+    [SerializeField] private Sprite glitchedSprite;
+    [SerializeField] private Sprite normalSprite;
+    private SpriteRenderer spriteRenderer;
+    private Animator _animator;
+    private int _movingBoolHash;
 
     [SerializeField]
     private float wallJumpDuration = 0.2f; // Durée pendant laquelle le mouvement horizontal est désactivé
@@ -51,12 +56,24 @@ public class PlayerController : MonoBehaviour
         myCollider = GetComponent<Collider2D>();
     }
 
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+        _movingBoolHash = Animator.StringToHash("IsMoving");
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<float>();
         if (moveInput != 0 && isGrounded && !isPlayingFootsteps)
         {
             StartCoroutine(PlayFootsteps());
+            _animator.SetBool(_movingBoolHash, true);
+        }
+        else
+        {
+            _animator.SetBool(_movingBoolHash, false);
         }
     }
     private IEnumerator PlayFootsteps()
@@ -123,6 +140,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        _animator.enabled = GameManager.Instance.unlockedJump;
         eyesRenderer.enabled = GameManager.Instance.hasEyes;
         if (platform != null)
         {
@@ -176,6 +194,11 @@ public class PlayerController : MonoBehaviour
             // Activer les collisions avec les plateformes
             myCollider.enabled = true;
         }
+    }
+
+    public void GlitchAnim()
+    {
+        StartGlitchAnimation(spriteRenderer, glitchedSprite, normalSprite, 1f, 0.2f);
     }
 
     void WallJump()

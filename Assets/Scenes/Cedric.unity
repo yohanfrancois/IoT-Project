@@ -192,20 +192,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9121157950670236306, guid: 3036efd3315cc584d8cb5f5ecb8ab616, type: 3}
   m_PrefabInstance: {fileID: 1505733906}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &60417826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 60417825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b255b3e60b89c448fa62f6a896c48164, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ballPrefab: {fileID: 1427242471450962352, guid: c3e1433d367274740b9795eb953a0507, type: 3}
-  player: {fileID: 0}
 --- !u!1 &62584924
 GameObject:
   m_ObjectHideFlags: 0
@@ -5818,11 +5804,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 385019180880712762, guid: 3036efd3315cc584d8cb5f5ecb8ab616, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.55
+      value: -8.56
       objectReference: {fileID: 0}
     - target: {fileID: 385019180880712762, guid: 3036efd3315cc584d8cb5f5ecb8ab616, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.15
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 385019180880712762, guid: 3036efd3315cc584d8cb5f5ecb8ab616, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5982,12 +5968,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2543399275781048176, guid: 3036efd3315cc584d8cb5f5ecb8ab616, type: 3}
+    - {fileID: 8920909996385061336, guid: 3036efd3315cc584d8cb5f5ecb8ab616, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9121157950670236306, guid: 3036efd3315cc584d8cb5f5ecb8ab616, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 60417826}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3036efd3315cc584d8cb5f5ecb8ab616, type: 3}
 --- !u!1001 &1509735686
 PrefabInstance:

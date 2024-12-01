@@ -77,6 +77,7 @@ public class Mob : MonoBehaviour
     {
         if (other.gameObject.layer == 7) //Player layer
         {
+            _animator.SetTrigger(_playerInRangeTriggerHash);
             StartCoroutine(FireBulletEveryXSeconds());
         }
     }

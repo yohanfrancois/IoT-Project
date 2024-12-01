@@ -97,6 +97,8 @@ public class EventLoad : MonoBehaviour
             };
             
             PlayerController.Instance.pressedStart = true;
+            PlayerController.Instance.StartAnim();
+            
             DialogueManager.Instance.StartDialogue(dialogue);
 
             // Attendre que l'animation se termine.

@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         _animator.enabled = (GameManager.Instance.unlockedJump || !pressedStart) && !_inGlitchAnimation && !GameManager.Instance.hasGun;
-        if (!_animator.enabled)
+        if (!_animator.enabled  && !_inGlitchAnimation)
         {
             spriteRenderer.sprite = glitchedSprite;
         }
@@ -209,6 +209,11 @@ public class PlayerController : MonoBehaviour
     public void GlitchAnim()
     {
         StartGlitchAnimation(spriteRenderer, glitchedSprite, normalSprite, 1f, 0.2f);
+    }
+
+    public void StartAnim()
+    {
+        StartGlitchAnimation(spriteRenderer, normalSprite, glitchedSprite, 1f, 0.2f);
     }
 
     void WallJump()

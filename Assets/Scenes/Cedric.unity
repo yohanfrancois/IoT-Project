@@ -3830,6 +3830,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 24264249724131825, guid: 8333e6fbdce4aeb4693fabecc1ae86a9, type: 3}
+      propertyPath: leftOnce
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 24264249724131825, guid: 8333e6fbdce4aeb4693fabecc1ae86a9, type: 3}
+      propertyPath: returnedOnce
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 24264249724131825, guid: 8333e6fbdce4aeb4693fabecc1ae86a9, type: 3}
+      propertyPath: unlockedPlatform
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 901638389026515290, guid: 8333e6fbdce4aeb4693fabecc1ae86a9, type: 3}
       propertyPath: intro
       value: 

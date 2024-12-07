@@ -13,8 +13,7 @@ public class GameManager : MonoBehaviour
     public bool unlockedInventory ;
     public bool unlockedWallJump ;
     public bool canResetToMenu ;
-    public bool hasEyes;
-    public bool hasGun=false;
+    public bool hasGun;
     public bool hasPressedStart;
     public bool returnedOnce;
     public bool leftOnce;
@@ -70,6 +69,8 @@ public class GameManager : MonoBehaviour
 
         DialogueManager.Instance.StartDialogue(dialogue2);
 
+        PlayerController.Instance.ActivateEyes();
+
         AudioManager.Instance.PlayMusic(2);
     }   
 
@@ -97,10 +98,8 @@ public class GameManager : MonoBehaviour
         };
 
         DialogueManager.Instance.StartDialogue(dialogue2);
-        GameManager.Instance.hasEyes = false;
 
-
-        PlayerController.Instance.GlitchAnim();
+        PlayerController.Instance.GetNormalSprite();
     }
 
     public void SetUnlockedInventory(bool value)
@@ -235,6 +234,22 @@ public class GameManager : MonoBehaviour
 
         DialogueManager.Instance.StartDialogue(dialogue20);
 
+    }
+
+    public IEnumerator GlitchAnimation(SpriteRenderer spriteRenderer, Sprite spriteA, Sprite spriteB, float glitchDuration, float glitchInterval)
+    {
+        float elapsedTime = 0f;
+        bool useSpriteA = true;
+
+        while (elapsedTime < glitchDuration)
+        {
+            spriteRenderer.sprite = useSpriteA ? spriteA : spriteB;
+            useSpriteA = !useSpriteA;
+            elapsedTime += glitchInterval;
+            yield return new WaitForSeconds(glitchInterval);
+        }
+        // À la fin de l'animation, définissez le sprite final
+        spriteRenderer.sprite = spriteB;
     }
 
 }

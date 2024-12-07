@@ -28,6 +28,9 @@ public class EventLoad : MonoBehaviour
     private bool _isAnimationPlaying = false;
     private bool _isElectric = false;
     private bool _isBroken = false;
+
+    private bool firstClick = false;
+
     [SerializeField] private GameObject _pauseScreen;
 
     void Start()
@@ -55,15 +58,43 @@ public class EventLoad : MonoBehaviour
         }
         else
         {
-            _startButton = GameObject.Find("Button").GetComponent<Button>();
-            _animator = _platform.GetComponent<Animator>();
-            _animatorLight = _light.GetComponent<Animator>();
-            _animatorLight2 = _light2.GetComponent<Animator>();
-            _animatorLogo = _logo.GetComponent<Animator>();
-            _startButton.onClick.AddListener(() => StartCoroutine(ButtonSelected()));
+            
+            
+                _startButton = GameObject.Find("Button").GetComponent<Button>();
+                _animator = _platform.GetComponent<Animator>();
+                _animatorLight = _light.GetComponent<Animator>();
+                _animatorLight2 = _light2.GetComponent<Animator>();
+                _animatorLogo = _logo.GetComponent<Animator>();
+                _startButton.onClick.AddListener(() => HitButton());
+            
         }
         _settingsButton = GameObject.Find("Settings").GetComponent<Button>();
         _settingsButton.onClick.AddListener(() => StartCoroutine(SettingsSelected()));
+    }
+
+    private void HitButton()
+    {
+        if (!firstClick)
+        {
+            Dialogue dialogue = new Dialogue
+            {
+                text = "MAIS !!? Qu’est ce qui se passe ?",
+                audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+                characterSprite = DialogueManager.Instance.spritesList[5],
+                characterPosition = new Vector3(-881, 475, 0),
+                characterRotation = new Vector3(0, 0, -90)
+            };
+            DialogueManager.Instance.StartDialogue(dialogue);
+            _particleSystemleft.Play();
+            _particleSystemright.Play();
+            AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.firstExplosion);
+            firstClick = true;
+        }
+        else
+        {
+            StartCoroutine(ButtonSelected());
+        }
+
     }
 
     IEnumerator ButtonSelected()
@@ -84,18 +115,19 @@ public class EventLoad : MonoBehaviour
             yield return new WaitForSeconds(1f);
             _animatorLight2.SetBool("IsClicked", true); // Déclenche l'animation.
 
+           
+            
+            PlayerController.Instance.GetGlitchedSprite();
+
             Dialogue dialogue = new Dialogue
             {
-                text = "MAIS !!? Qu’est ce qui se passe ?",
+                text = "Mais Arrête d’appuyer ! Tu vas casser mon jeu !",
                 audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
-                characterSprite = DialogueManager.Instance.spritesList[5],
-                characterPosition = new Vector3(-881, 475, 0),
-                characterRotation = new Vector3(0, 0, -90)
+                characterSprite = DialogueManager.Instance.spritesList[1],
+                characterPosition = new Vector3(760, 55, 0),
+                characterRotation = new Vector3(0, 0, -75)
             };
-            
-            GameManager.Instance.hasPressedStart = true;
-            PlayerController.Instance.StartAnim();
-            
+
             DialogueManager.Instance.StartDialogue(dialogue);
 
             // Attendre que l'animation se termine.
@@ -130,16 +162,6 @@ public class EventLoad : MonoBehaviour
             AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.secondExplosion);
             yield return new WaitForSeconds(1f); // Délai optionnel avant d'éteindre.
 
-            Dialogue dialogue2 = new Dialogue
-            {
-                text = "Mais Arrête d’appuyer ! Tu vas casser mon jeu !",
-                audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
-                characterSprite = DialogueManager.Instance.spritesList[1],
-                characterPosition = new Vector3(760, 55, 0),
-                characterRotation = new Vector3(0, 0, -75)
-            };
-
-            DialogueManager.Instance.StartDialogue(dialogue2);
             AudioManager.Instance.PlayMusic(1);
 
             lightController?.LightOff(); // Éteindre les lumières.
@@ -154,6 +176,7 @@ public class EventLoad : MonoBehaviour
             yield return new WaitForSeconds(0.1f); // Délai optionnel avant de rallumer.
             lightController?.LightOn(); // Rallumer les lumières.
             yield return new WaitForSeconds(0.8f); // Délai optionnel avant de rallumer.
+            GameManager.Instance.hasPressedStart = true;
 
 
             Dialogue dialogue3 = new Dialogue

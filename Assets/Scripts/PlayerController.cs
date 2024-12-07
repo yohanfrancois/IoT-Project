@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Animator _animator;
     private int _movingBoolHash;
-    private bool _inGlitchAnimation;
 
     [SerializeField]
     private float wallJumpDuration = 0.2f; // Durée pendant laquelle le mouvement horizontal est désactivé
@@ -34,14 +33,15 @@ public class PlayerController : MonoBehaviour
     public float moveInput;
     private bool isGrounded;
     private bool isTouchingWall;
-    private bool isHalfTouchingWall;
-    private bool kindaTouchingWallAtThisPointIDontCareAboutVariableNames;
     private bool isWallSliding;
     public bool isFacingRight = true;
     public bool canMove = true;
     private int wallDirection;
     private Collider2D myCollider;
     private bool isPlayingFootsteps;
+
+    public GameObject ballPrefab; // Référence au Prefab de la balle
+
 
     void Awake()
     {
@@ -63,15 +63,35 @@ public class PlayerController : MonoBehaviour
         _animator = GetComponent<Animator>();
         _movingBoolHash = Animator.StringToHash("IsMoving");
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (!GameManager.Instance.hasPressedStart)
+        {
+            spriteRenderer.sprite = normalSprite;
+        }
+
+        else if(GameManager.Instance.hasGun)
+        {
+            spriteRenderer.sprite = spriteWithGun;
+        }
+
+        else if (GameManager.Instance.unlockedJump)
+        {
+            spriteRenderer.sprite = normalSprite;
+        }
+        else
+        {
+               spriteRenderer.sprite = glitchedSprite;
+            _animator.enabled = false;
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        moveInput = context.ReadValue<float>();
-        if (moveInput != 0 && isGrounded && !isPlayingFootsteps)
-        {
-            StartCoroutine(PlayFootsteps());
-        }
+        if(GameManager.Instance.hasPressedStart)
+            moveInput = context.ReadValue<float>();
+
+        
+        
     }
     private IEnumerator PlayFootsteps()
     {
@@ -130,25 +150,53 @@ public class PlayerController : MonoBehaviour
 
     public void Shoot(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (GameManager.Instance.hasGun && context.performed)
         {
-            print("pew! pew!");
+            Instantiate(ballPrefab, transform.position, transform.rotation).GetComponent<Bullet>().SetDirection(isFacingRight ? new Vector2(1, 0) : new Vector2(-1, 0));
         }
+    }
+
+
+    public void ActivateEyes()
+    {
+        StartCoroutine(GameManager.Instance.GlitchAnimation(eyesRenderer, null, eyesRenderer.sprite, 1.5f, 0.2f));
+    }
+
+    public void DesactivateEyes()
+    {
+        StartCoroutine(GameManager.Instance.GlitchAnimation(eyesRenderer, eyesRenderer.sprite, null, 1.5f, 0.2f));
+    }
+
+    public void GetGlitchedSprite()
+    {
+        StartCoroutine(GameManager.Instance.GlitchAnimation(spriteRenderer, normalSprite, glitchedSprite, 1.5f, 0.2f));
+    }
+
+    public void GetNormalSprite()
+    {
+        StartCoroutine(GameManager.Instance.GlitchAnimation(spriteRenderer, glitchedSprite, normalSprite, 1.5f, 0.2f));
     }
 
     void Update()
     {
-        _animator.enabled = (GameManager.Instance.unlockedJump || !GameManager.Instance.hasPressedStart) && !_inGlitchAnimation && !GameManager.Instance.hasGun;
-        if (!_animator.enabled  && !_inGlitchAnimation)
+
+        if (moveInput != 0)
         {
-            spriteRenderer.sprite = glitchedSprite;
+            rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+            if (moveInput > 0)
+            {
+                Flip(true);
+            }
+            else
+            {
+                Flip(false);
+            }
+            if (isGrounded && !isPlayingFootsteps)
+            {
+                StartCoroutine(PlayFootsteps());
+            }
         }
-        
-        if (GameManager.Instance.hasGun)
-        {
-            spriteRenderer.sprite = spriteWithGun;
-        }
-        eyesRenderer.enabled = GameManager.Instance.hasEyes;
+
         if (platform != null)
         {
             if (!GameManager.Instance.unlockedPlatform)
@@ -160,33 +208,11 @@ public class PlayerController : MonoBehaviour
                 platform.SetActive(true);
             }
         }
-        
-        if(!GameManager.Instance.returnedOnce && GameManager.Instance.leftOnce) canMove = false;
-        
-        if (canMove)
-        {
-            if ((!isTouchingWall && !isHalfTouchingWall && !kindaTouchingWallAtThisPointIDontCareAboutVariableNames) ||
-                ((isTouchingWall || isHalfTouchingWall || kindaTouchingWallAtThisPointIDontCareAboutVariableNames) && moveInput != wallDirection))
-            {
-                rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
-            }
-
-            if (isFacingRight && moveInput < 0)
-            {
-                Flip();
-            }
-            else if (!isFacingRight && moveInput > 0)
-            {
-                Flip();
-            }
-        }
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
         isTouchingWall = Physics2D.OverlapCircle(wallCheck.position, 0.1f, groundLayer);
-        isHalfTouchingWall = Physics2D.OverlapCircle(wallCheck2.position, 0.1f, groundLayer);
-        kindaTouchingWallAtThisPointIDontCareAboutVariableNames = Physics2D.OverlapCircle(wallCheck3WhatIsThisCode.position, 0.1f, groundLayer);
-
-        if ((isTouchingWall || isHalfTouchingWall || kindaTouchingWallAtThisPointIDontCareAboutVariableNames) && !isGrounded && rb.velocity.y < 0)
+        
+        if (isTouchingWall && !isGrounded && rb.velocity.y < 0)
         {
             isWallSliding = true;
             rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
@@ -208,21 +234,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void GlitchAnim()
-    {
-        StartGlitchAnimation(spriteRenderer, glitchedSprite, normalSprite, 1f, 0.2f);
-    }
-
-    public void StartAnim()
-    {
-        StartGlitchAnimation(spriteRenderer, normalSprite, glitchedSprite, 1f, 0.2f);
-    }
-
     void WallJump()
     {
         canMove = false;
         rb.velocity = new Vector2(-wallDirection * wallJumpForce, jumpForce);
-        Flip();
+        
+        Flip(!isFacingRight);
+
         AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.wallJumpSound);
         StartCoroutine(EnableMovementAfterDelay());
     }
@@ -233,34 +251,18 @@ public class PlayerController : MonoBehaviour
         canMove = true;
     }
 
-    public void Flip()
+    public void Flip(bool direction)
     {
-        isFacingRight = !isFacingRight;
-        Vector3 scaler = transform.localScale;
-        scaler.x *= -1;
-        transform.localScale = scaler;
-    }
-
-    public void StartGlitchAnimation(SpriteRenderer spriteRenderer, Sprite spriteA, Sprite spriteB, float glitchDuration = 1f, float glitchInterval = 0.1f)
-    {
-        StartCoroutine(GlitchAnimation(spriteRenderer, spriteA, spriteB, glitchDuration, glitchInterval));
-    }
-
-    private IEnumerator GlitchAnimation(SpriteRenderer spriteRenderer, Sprite spriteA, Sprite spriteB, float glitchDuration, float glitchInterval)
-    {
-        float elapsedTime = 0f;
-        bool useSpriteA = true;
-        _inGlitchAnimation = true;
-
-        while (elapsedTime < glitchDuration)
+        isFacingRight = direction;
+        if(isFacingRight)
         {
-            spriteRenderer.sprite = useSpriteA ? spriteA : spriteB;
-            useSpriteA = !useSpriteA;
-            elapsedTime += glitchInterval;
-            yield return new WaitForSeconds(glitchInterval);
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
-        _inGlitchAnimation = false;
-        // À la fin de l'animation, définissez le sprite final
-        spriteRenderer.sprite = spriteB;
+        else
+        {
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
     }
+
+    
 }

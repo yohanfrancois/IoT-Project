@@ -187,11 +187,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7b1a33e71c139e4aa78c6667bd92536, type: 3}
---- !u!1 &60417825 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9121157950670236306, guid: 3036efd3315cc584d8cb5f5ecb8ab616, type: 3}
-  m_PrefabInstance: {fileID: 1505733906}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &62584924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1868,7 +1863,7 @@ PrefabInstance:
     - target: {fileID: 1999820359119241701, guid: f57a48e75c3814b8d950ab6af218a11e, type: 3}
       propertyPath: bulletmanager
       value: 
-      objectReference: {fileID: 60417825}
+      objectReference: {fileID: 0}
     - target: {fileID: 2226005613601791982, guid: f57a48e75c3814b8d950ab6af218a11e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.95
@@ -1933,7 +1928,7 @@ PrefabInstance:
     - target: {fileID: 2797012562609803869, guid: 56864aef7cfaa47f0b2b4f5d6e9d9b2a, type: 3}
       propertyPath: bulletManager
       value: 
-      objectReference: {fileID: 60417825}
+      objectReference: {fileID: 0}
     - target: {fileID: 3590313419831652331, guid: 56864aef7cfaa47f0b2b4f5d6e9d9b2a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.4
@@ -6176,7 +6171,10 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2543399275781048176, guid: 3036efd3315cc584d8cb5f5ecb8ab616, type: 3}
     - {fileID: 8920909996385061336, guid: 3036efd3315cc584d8cb5f5ecb8ab616, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 9121157950670236306, guid: 3036efd3315cc584d8cb5f5ecb8ab616, type: 3}
+    - {fileID: 6577475339778392150, guid: 3036efd3315cc584d8cb5f5ecb8ab616, type: 3}
+    - {fileID: 7130965160698203045, guid: 3036efd3315cc584d8cb5f5ecb8ab616, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3036efd3315cc584d8cb5f5ecb8ab616, type: 3}

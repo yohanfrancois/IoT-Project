@@ -94,7 +94,6 @@ public class BugPowerup : MonoBehaviour
             switch (unlocked)
             {
                 case PowerupType.Platform:
-                    GameManager.Instance.hasEyes = true;
                     GameManager.Instance.SetUnlockedPlatform(true);
                     break;
                 case PowerupType.Jump:

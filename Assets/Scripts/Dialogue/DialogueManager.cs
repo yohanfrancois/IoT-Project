@@ -18,13 +18,13 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<Dialogue> dialoguesQueue;
     private bool isDialogueActive = false;
-    private bool isAudioPlaying = false;
     private Queue<string> currentDialogueSegments;
 
     public List<AudioClip> dialoguesList;
     public List<Sprite> spritesList;
 
     private static int currentDialogueIndex = 0;
+    public static int redDialogueIndex = 0;
 
     public static int GetDialogueIndex()
     {
@@ -63,8 +63,10 @@ public class DialogueManager : MonoBehaviour
                 dialogueText.text = currentDialogueSegments.Dequeue();
             }
 
-            else if (isDialogueActive && !isAudioPlaying)
+            else if (isDialogueActive && !audioSource.isPlaying)
             {
+                redDialogueIndex++;
+                print("Dialogue index: " + redDialogueIndex + " " + currentDialogueIndex);
                 DisplayNextSentence();
             }
         }
@@ -106,10 +108,10 @@ public class DialogueManager : MonoBehaviour
 
             audioSource.clip = dialogue.audioClip;
             audioSource.Play();
-            isAudioPlaying = true;
             print("Playing audio"+ currentDialogueSegments.Count );
             dialogueText.text = currentDialogueSegments.Dequeue();
-            StartCoroutine(WaitForAudioToEnd());
+
+
         }
 
         
@@ -119,24 +121,29 @@ public class DialogueManager : MonoBehaviour
     {
         currentDialogueSegments.Clear();
         int maxLength = 60; // Maximum length of each segment
-        for (int i = 0; i < text.Length; i += maxLength)
+        int start = 0; // Position de départ pour chaque segment
+
+        while (start < text.Length)
         {
-            if (i + maxLength < text.Length)
+            int length = Mathf.Min(maxLength, text.Length - start); // Prend en compte la fin du texte
+            int end = start + length;
+
+            // Si on n'est pas à la fin, recherche le dernier espace avant `end`
+            if (end < text.Length && text[end] != ' ')
             {
-                currentDialogueSegments.Enqueue(text.Substring(i, maxLength));
+                int lastSpace = text.LastIndexOf(' ', end, length);
+                if (lastSpace > start)
+                {
+                    end = lastSpace;
+                }
             }
-            else
-            {
-                currentDialogueSegments.Enqueue(text.Substring(i));
-            }
+
+            // Ajoute le segment au dialogue
+            currentDialogueSegments.Enqueue(text.Substring(start, end - start));
+            start = end + 1; // Repart après l'espace
         }
     }
 
-    IEnumerator WaitForAudioToEnd()
-    {
-        yield return new WaitWhile(() => audioSource.isPlaying);
-        isAudioPlaying = false;
-    }
 
     void EndDialogue()
     {
@@ -144,6 +151,8 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         currentDialogueSegments.Clear(); // Clear the segments queue after ending the dialogue
         dialoguesQueue.Clear();
+
+       
     }
 
     void OnEnable()
@@ -196,10 +205,21 @@ public class DialogueManager : MonoBehaviour
                 characterPosition = new Vector3(480, 150, 0),
                 characterRotation = new Vector3(0, 0, -100)
             };
-
             Instance.StartDialogue(dialogue2);
+
+            Dialogue dialogue3 = new Dialogue
+            {
+                text = "Essaye de voir si la touche R fonctionne toujours pour réinitialiser le jeu",
+                audioClip = Instance.dialoguesList[GetDialogueIndex()],
+                characterSprite = Instance.spritesList[0],
+                characterPosition = new Vector3(0, 0, 0),
+                characterRotation = new Vector3(0, 0, -90)
+            };
+
+            Instance.StartDialogue(dialogue3);
+
         }
-        else if(TryDialogueIndex() == 7)
+        else if(TryDialogueIndex() == 8)
         {
             Dialogue dialogue = new Dialogue
             {

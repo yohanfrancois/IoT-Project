@@ -4,24 +4,52 @@ using UnityEngine.UI;
 
 public class LightIntensityController : MonoBehaviour
 {
-    [SerializeField] private Light2D lightToControl; // La lumière à contrôler.
-    [SerializeField] private Slider intensitySlider; // Le slider lié à la lumière.
+    [SerializeField] private Light2D lightPrince; // La lumière à contrôler.
+    [SerializeField] private Light2D lightPrincess; // La lumière à contrôler.
+    [SerializeField] private Light2D lightGeneral; // La lumière à contrôler.
+    [SerializeField] private TriggerDialogue changeScene; // La lumière à contrôler.
 
-    void Start()
+    private bool isPrince = false;
+    private bool isPrincess = false;
+    private bool isGeneral = false;
+
+    public void ChangeLightPrince(float value)
     {
-        // Initialiser le slider avec la valeur actuelle de l'intensité de la lumière.
-        if (lightToControl != null && intensitySlider != null)
+        lightPrince.intensity = value;
+        if(value == 5)
         {
-            intensitySlider.value = lightToControl.intensity;
-            intensitySlider.onValueChanged.AddListener(ChangeLightIntensity);
+            isPrince = true;
+            if(isPrince && isPrincess && isGeneral)
+            {
+                changeScene.isLightOpen = true;
+            }
         }
     }
 
-    void ChangeLightIntensity(float value)
+    public void ChangeLightPrincess(float value)
     {
-        if (lightToControl != null)
+        lightPrincess.intensity = value;
+        if(value == 5)
         {
-            lightToControl.intensity = value;
+            isPrincess = true;
+            if(isPrince && isPrincess && isGeneral)
+            {
+                changeScene.isLightOpen = true;
+            }
         }
+    }
+
+    public void ChangeLightGeneral(float value)
+    {
+        lightGeneral.intensity = value;
+        if(value == 5)
+        {
+            isGeneral = true;
+            if(isPrince && isPrincess && isGeneral)
+            {
+                changeScene.isLightOpen = true;
+            }
+        }
+
     }
 }

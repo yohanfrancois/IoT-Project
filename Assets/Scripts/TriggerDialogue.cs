@@ -1,21 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TriggerDialogue : MonoBehaviour
 {
+    [HideInInspector] public bool isLightOpen = false;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("e(nter" + (collision.name));
+        print("enter" + (collision.name));
         if(collision.TryGetComponent<PlayerController>(out _))
         {
-            if (DialogueManager.TryDialogueIndex() == 7)
+            if(DialogueManager.redDialogueIndex == 5 || isLightOpen)
+            {
+                SceneManager.LoadScene("Cedric");
+                Destroy(gameObject);
+
+            }
+
+            else if (DialogueManager.TryDialogueIndex() == 9)
             {
                 print("e(nter" + (collision.name));
 
                 Dialogue dialogue = new Dialogue
                 {
-                    text = "Ha regarde ce truc, ça à l’air d’être un bug.",
+                    text = "Ha regarde ce truc jaune, ça à l’air d’être un bug.",
                     audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
                     characterSprite = DialogueManager.Instance.spritesList[5],
                     characterPosition = new Vector3(-635, -270, 0),
@@ -34,9 +44,11 @@ public class TriggerDialogue : MonoBehaviour
                 };
 
                 DialogueManager.Instance.StartDialogue(dialogue2);
+                Destroy(gameObject);
+
             }
 
-            else if (DialogueManager.TryDialogueIndex() == 14)
+            else if (DialogueManager.TryDialogueIndex() == 15)
             {
                 Dialogue dialogue = new Dialogue
                 {
@@ -48,9 +60,11 @@ public class TriggerDialogue : MonoBehaviour
                 };
 
                 DialogueManager.Instance.StartDialogue(dialogue);
+                Destroy(gameObject);
+
             }
 
-            else if (DialogueManager.TryDialogueIndex() == 17)
+            else if (DialogueManager.TryDialogueIndex() == 18)
             {
                 Dialogue dialogue = new Dialogue
                 {
@@ -61,21 +75,24 @@ public class TriggerDialogue : MonoBehaviour
                     characterRotation = new Vector3(0, 0, -110)
                 };
                 DialogueManager.Instance.StartDialogue(dialogue);
+
+                Dialogue dialogue2 = new Dialogue
+                {
+                    text = "Et je crois que le code pour que t’ai un pistolet fonctionne pas encore.",
+                    audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
+                    characterSprite = DialogueManager.Instance.spritesList[2],
+                    characterPosition = new Vector3(600, 135, 0),
+                    characterRotation = new Vector3(0, 0, -90)
+                };
+
+                DialogueManager.Instance.StartDialogue(dialogue2);
+                Destroy(gameObject);
+
             }
 
 
-            /*Dialogue dialogue = new Dialogue
-            {
-                text = "Et je crois que le code pour que t’ai un pistolet fonctionne pas encore.",
-                audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
-                characterSprite = DialogueManager.Instance.spritesList[2],
-                characterPosition = new Vector3(600, 135, 0),
-                characterRotation = new Vector3(0, 0, -90)
-            };
 
-            DialogueManager.Instance.StartDialogue(dialogue);*/
 
-            Destroy(gameObject);
         }
     }
 }

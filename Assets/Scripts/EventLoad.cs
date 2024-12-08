@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.Universal;
 
 public class EventLoad : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class EventLoad : MonoBehaviour
     [SerializeField] private GameObject _light2;
     [SerializeField] private GameObject backgroundFine;
     [SerializeField] private GameObject backgroundGlitched;
+    [SerializeField] private GameObject controlBlock;
+    [SerializeField] private Light2D generalLight;
     [SerializeField] private ParticleSystem _particleSystemleft;
     [SerializeField] private ParticleSystem _particleSystemright;
     [SerializeField] private ParticleSystem _particleSystemfront;
@@ -58,10 +61,9 @@ public class EventLoad : MonoBehaviour
         }
         else
         {
-            
-            
-                _startButton = GameObject.Find("Button").GetComponent<Button>();
-                _animator = _platform.GetComponent<Animator>();
+
+            _startButton = GameObject.Find("Button").GetComponent<Button>();
+            _animator = _platform.GetComponent<Animator>();
                 _animatorLight = _light.GetComponent<Animator>();
                 _animatorLight2 = _light2.GetComponent<Animator>();
                 _animatorLogo = _logo.GetComponent<Animator>();
@@ -90,7 +92,7 @@ public class EventLoad : MonoBehaviour
             AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.firstExplosion);
             firstClick = true;
         }
-        else
+        else if (!_isAnimationPlaying)
         {
             StartCoroutine(ButtonSelected());
         }
@@ -101,12 +103,12 @@ public class EventLoad : MonoBehaviour
     {
         if (_animator != null)
         {
+            _isAnimationPlaying = true;
             _particleSystemleft.Play();
             _particleSystemright.Play();
             AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.firstExplosion);
             _animator.SetBool("IsClicked", true); // Déclenche l'animation.
             _animatorLight.SetBool("IsClicked", true); // Déclenche l'animation.
-            _isAnimationPlaying = true;
 
             AudioManager.Instance.StopMusic();
 
@@ -152,17 +154,18 @@ public class EventLoad : MonoBehaviour
             yield return new WaitForSeconds(0.2f); // Délai optionnel avant de rallumer.
 
             //Changement de background
-            SpriteRenderer renderer = backgroundFine.GetComponent<SpriteRenderer>();
-            renderer.color = new Color(1f,1f,1f,0f);
-            SpriteRenderer renderer2 = backgroundGlitched.GetComponent<SpriteRenderer>();
-            renderer2.color = new Color(1f,1f,1f,1f);
-
+            backgroundFine.SetActive(false);
+            backgroundGlitched.SetActive(true);
+            controlBlock.SetActive(false);
+            
             lightController?.LightOn(); // Rallumer les lumières.
             _particleSystemfront.Play();
             AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.secondExplosion);
             yield return new WaitForSeconds(1f); // Délai optionnel avant d'éteindre.
+            PlayerController.Instance.transform.position = new Vector3(4.9f, -3.93f, 0);
 
             AudioManager.Instance.PlayMusic(1);
+            GameManager.Instance.hasPressedStart = true;
 
             lightController?.LightOff(); // Éteindre les lumières.
             yield return new WaitForSeconds(0.3f); // Délai optionnel avant de rallumer
@@ -176,7 +179,7 @@ public class EventLoad : MonoBehaviour
             yield return new WaitForSeconds(0.1f); // Délai optionnel avant de rallumer.
             lightController?.LightOn(); // Rallumer les lumières.
             yield return new WaitForSeconds(0.8f); // Délai optionnel avant de rallumer.
-            GameManager.Instance.hasPressedStart = true;
+            generalLight.intensity = 0.5f;
 
 
             Dialogue dialogue3 = new Dialogue

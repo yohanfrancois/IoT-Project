@@ -10,7 +10,7 @@ public class BugPowerup : MonoBehaviour
     private float originalFOV;
     private float smoothTime = 0.25f;
     private float velocity = 0f;
-    private float zoomMultiplier = 40f;
+    private float zoomMultiplier = 0.7f;
     private float returnDelay = 2f; // Temps avant de revenir au FOV d'origine
 
     enum PowerupType
@@ -55,7 +55,7 @@ public class BugPowerup : MonoBehaviour
         if (is_unlocked)
         {
             Debug.Log("is_unlocked is true");
-            float targetFOV = originalFOV - zoomMultiplier;
+            float targetFOV = originalFOV * zoomMultiplier;
             cam.fieldOfView = Mathf.SmoothDamp(cam.fieldOfView, targetFOV, ref velocity, smoothTime);
 
             if (Mathf.Abs(cam.fieldOfView - targetFOV) < 0.1f)

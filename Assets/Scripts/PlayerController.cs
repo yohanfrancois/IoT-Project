@@ -6,15 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public static PlayerController Instance { get; private set; }
+    public static PlayerController Instance;
 
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform wallCheck;
-    [SerializeField] private Transform wallCheck2;
-    [SerializeField] private Transform wallCheck3WhatIsThisCode;
     [SerializeField] private float wallJumpForce = 10f;
     [SerializeField] private float wallSlideSpeed = 2f;
     [SerializeField] private SpriteRenderer eyesRenderer;
@@ -37,7 +35,6 @@ public class PlayerController : MonoBehaviour
     public bool isFacingRight = true;
     public bool canMove = true;
     private int wallDirection;
-    private Collider2D myCollider;
     private bool isPlayingFootsteps;
 
     public GameObject ballPrefab; // Référence au Prefab de la balle
@@ -55,7 +52,6 @@ public class PlayerController : MonoBehaviour
         }
 
         rb = GetComponent<Rigidbody2D>();
-        myCollider = GetComponent<Collider2D>();
     }
 
     private void Start()
@@ -87,7 +83,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if(GameManager.Instance.hasPressedStart)
             moveInput = context.ReadValue<float>();
 
         
@@ -109,7 +104,7 @@ public class PlayerController : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
 
-        if (GameManager.Instance.unlockedJump)
+        if (GameManager.Instance.unlockedJump || !GameManager.Instance.hasPressedStart)
         {
             if (isGrounded)
             {
@@ -210,9 +205,9 @@ public class PlayerController : MonoBehaviour
         }
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
-        isTouchingWall = Physics2D.OverlapCircle(wallCheck.position, 0.1f, groundLayer);
+        isTouchingWall = Physics2D.OverlapBox(wallCheck.position, new Vector2(0.1f, 1f), 0f, groundLayer);
         
-        if (isTouchingWall && !isGrounded && rb.velocity.y < 0)
+        if (isTouchingWall && !isGrounded)
         {
             isWallSliding = true;
             rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
@@ -226,12 +221,7 @@ public class PlayerController : MonoBehaviour
         if(rb.velocity.x > 0.5 || rb.velocity.x < -0.5) _animator.SetBool(_movingBoolHash, true);
         else _animator.SetBool(_movingBoolHash, false);
 
-        // Vérifier si le joueur descend
-        if (rb.velocity.y < 0)
-        {
-            // Activer les collisions avec les plateformes
-            myCollider.enabled = true;
-        }
+        
     }
 
     void WallJump()

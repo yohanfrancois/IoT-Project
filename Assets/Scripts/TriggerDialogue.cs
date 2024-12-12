@@ -5,21 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class TriggerDialogue : MonoBehaviour
 {
-    [HideInInspector] public bool isLightOpen = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         print("enter" + (collision.name));
         if(collision.TryGetComponent<PlayerController>(out _))
         {
-            if(DialogueManager.redDialogueIndex == 5 || isLightOpen)
-            {
-                SceneManager.LoadScene("Cedric");
-                Destroy(gameObject);
-
-            }
-
-            else if (DialogueManager.TryDialogueIndex() == 9)
+           if (DialogueManager.TryDialogueIndex() == 9)
             {
                 print("e(nter" + (collision.name));
 

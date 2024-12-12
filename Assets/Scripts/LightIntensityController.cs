@@ -7,7 +7,7 @@ public class LightIntensityController : MonoBehaviour
     [SerializeField] private Light2D lightPrince; // La lumière à contrôler.
     [SerializeField] private Light2D lightPrincess; // La lumière à contrôler.
     [SerializeField] private Light2D lightGeneral; // La lumière à contrôler.
-    [SerializeField] private TriggerDialogue changeScene; // La lumière à contrôler.
+    [SerializeField] private ChangeScene changeScene; // La lumière à contrôler.
 
     private bool isPrince = false;
     private bool isPrincess = false;

@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4420866117108923014, guid: b7b1a33e71c139e4aa78c6667bd92536, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.66
+      value: 22.57
       objectReference: {fileID: 0}
     - target: {fileID: 4420866117108923014, guid: b7b1a33e71c139e4aa78c6667bd92536, type: 3}
       propertyPath: m_LocalPosition.y
@@ -202,7 +202,6 @@ GameObject:
   m_Component:
   - component: {fileID: 62584927}
   - component: {fileID: 62584926}
-  - component: {fileID: 62584925}
   m_Layer: 0
   m_Name: BGFine (22)
   m_TagString: Untagged
@@ -210,20 +209,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &62584925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 62584924}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &62584926
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -581,7 +566,6 @@ GameObject:
   m_Component:
   - component: {fileID: 197514893}
   - component: {fileID: 197514892}
-  - component: {fileID: 197514891}
   m_Layer: 0
   m_Name: BGFine (12)
   m_TagString: Untagged
@@ -589,20 +573,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &197514891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 197514890}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &197514892
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -987,7 +957,6 @@ GameObject:
   m_Component:
   - component: {fileID: 283964751}
   - component: {fileID: 283964752}
-  - component: {fileID: 283964753}
   m_Layer: 0
   m_Name: BGFine
   m_TagString: Untagged
@@ -1062,20 +1031,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &283964753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 283964750}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!1 &294817390
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,7 +1050,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &294817391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1189,9 +1144,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 294817390}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 798338d13c11a44548503914ebb6576b, type: 3}
+  m_Script: {fileID: 11500000, guid: ea3532125b40fc746871d39ed672564d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minDialogNumber: 9
+  maxDialogNumber: 80
 --- !u!1 &299373331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,7 +1243,6 @@ GameObject:
   m_Component:
   - component: {fileID: 320898670}
   - component: {fileID: 320898669}
-  - component: {fileID: 320898668}
   m_Layer: 0
   m_Name: BGFine (20)
   m_TagString: Untagged
@@ -1294,20 +1250,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &320898668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 320898667}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &320898669
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1524,6 +1466,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 373046089}
+  - component: {fileID: 373046090}
   m_Layer: 0
   m_Name: BGFInee
   m_TagString: Untagged
@@ -1571,6 +1514,20 @@ Transform:
   - {fileID: 197514893}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &373046090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373046088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea3532125b40fc746871d39ed672564d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDialogNumber: 0
+  maxDialogNumber: 15
 --- !u!1001 &382482150
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1659,7 +1616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4420866117108923014, guid: b7b1a33e71c139e4aa78c6667bd92536, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.83
+      value: 24.86
       objectReference: {fileID: 0}
     - target: {fileID: 4420866117108923014, guid: b7b1a33e71c139e4aa78c6667bd92536, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1786,7 +1743,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23efd0e0d65a95d4791360895df70f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLightOpen: 0
 --- !u!4 &429025241
 Transform:
   m_ObjectHideFlags: 0
@@ -2306,7 +2262,6 @@ GameObject:
   m_Component:
   - component: {fileID: 565252985}
   - component: {fileID: 565252984}
-  - component: {fileID: 565252983}
   m_Layer: 0
   m_Name: BGFine (11)
   m_TagString: Untagged
@@ -2314,20 +2269,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &565252983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 565252982}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &565252984
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2653,7 +2594,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23efd0e0d65a95d4791360895df70f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLightOpen: 0
 --- !u!4 &624978905
 Transform:
   m_ObjectHideFlags: 0
@@ -2684,7 +2624,6 @@ GameObject:
   m_Component:
   - component: {fileID: 637924798}
   - component: {fileID: 637924797}
-  - component: {fileID: 637924796}
   m_Layer: 0
   m_Name: BGFine (4)
   m_TagString: Untagged
@@ -2692,20 +2631,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &637924796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 637924795}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &637924797
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2994,7 +2919,6 @@ GameObject:
   m_Component:
   - component: {fileID: 698286856}
   - component: {fileID: 698286855}
-  - component: {fileID: 698286854}
   m_Layer: 0
   m_Name: BGFine (3)
   m_TagString: Untagged
@@ -3002,20 +2926,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &698286854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 698286853}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &698286855
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3234,7 +3144,6 @@ GameObject:
   m_Component:
   - component: {fileID: 754158388}
   - component: {fileID: 754158387}
-  - component: {fileID: 754158386}
   m_Layer: 0
   m_Name: BGFine (18)
   m_TagString: Untagged
@@ -3242,20 +3151,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &754158386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 754158385}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &754158387
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3757,7 +3652,6 @@ GameObject:
   m_Component:
   - component: {fileID: 939168074}
   - component: {fileID: 939168073}
-  - component: {fileID: 939168072}
   m_Layer: 0
   m_Name: BGFine (8)
   m_TagString: Untagged
@@ -3765,20 +3659,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &939168072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 939168071}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &939168073
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3856,7 +3736,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4420866117108923014, guid: b7b1a33e71c139e4aa78c6667bd92536, type: 3}
       propertyPath: m_LocalScale.x
-      value: 19.2
+      value: 24.68
       objectReference: {fileID: 0}
     - target: {fileID: 4420866117108923014, guid: b7b1a33e71c139e4aa78c6667bd92536, type: 3}
       propertyPath: m_LocalScale.y
@@ -3864,7 +3744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4420866117108923014, guid: b7b1a33e71c139e4aa78c6667bd92536, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.5
+      value: 9.2
       objectReference: {fileID: 0}
     - target: {fileID: 4420866117108923014, guid: b7b1a33e71c139e4aa78c6667bd92536, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4367,7 +4247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23efd0e0d65a95d4791360895df70f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLightOpen: 0
 --- !u!4 &1053301215
 Transform:
   m_ObjectHideFlags: 0
@@ -4450,7 +4329,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1061698894}
   - component: {fileID: 1061698893}
-  - component: {fileID: 1061698892}
   m_Layer: 0
   m_Name: BGFine (14)
   m_TagString: Untagged
@@ -4458,20 +4336,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1061698892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1061698891}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &1061698893
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5063,7 +4927,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1167471850}
   - component: {fileID: 1167471849}
-  - component: {fileID: 1167471848}
   m_Layer: 0
   m_Name: BGFine (6)
   m_TagString: Untagged
@@ -5071,20 +4934,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1167471848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167471847}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &1167471849
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5232,7 +5081,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1226063220}
   - component: {fileID: 1226063219}
-  - component: {fileID: 1226063218}
   m_Layer: 0
   m_Name: BGFine (15)
   m_TagString: Untagged
@@ -5240,20 +5088,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1226063218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1226063217}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &1226063219
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5331,7 +5165,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1230651933}
   - component: {fileID: 1230651932}
-  - component: {fileID: 1230651931}
   m_Layer: 0
   m_Name: BGFine (1)
   m_TagString: Untagged
@@ -5339,20 +5172,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1230651931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1230651930}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &1230651932
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5584,7 +5403,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1278572664}
   - component: {fileID: 1278572663}
-  - component: {fileID: 1278572662}
   m_Layer: 0
   m_Name: BGFine (24)
   m_TagString: Untagged
@@ -5592,20 +5410,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1278572662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1278572661}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &1278572663
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5977,7 +5781,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1309552790}
   - component: {fileID: 1309552789}
-  - component: {fileID: 1309552788}
   m_Layer: 0
   m_Name: BGFine (16)
   m_TagString: Untagged
@@ -5985,20 +5788,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1309552788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1309552787}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &1309552789
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6146,7 +5935,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4420866117108923014, guid: b7b1a33e71c139e4aa78c6667bd92536, type: 3}
       propertyPath: m_LocalScale.x
-      value: 23.94
+      value: 29.3
       objectReference: {fileID: 0}
     - target: {fileID: 4420866117108923014, guid: b7b1a33e71c139e4aa78c6667bd92536, type: 3}
       propertyPath: m_LocalScale.y
@@ -6154,7 +5943,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4420866117108923014, guid: b7b1a33e71c139e4aa78c6667bd92536, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.6
+      value: 10.3
       objectReference: {fileID: 0}
     - target: {fileID: 4420866117108923014, guid: b7b1a33e71c139e4aa78c6667bd92536, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6463,6 +6252,10 @@ PrefabInstance:
     - target: {fileID: 385019180880712762, guid: 3036efd3315cc584d8cb5f5ecb8ab616, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 958385144167119727, guid: 3036efd3315cc584d8cb5f5ecb8ab616, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1549882344653670061, guid: 3036efd3315cc584d8cb5f5ecb8ab616, type: 3}
       propertyPath: m_SortingOrder
@@ -6827,7 +6620,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1573578447}
   - component: {fileID: 1573578446}
-  - component: {fileID: 1573578445}
   m_Layer: 0
   m_Name: BGFine (5)
   m_TagString: Untagged
@@ -6835,20 +6627,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1573578445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1573578444}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &1573578446
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6926,7 +6704,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1591641207}
   - component: {fileID: 1591641206}
-  - component: {fileID: 1591641205}
   m_Layer: 0
   m_Name: BGFine (2)
   m_TagString: Untagged
@@ -6934,20 +6711,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1591641205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1591641204}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &1591641206
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7025,7 +6788,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1601032305}
   - component: {fileID: 1601032304}
-  - component: {fileID: 1601032303}
   m_Layer: 0
   m_Name: BGFine (10)
   m_TagString: Untagged
@@ -7033,20 +6795,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1601032303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1601032302}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &1601032304
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7194,7 +6942,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1717745830}
   - component: {fileID: 1717745829}
-  - component: {fileID: 1717745828}
   m_Layer: 0
   m_Name: BGFine (23)
   m_TagString: Untagged
@@ -7202,20 +6949,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1717745828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1717745827}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &1717745829
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7377,7 +7110,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1734715879}
   - component: {fileID: 1734715878}
-  - component: {fileID: 1734715877}
   m_Layer: 0
   m_Name: BGFine (19)
   m_TagString: Untagged
@@ -7385,20 +7117,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1734715877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1734715876}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &1734715878
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7896,7 +7614,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1824576354}
   - component: {fileID: 1824576353}
-  - component: {fileID: 1824576352}
   m_Layer: 0
   m_Name: BGFine (9)
   m_TagString: Untagged
@@ -7904,20 +7621,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1824576352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824576351}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &1824576353
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8052,7 +7755,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1858351265}
   - component: {fileID: 1858351264}
-  - component: {fileID: 1858351263}
   m_Layer: 0
   m_Name: BGFine (17)
   m_TagString: Untagged
@@ -8060,20 +7762,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1858351263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858351262}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &1858351264
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8355,7 +8043,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1950966947}
   - component: {fileID: 1950966946}
-  - component: {fileID: 1950966945}
   m_Layer: 0
   m_Name: BGFine (7)
   m_TagString: Untagged
@@ -8363,20 +8050,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1950966945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1950966944}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &1950966946
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8649,7 +8322,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2058809667}
   - component: {fileID: 2058809666}
-  - component: {fileID: 2058809665}
   m_Layer: 0
   m_Name: BGFine (13)
   m_TagString: Untagged
@@ -8657,20 +8329,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2058809665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2058809664}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &2058809666
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8902,7 +8560,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2100522218}
   - component: {fileID: 2100522217}
-  - component: {fileID: 2100522216}
   m_Layer: 0
   m_Name: BGFine (21)
   m_TagString: Untagged
@@ -8910,20 +8567,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2100522216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2100522215}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577083a152af4441d9474a7ba4a0426e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fineSpriteRenderer: {fileID: 0}
-  glitchedSpriteRenderer: {fileID: 0}
 --- !u!212 &2100522217
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -36,17 +36,6 @@ public class GameManager : MonoBehaviour
     public void SetUnlockedPlatform(bool value)
     {
         unlockedPlatform = value;
-        Dialogue dialoguex = new Dialogue
-        {
-            text = "Ok... Super… Maintenant on peut voir que même les textures des sols ne chargent pas… trop cool !",
-            audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
-            characterSprite = DialogueManager.Instance.spritesList[2],
-            characterPosition = new Vector3(-22, 17, 0),
-            characterRotation = new Vector3(0, 0, -292)
-        };
-
-        DialogueManager.Instance.StartDialogue(dialoguex);
-
         Dialogue dialogue = new Dialogue
         {
             text = "Bon. On a réparé les textures, mais tu peux toujours pas sauter…",
@@ -58,18 +47,8 @@ public class GameManager : MonoBehaviour
 
         DialogueManager.Instance.StartDialogue(dialogue);
 
-        Dialogue dialogue2 = new Dialogue
-        {
-            text = "Essaye de voir si la touche R fonctionne toujours pour réinitialiser le jeu",
-            audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
-            characterSprite = DialogueManager.Instance.spritesList[0],
-            characterPosition = new Vector3(0, 0, 0),
-            characterRotation = new Vector3(0, 0, -90)
-        };
-
-        DialogueManager.Instance.StartDialogue(dialogue2);
-
         PlayerController.Instance.ActivateEyes();
+        AffichePlateformes();
 
         AudioManager.Instance.PlayMusic(2);
     }   

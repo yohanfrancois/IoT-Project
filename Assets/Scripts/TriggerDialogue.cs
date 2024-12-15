@@ -21,7 +21,8 @@ public class TriggerDialogue : MonoBehaviour
                     audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
                     characterSprite = DialogueManager.Instance.spritesList[5],
                     characterPosition = new Vector3(-635, -270, 0),
-                    characterRotation = new Vector3(0, 0, -70)
+                    characterRotation = new Vector3(0, 0, -70),
+                    autoSkip = true
                 };
 
                 DialogueManager.Instance.StartDialogue(dialogue);
@@ -40,7 +41,7 @@ public class TriggerDialogue : MonoBehaviour
 
             }
 
-            else if (DialogueManager.TryDialogueIndex() == 15)
+            else if (DialogueManager.TryDialogueIndex() == 14)
             {
                 Dialogue dialogue = new Dialogue
                 {
@@ -48,7 +49,8 @@ public class TriggerDialogue : MonoBehaviour
                     audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
                     characterSprite = DialogueManager.Instance.spritesList[2],
                     characterPosition = new Vector3(-650, -290, 0),
-                    characterRotation = new Vector3(0, 0, -100)
+                    characterRotation = new Vector3(0, 0, -100),
+                    autoSkip = true
                 };
 
                 DialogueManager.Instance.StartDialogue(dialogue);
@@ -56,7 +58,7 @@ public class TriggerDialogue : MonoBehaviour
 
             }
 
-            else if (DialogueManager.TryDialogueIndex() == 18)
+            else if (DialogueManager.TryDialogueIndex() == 17)
             {
                 Dialogue dialogue = new Dialogue
                 {
@@ -64,7 +66,8 @@ public class TriggerDialogue : MonoBehaviour
                     audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
                     characterSprite = DialogueManager.Instance.spritesList[5],
                     characterPosition = new Vector3(750, -350, 0),
-                    characterRotation = new Vector3(0, 0, -110)
+                    characterRotation = new Vector3(0, 0, -110),
+                    autoSkip = true
                 };
                 DialogueManager.Instance.StartDialogue(dialogue);
 

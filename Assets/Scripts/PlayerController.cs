@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float wallJumpForce = 10f;
     [SerializeField] private float wallSlideSpeed = 2f;
     [SerializeField] private SpriteRenderer eyesRenderer;
+    [SerializeField] private Sprite eyesSprite;
     [SerializeField] private Sprite glitchedSprite;
     [SerializeField] private Sprite normalSprite;
     [SerializeField] private Sprite spriteWithGun;
@@ -25,7 +26,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float wallJumpDuration = 0.2f; // Durée pendant laquelle le mouvement horizontal est désactivé
-    [SerializeField] private GameObject platform; //plateforme qui bouche le trou au début du jeu
 
     private Rigidbody2D rb;
     public float moveInput;
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     private bool isTouchingWall;
     private bool isWallSliding;
     public bool isFacingRight = true;
-    public bool canMove = true;
+    [HideInInspector] public bool canMove;
     private int wallDirection;
     private bool isPlayingFootsteps;
 
@@ -50,12 +50,18 @@ public class PlayerController : MonoBehaviour
         {
             Instance = this;
         }
-
+        canMove = true;
         rb = GetComponent<Rigidbody2D>();
+
+        
     }
 
     private void Start()
     {
+        if (GameManager.Instance.unlockedPlatform && !GameManager.Instance.unlockedJump)
+        {
+            eyesRenderer.sprite = eyesSprite;
+        }
         _animator = GetComponent<Animator>();
         _movingBoolHash = Animator.StringToHash("IsMoving");
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -67,7 +73,8 @@ public class PlayerController : MonoBehaviour
 
         else if(GameManager.Instance.hasGun)
         {
-            spriteRenderer.sprite = spriteWithGun;
+            GetSpriteWithGun();
+
         }
 
         else if (GameManager.Instance.unlockedJump)
@@ -84,9 +91,6 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
             moveInput = context.ReadValue<float>();
-
-        
-        
     }
     private IEnumerator PlayFootsteps()
     {
@@ -103,20 +107,22 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-
-        if (GameManager.Instance.unlockedJump || !GameManager.Instance.hasPressedStart)
+        if (canMove)
         {
-            if (isGrounded)
+            if (GameManager.Instance.unlockedJump || !GameManager.Instance.hasPressedStart)
             {
-                AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.jumpSound);
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            }
-
-            if (GameManager.Instance.unlockedWallJump)
-            {
-                if (isTouchingWall && !isGrounded)
+                if (isGrounded)
                 {
-                    WallJump();
+                    AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.jumpSound);
+                    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                }
+
+                if (GameManager.Instance.unlockedWallJump || !GameManager.Instance.hasPressedStart)
+                {
+                    if (isTouchingWall && !isGrounded)
+                    {
+                        WallJump();
+                    }
                 }
             }
         }
@@ -136,9 +142,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
-            print("swapping");
             SceneManager.LoadScene("Baptiste");
-            GameManager.Instance.returnedOnce = true;
             GameManager.Instance.ResetGame();
         }
     }
@@ -154,12 +158,12 @@ public class PlayerController : MonoBehaviour
 
     public void ActivateEyes()
     {
-        StartCoroutine(GameManager.Instance.GlitchAnimation(eyesRenderer, null, eyesRenderer.sprite, 1.5f, 0.2f));
+        StartCoroutine(GameManager.Instance.GlitchAnimation(eyesRenderer, null, eyesSprite, 1.5f, 0.2f));
     }
 
     public void DesactivateEyes()
     {
-        StartCoroutine(GameManager.Instance.GlitchAnimation(eyesRenderer, eyesRenderer.sprite, null, 1.5f, 0.2f));
+        StartCoroutine(GameManager.Instance.GlitchAnimation(eyesRenderer, eyesSprite, null, 1.5f, 0.2f));
     }
 
     public void GetGlitchedSprite()
@@ -172,10 +176,16 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(GameManager.Instance.GlitchAnimation(spriteRenderer, glitchedSprite, normalSprite, 1.5f, 0.2f));
     }
 
+    public void GetSpriteWithGun()
+    {
+        gameObject.GetComponent<Animator>().enabled = false;
+        spriteRenderer.sprite = spriteWithGun;
+    }
+
     void Update()
     {
-
-        if (moveInput != 0)
+        
+        if (moveInput != 0 && canMove)
         {
             rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
             if (moveInput > 0)
@@ -190,27 +200,23 @@ public class PlayerController : MonoBehaviour
             {
                 StartCoroutine(PlayFootsteps());
             }
-        }
+            if (isTouchingWall)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y > 0.1 ? rb.velocity.y : -wallSlideSpeed);
+            }
 
-        if (platform != null)
+        }
+        else if(isGrounded)
         {
-            if (!GameManager.Instance.unlockedPlatform)
-            {
-                platform.SetActive(false);
-            }
-            else
-            {
-                platform.SetActive(true);
-            }
+            rb.velocity = new Vector2(0, rb.velocity.y);    
         }
-
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
         isTouchingWall = Physics2D.OverlapBox(wallCheck.position, new Vector2(0.1f, 1f), 0f, groundLayer);
-        
+
         if (isTouchingWall && !isGrounded)
         {
             isWallSliding = true;
-            rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(-wallSlideSpeed, rb.velocity.y));
             wallDirection = isFacingRight ? 1 : -1;
         }
         else

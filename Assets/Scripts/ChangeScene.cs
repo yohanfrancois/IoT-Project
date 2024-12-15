@@ -5,14 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-    [HideInInspector] public bool isLightOpen = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         print("enter" + (collision.name));
         if (collision.TryGetComponent<PlayerController>(out _))
         {
-            if (DialogueManager.redDialogueIndex == 5 || isLightOpen || DialogueManager.redDialogueIndex >= 9)
+            if (DialogueManager.redDialogueIndex >= 5)
             {
                 SceneManager.LoadScene("Cedric");
 

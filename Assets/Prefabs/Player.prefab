@@ -142,11 +142,10 @@ MonoBehaviour:
     m_Bits: 8
   groundCheck: {fileID: 8914705998979691781}
   wallCheck: {fileID: 3828012631309159631}
-  wallCheck2: {fileID: 0}
-  wallCheck3WhatIsThisCode: {fileID: 0}
   wallJumpForce: 10
   wallSlideSpeed: 3
   eyesRenderer: {fileID: 3776182770924719815}
+  eyesSprite: {fileID: 21300000, guid: a033bb611b32a462695938c3d3f4284f, type: 3}
   glitchedSprite: {fileID: 7482667652216324306, guid: f573a87cbea0e4c74b6c1beffe39ff1d, type: 3}
   normalSprite: {fileID: 646596821, guid: 61222c15f3981d1469a0228f49d0949f, type: 3}
   spriteWithGun: {fileID: 21300000, guid: 3bc4976a214b2496fb46065b34944194, type: 3}
@@ -414,7 +413,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7827180139839248760
 Transform:
   m_ObjectHideFlags: 0
@@ -470,8 +469,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: a033bb611b32a462695938c3d3f4284f, type: 3}
+  m_SortingOrder: 300
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -479,6 +478,6 @@ SpriteRenderer:
   m_Size: {x: 0.25, y: 0.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

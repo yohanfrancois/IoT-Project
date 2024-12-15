@@ -8,9 +8,12 @@ public class Mob : MonoBehaviour
     [SerializeField] private float fireRate; // Temps entre chaque tir (en secondes)
     [SerializeField] private Vector2 offset; // Décalage pour la position de spawn des balles
     [SerializeField] private Collider2D headCollider; // Collider pour la tête du mob
+    [SerializeField] private Transform player; // Collider pour la tête du mob
+
     private Animator _animator;
     private int _playerInRangeTriggerHash;
     private int _enemyDeathTriggerHash;
+    private bool isShooting = false;
 
     void Start()
     {
@@ -22,6 +25,14 @@ public class Mob : MonoBehaviour
 
     void Update()
     {
+        if(Vector2.Distance(transform.position, player.transform.position) < 8 && !isShooting)
+        {
+            _animator.SetTrigger(_playerInRangeTriggerHash);
+            StartCoroutine(FireBulletEveryXSeconds());
+            AudioManager.Instance.PlayMusic(1);
+            isShooting = true;
+        }
+       
         // Si les points de vie du mob sont à zéro ou moins, il meurt
         if (lifePoint <= 0)
         {
@@ -56,7 +67,7 @@ public class Mob : MonoBehaviour
     {
         // Instancie une nouvelle balle à la position et rotation de l'objet auquel le script est attaché
         GameObject newBall = Instantiate(ballPrefab, transform.position + (Vector3)offset, transform.rotation);
-        AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.gunSound);
+        
 
         // Récupère le script Bullet de la balle instanciée
         Bullet bulletScript = newBall.GetComponent<Bullet>();
@@ -74,14 +85,6 @@ public class Mob : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.layer == 7) //Player layer
-        {
-            _animator.SetTrigger(_playerInRangeTriggerHash);
-            StartCoroutine(FireBulletEveryXSeconds());
-        }
-    }
 
     // Cette méthode est appelée lorsque le mob meurt
     public void Die()
@@ -92,12 +95,15 @@ public class Mob : MonoBehaviour
             audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
             characterSprite = DialogueManager.Instance.spritesList[0],
             characterPosition = new Vector3(-720, 135, 0),
-            characterRotation = new Vector3(0, 0, -90)
+            characterRotation = new Vector3(0, 0, -90),
+            autoSkip = true
         };
 
         DialogueManager.Instance.StartDialogue(dialogue);
 
         _animator.SetTrigger(_enemyDeathTriggerHash);
+        AudioManager.Instance.PlayMusic(2);
+        AudioManager.Instance.PlaySoundEffect(AudioManager.Instance.firstExplosion);
         Destroy(gameObject, 0.7f); // Détruit le mob
     }
 

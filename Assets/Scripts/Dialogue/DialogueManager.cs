@@ -26,6 +26,7 @@ public class DialogueManager : MonoBehaviour
     private static int currentDialogueIndex = 0;
     public static int redDialogueIndex = 0;
 
+
     public static int GetDialogueIndex()
     {
         print(currentDialogueIndex);
@@ -63,7 +64,7 @@ public class DialogueManager : MonoBehaviour
                 dialogueText.text = currentDialogueSegments.Dequeue();
             }
 
-            else if (isDialogueActive && !audioSource.isPlaying)
+            else if (isDialogueActive && (!audioSource.isPlaying))
             {
                 redDialogueIndex++;
                 print("Dialogue index: " + redDialogueIndex + " " + currentDialogueIndex);
@@ -75,6 +76,11 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        if(dialogue.autoSkip)
+        {
+            redDialogueIndex+=dialoguesQueue.Count;
+            EndDialogue();
+        }
         dialoguesQueue.Enqueue(dialogue);
 
         if (!isDialogueActive)
@@ -219,7 +225,7 @@ public class DialogueManager : MonoBehaviour
             Instance.StartDialogue(dialogue3);
 
         }
-        else if(TryDialogueIndex() == 8)
+        else if(TryDialogueIndex() == 8 && GameManager.Instance.isLightOpen)
         {
             Dialogue dialogue = new Dialogue
             {
@@ -227,7 +233,8 @@ public class DialogueManager : MonoBehaviour
                 audioClip = Instance.dialoguesList[GetDialogueIndex()],
                 characterSprite = Instance.spritesList[1],
                 characterPosition = new Vector3(480, 150, 0),
-                characterRotation = new Vector3(0, 0, -100)
+                characterRotation = new Vector3(0, 0, -100),
+                autoSkip = true
             };
 
             Instance.StartDialogue(dialogue);

@@ -12,11 +12,9 @@ public class GameManager : MonoBehaviour
     public bool unlockedJump ;
     public bool unlockedInventory ;
     public bool unlockedWallJump ;
-    public bool canResetToMenu ;
     public bool hasGun;
     public bool hasPressedStart;
-    public bool returnedOnce;
-    public bool leftOnce;
+    public bool isLightOpen = false;
 
 
 
@@ -42,7 +40,8 @@ public class GameManager : MonoBehaviour
             audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
             characterSprite = DialogueManager.Instance.spritesList[3],
             characterPosition = new Vector3(750, -390, 0),
-            characterRotation = new Vector3(0, 0, -110)
+            characterRotation = new Vector3(0, 0, -110),
+            autoSkip = true
         };
 
         DialogueManager.Instance.StartDialogue(dialogue);
@@ -62,7 +61,8 @@ public class GameManager : MonoBehaviour
             audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
             characterSprite = DialogueManager.Instance.spritesList[5],
             characterPosition = new Vector3(-630, 175, 0),
-            characterRotation = new Vector3(0, 0, -65)
+            characterRotation = new Vector3(0, 0, -65),
+            autoSkip = true
         };
 
         DialogueManager.Instance.StartDialogue(dialogue);
@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
         DialogueManager.Instance.StartDialogue(dialogue2);
 
         PlayerController.Instance.GetNormalSprite();
+        PlayerController.Instance.DesactivateEyes();
     }
 
     public void SetUnlockedInventory(bool value)
@@ -90,7 +91,8 @@ public class GameManager : MonoBehaviour
             audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
             characterSprite = DialogueManager.Instance.spritesList[0],
             characterPosition = new Vector3(765, -210, 0),
-            characterRotation = new Vector3(0, 0, -105)
+            characterRotation = new Vector3(0, 0, -105),
+            autoSkip = true
         };
 
         DialogueManager.Instance.StartDialogue(dialogue);
@@ -104,20 +106,15 @@ public class GameManager : MonoBehaviour
             audioClip = DialogueManager.Instance.dialoguesList[DialogueManager.GetDialogueIndex()],
             characterSprite = DialogueManager.Instance.spritesList[4],
             characterPosition = new Vector3(50, 150, 0),
-            characterRotation = new Vector3(0, 0, -70)
+            characterRotation = new Vector3(0, 0, -70),
+            autoSkip = true
         };
 
         DialogueManager.Instance.StartDialogue(dialogue);
     }
-    public void SetCanResetToMenu(bool value)
-    {
-        canResetToMenu = value;
-        
-    }
 
     public void ResetGame()
     {
-        canResetToMenu = false;
         if(unlockedPlatform){
             GameObject[] unityObjects = GameObject.FindGameObjectsWithTag("Plateforme");
             // Loop through each object and perform an action

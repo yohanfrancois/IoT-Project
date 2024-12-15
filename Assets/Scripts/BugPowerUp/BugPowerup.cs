@@ -79,7 +79,7 @@ public class BugPowerup : MonoBehaviour
         }
 
         cam.fieldOfView = originalFOV;
-        gameObject.SetActive(false); // Désactiver l'objet après avoir terminé
+        Destroy(gameObject);
         PlayerController.Instance.canMove = true;
     }
 

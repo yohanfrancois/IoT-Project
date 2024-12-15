@@ -8,4 +8,5 @@ public class Dialogue
     public Sprite characterSprite;
     public Vector3 characterPosition;
     public Vector3 characterRotation;
+    public bool autoSkip;
 }

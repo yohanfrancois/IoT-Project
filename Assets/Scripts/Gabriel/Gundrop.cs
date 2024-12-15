@@ -9,9 +9,10 @@ public class Gundrop : MonoBehaviour
      private void OnTriggerEnter2D(Collider2D collision)
     {
         
-        if (collision.TryGetComponent(out PlayerController player))
+        if (collision.TryGetComponent<PlayerController>(out _))
         {
             GameManager.Instance.hasGun=true;
+            PlayerController.Instance.GetSpriteWithGun();
             Destroy(gameObject);
         }
     }

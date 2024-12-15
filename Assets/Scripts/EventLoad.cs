@@ -29,8 +29,7 @@ public class EventLoad : MonoBehaviour
     private Animator _animatorLight;
     private Animator _animatorLight2;
     private bool _isAnimationPlaying = false;
-    private bool _isElectric = false;
-    private bool _isBroken = false;
+    private bool isMenuActivated = false;
 
     private bool firstClick = false;
 
@@ -62,19 +61,16 @@ public class EventLoad : MonoBehaviour
         else
         {
 
-            _startButton = GameObject.Find("Button").GetComponent<Button>();
             _animator = _platform.GetComponent<Animator>();
                 _animatorLight = _light.GetComponent<Animator>();
                 _animatorLight2 = _light2.GetComponent<Animator>();
                 _animatorLogo = _logo.GetComponent<Animator>();
-                _startButton.onClick.AddListener(() => HitButton());
             
         }
-        _settingsButton = GameObject.Find("Settings").GetComponent<Button>();
-        _settingsButton.onClick.AddListener(() => StartCoroutine(SettingsSelected()));
+        
     }
 
-    private void HitButton()
+    public void HitButton()
     {
         if (!firstClick)
         {
@@ -214,33 +210,28 @@ public class EventLoad : MonoBehaviour
             };
 
             DialogueManager.Instance.StartDialogue(dialogue5);
+            _isAnimationPlaying = false;
+
 
         }
 
-        //Debug.Log("Vous avez trouvé le bouton " + _startButton.name);
-        _isAnimationPlaying = false;
-        _isBroken = true;
     }
 
     
-    IEnumerator SettingsSelected()
+    public void SettingsSelected()
     {
-        if (_isBroken)
-        {
-            //Debug.LogWarning("Le bouton est cassé !");
-            // Activer la page des paramètres.
-            _pauseScreen.SetActive(true);
-            _isBroken = false;
-            yield return null;
-        } else if (!_isBroken)
-        {
-            _pauseScreen.SetActive(false);
-            _isBroken = true;
-            yield return null;
-        }
+            print(isMenuActivated);
 
-        //Debug.Log("Vous avez trouvé le bouton " + _settingsButton.name);
+            isMenuActivated = !isMenuActivated;
+            if(isMenuActivated)
+            {
+                _pauseScreen.SetActive(true);
+            }
+            else
+            {
+                _pauseScreen.SetActive(false);
+            }
+            
         
-        yield break; // Si tu veux attendre une action avant de revenir.
     }
 }

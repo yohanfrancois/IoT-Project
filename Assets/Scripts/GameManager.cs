@@ -1,6 +1,9 @@
+using System.IO.Ports;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -8,13 +11,19 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance ;
     public bool buttonAnimationPlayed = false;
 
-    public bool unlockedPlatform ;
-    public bool unlockedJump ;
-    public bool unlockedInventory ;
-    public bool unlockedWallJump ;
+    public bool unlockedPlatform;
+    public bool unlockedJump;
+    public bool unlockedInventory;
+    public bool unlockedWallJump;
     public bool hasGun;
     public bool hasPressedStart;
     public bool isLightOpen = false;
+
+    private SerialPort _serial;
+
+    // Common default serial device on a Windows machine
+    [SerializeField] private string serialPort = "COM3";
+    [SerializeField] private int baudrate = 115200;
 
 
 
@@ -130,6 +139,53 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
+        _serial = new SerialPort(serialPort, baudrate);
+        // Guarantee that the newline is common across environments.
+        _serial.NewLine = "\n";
+        // Once configured, the serial communication must be opened just like a file : the OS handles the communication.
+        _serial.Open();
+    }
+
+    void Update()
+    {
+        // Return early if not open, prevent spamming errors for no reason.
+        if (!_serial.IsOpen) return;
+        SendMessages();
+    }
+
+    private void OnDestroy()
+    {
+        if (!_serial.IsOpen) return;
+        _serial.Close();
+    }
+
+    private void SendMessages()
+    {
+        if (!_serial.IsOpen) return;
+        if (unlockedPlatform && !unlockedJump)
+        {
+            _serial.WriteLine("Plateforms Unlocked");
+        }
+        else if (unlockedPlatform && unlockedJump && !unlockedInventory)
+        {
+            _serial.WriteLine("Jump Unlocked");
+        }
+        else if (unlockedPlatform && unlockedJump && unlockedInventory && !unlockedWallJump)
+        {
+            _serial.WriteLine("Inventory Unlocked");
+        }
+        else if (unlockedPlatform && unlockedJump && unlockedInventory && unlockedWallJump && !hasGun)
+        {
+            _serial.WriteLine("Walljump Unlocked");
+        }
+        else if (unlockedPlatform && unlockedJump && unlockedInventory && unlockedWallJump && hasGun)
+        {
+            _serial.WriteLine("Gun Unlocked");
+        }
+        else
+        {
+            _serial.WriteLine("Nothing Unlocked Yet");
+        }
     }
 
     public void AffichePlateformes(){

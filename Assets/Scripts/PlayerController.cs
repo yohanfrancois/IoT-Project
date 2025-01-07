@@ -227,6 +227,12 @@ public class PlayerController : MonoBehaviour
         if(rb.velocity.x > 0.5 || rb.velocity.x < -0.5) _animator.SetBool(_movingBoolHash, true);
         else _animator.SetBool(_movingBoolHash, false);
 
+        if (GameManager.Instance.distanceToJump)
+        {
+            InputAction.CallbackContext c = new InputAction.CallbackContext();
+            OnJump(c);
+            GameManager.Instance.distanceToJump = false;
+        }
         
     }
 

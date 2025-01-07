@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public bool hasGun;
     public bool hasPressedStart;
     public bool isLightOpen = false;
+    public bool distanceToJump = false;
 
     private SerialPort _serial;
 
@@ -151,6 +152,7 @@ public class GameManager : MonoBehaviour
         // Return early if not open, prevent spamming errors for no reason.
         if (!_serial.IsOpen) return;
         SendMessages();
+        ReadMessages();
     }
 
     private void OnDestroy()
@@ -188,6 +190,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void ReadMessages()
+    {
+        if (!_serial.IsOpen) return;
+        if (_serial.BytesToRead <= 0) return;
+        string message = _serial.ReadLine().Trim();
+        if (message == "JUMP")
+        {
+            distanceToJump = true;
+            Debug.Log(distanceToJump);
+        }
+    }
     public void AffichePlateformes(){
         if(unlockedPlatform){
             GameObject[] unityObjects = GameObject.FindGameObjectsWithTag("Plateforme");

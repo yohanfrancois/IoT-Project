@@ -3,15 +3,37 @@
 LiquidCrystal lcd(12, 11, 10, 9, 8, 7, 6, 5, 4, 3);
 //LiquidCrystal lcd(12, 11, 6, 5, 4, 3);
 
+const int trigPin = 2; 
+const int echoPin = 13; 
+long duration;
+float distance;
+float distanceToJump = 7.;
+
 void setup(){
   lcd.begin(16, 2);
 
   Serial.begin(115200);
   // Wait for a serial connection
   while (!Serial.availableForWrite());
+
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
 }
 
 void loop(){
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  duration = pulseIn(echoPin, HIGH);
+  distance = duration * 0.034 / 2; // Convertir en cm
+
+  if (distance < distanceToJump) {
+    Serial.println("JUMP");
+  }
+
   delay(200);
 }
 
